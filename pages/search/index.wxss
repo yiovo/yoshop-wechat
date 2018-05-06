@@ -1,0 +1,65 @@
+.seconds-kill-li {
+    padding: 10rpx;
+    box-sizing: border-box;
+}
+
+.title-box {
+    font-size: 10pt;
+    padding: 50rpx 0 0 0;
+    color: #777;
+}
+
+.sale-button-box {
+    padding: 10px 0;
+}
+
+.sale-button,.recent-button {
+    background: #fff;
+    padding: 10rpx;
+    border-radius: 50px;
+    justify-content: center;
+    text-align: center;
+    font-size: 26rpx;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 30rpx;
+    line-height: 30rpx;
+}
+
+.serch-button button {
+    background: #fd4a5f;
+}
+
+.search-cont {
+    padding: 0 15px;
+    background: #fff;
+}
+
+.search-box .left {
+    width: 28px;
+}
+
+.search-box .left icon {
+    padding: 15rpx;
+}
+
+.search-box .right {
+    flex: 1;
+}
+
+.sale-button-box {
+    overflow: hidden;
+}
+
+.sale-button-box .seconds-kill-li {
+    width: 33.3%;
+    float: left;
+}
+
+.title-box image {
+    width: 35rpx;
+    height: 35rpx;
+    float: right;
+}

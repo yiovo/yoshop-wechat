@@ -1,0 +1,170 @@
+<view class="container p-bottom">
+    <navigator hoverClass="navigator-hover" url="{{addresss_link}}">
+        <view wx:if="{{addresss!=''}}">
+            <view class="b-f">
+                <view class="flow-checkout-header dis-box">
+                    <text class="iconfont icon-dingwei1"></text>
+                    <view class="flow-header-left">
+                        <view class="flow-checkout-admin f-30 col-3">{{addresss.consignee}}
+              <text>{{addresss.mobile}}</text>
+                            <text class="col-m"></text>
+                        </view>
+                        <view class="flow-checkout-address">{{addresss.address}}</view>
+                    </view>
+                    <view class="flow-header-right pr-12">
+                        <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="flow-checkout-header dis-box">
+                <text class="iconfont icon-dingwei1"></text>
+                <view class="flow-header-left">
+                    <view class="f-28 col-6">去添加配送地址
+              </view>
+                </view>
+                <view class="flow-header-right no-flow p-r15">
+                    <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+                </view>
+            </view>
+        </view>
+    </navigator>
+    <view class="m-top20">
+        <view class="checkout_list " wx:for="{{checkList}}" wx:key="checkList">
+            <navigator url="../goods/index?objectId={{item.goods_id}}">
+                <view class="dis-flex flow-shopList" data-index="{{index}}">
+                    <view class="flow-list-left">
+                        <image mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                    </view>
+                    <view class="flow-list-right box-flex">
+                        <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                        <text class="f-26 col-7">{{item.goods_attr}}</text>
+                        <view class="flow-list-cont">
+                            <text class="flow-cont">{{item.goods_price_formated}}</text>
+                            <text class="small">×{{item.goods_number}}</text>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <picker bindchange="shippingChange" class="select b-f" range="{{shipping.name}}" value="{{index}}">
+            <view class="flow-distribution dis-flex">
+                <view class="flow-distribution-left pl-12">
+                    <text class="flow-dis col-7">配送方式</text>
+                    <text class="m-l flow-dis">{{shipping.name[index]}}</text>
+                </view>
+                <view class="flow-distribution-right pr-12 p-r">
+                    <text class="iconfont icon-xiangyoujiantou"></text>
+                </view>
+            </view>
+        </picker>
+        <view class="flow-num-box b-f">{{flowCont}}
+        <text class="flow-money col-m">￥{{flowMoney}}</text>
+        </view>
+    </view>
+    <view class="flow-all-money b-f padding-box m-top20">
+        <view class="dis-flex flow-all-list">
+            <text class="flex-five">商品金额:</text>
+            <view class="flex-five t-r">
+                <text class="col-m">￥{{goods_total}}</text>
+            </view>
+        </view>
+        <view class="dis-flex flow-all-list-cont" wx:if="{{payfee!=''&&payfee!=undefined}}">
+            <text class="flex-five col-7">{{payname}}</text>
+            <text class="flex-five col-m t-r">+￥{{payfee}}</text>
+        </view>
+    </view>
+    <view class="flow-fixed-footer b-f m-top10">
+        <view class="dis-flex chackout-box">
+            <view class=" chackout-left pl-12 ">实付款：
+          <text class="col-m">￥{{total}}</text>
+            </view>
+            <view bindtap="submitOrder" class=" chackout-right">
+                <text class="flow-btn">提交订单</text>
+            </view>
+        </view>
+    </view>
+    <view animation="{{animationData}}" class="t_product">
+        <view class="invoice_list">
+            <view class="header">发票类型</view>
+            <view class="invoice-box">
+                <view class="list" id="top-nav-bar-{{!hiddenOrder?true:0}}">
+                    <text bindtap="toOrder" id="0">普通发票</text>
+                </view>
+                <view class="list {{vat_invoice!=''?'':'active'}}" id="top-nav-bar-{{!hiddenAddress?true:0}}">
+                    <text bindtap="{{vat_invoice!=''?'toAddress':'toAddressTs'}}" id="1">增值发票</text>
+                </view>
+            </view>
+            <view class="order" hidden="{{hiddenOrder}}">
+                <text class="cont">电子发票是税务局认可的有效凭证，其法律效力、基本用途及使用规定</text>
+                <view class="invoice-box invoice-box-user">
+                    <view class="list" id="top-nav-bar-{{!hiddenUser?true:0}}">
+                        <text bindtap="userList" id="个人">个人</text>
+                    </view>
+                    <view class="list" id="top-nav-bar-{{!hiddenUnit?true:0}}">
+                        <text bindtap="unitList" id="单位">单位</text>
+                    </view>
+                </view>
+                <view class="Unit" hidden="{{hiddenUnit}}">
+                    <view class="section_input dis-box">
+                        <view class="left col-3">
+                            <text>单位名称</text>
+                        </view>
+                        <view class="right">
+                            <input bindinput="unitNameInput" confirmType="" name="unitName" placeholder="输入单位名称" type="text" value="{{unitName}}"></input>
+                        </view>
+                    </view>
+                    <view class="section_input dis-box">
+                        <view class="left col-3">
+                            <text>识别码</text>
+                        </view>
+                        <view class="right">
+                            <input bindinput="unitNumInput" confirmType="" name="headingCode" placeholder="请输入纳税人识别码" type="number" value="{{headingCode}}"></input>
+                        </view>
+                    </view>
+                </view>
+                <view class="user-invoice">
+                    <view class="header-user">发票内容</view>
+                    <view class="page-section">
+                        <view class="weui-cells weui-cells_after-title">
+                            <radio-group bindchange="radioChange" name="radio">
+                                <label class="weui-cell weui-check__label" wx:for="{{userInvoice}}" wx:key="{{item.value}}">
+                                    <view class="weui-cell__hd">
+                                        <radio value="{{item}}"></radio>
+                                    </view>
+                                    <view class="weui-cell__bd">{{item}}</view>
+                                </label>
+                            </radio-group>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="address" hidden="{{hiddenAddress}}"></view>
+        <view class="padding-box m-top20 profile-btn">
+            <button bindtap="cascadeDismiss">确 定</button>
+        </view>
+    </view>
+    <view class="filter-menu {{nav_select?'active':''}}">
+        <view class="filter-menu-list ts-5">
+            <custom-ul>
+                <custom-li bindtap="nav" data-index="home">
+                    <text class="iconfont icon-home"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="fenlei">
+                    <text class="iconfont icon-fenlei"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="cart">
+                    <text class="iconfont icon-cart"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="profile">
+                    <text class="iconfont icon-profile"></text>
+                </custom-li>
+                <custom-li class="w"></custom-li>
+            </custom-ul>
+        </view>
+        <view bindtap="commonNav" class="filter-menu-title"></view>
+    </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

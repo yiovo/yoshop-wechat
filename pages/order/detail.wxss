@@ -1,0 +1,92 @@
+.flow-distribution .flow-dis {
+    padding-right: 15px;
+}
+
+.flow-message-box {
+    border-bottom: 1rpx solid #e4e4e4;
+}
+
+.flow-message-box .cont {
+    padding: 10px 0;
+    color: #000;
+}
+
+.order-cont {
+    padding: 0 15px;
+    font-size: 28rpx;
+}
+
+.order-cont .order-num text,.order-cont .time {
+    color: #888;
+}
+
+.order-cont .order-num {
+    margin-top: 10px;
+}
+
+.order-cont .order-num text {
+    font-size: 24rpx;
+}
+
+.order-cont .time {
+    font-size: 20rpx;
+}
+
+.order-cont .time {
+    padding: 6rpx;
+    font-size: 26rpx;
+}
+
+.order-header {
+    border-bottom: 1rpx solid #e4e4e4;
+    padding: 20rpx 0;
+}
+
+.order-header .title {
+    font-size: 32rpx;
+    color: #333;
+}
+
+.flow-list .header {
+    position: relative;
+    padding: 15rpx 0;
+    background: #fff;
+    border-bottom: 1rpx solid #e4e4e4;
+}
+
+.flow-list .header text {
+    padding-left: 80rpx;
+    font-size: 32rpx;
+}
+
+.flow-list .header image {
+    width: 34rpx;
+    height: 37rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -18rpx;
+    left: 15px;
+}
+
+.checkout_list {
+    padding: 15px;
+    background: #fff;
+}
+
+.checkout_list .flow-shopList {
+    padding: 5rpx 0 10rpx;
+    border-bottom: 1rpx solid #e4e4e4;
+}
+
+.checkout_list .flow-shopList:last-child {
+    border-bottom: 0;
+}
+
+.chackout-right-detail,.chackout-left-detail {
+    font-size: 34rpx;
+    color: #333;
+}
+
+.chackout-left-detail {
+    line-height: 44px;
+}

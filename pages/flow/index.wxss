@@ -1,0 +1,22 @@
+@import "../../wxParse/wxParse.wxss";
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-tab-item-btn {
+    width: 160rpx;
+    display: block;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    background: #ff495e;
+    color: #fff;
+    float: right;
+    text-align: center;
+}
+
+.cart-tab-item {
+    width: 375rpx;
+}

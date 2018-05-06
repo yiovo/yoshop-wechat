@@ -1,0 +1,54 @@
+<view class="container p-bottom">
+    <view class="flow-list">
+        <view wx:if="{{flowLists.goods!=''}}">
+            <view wx:for="{{flowLists.goods}}" wx:key="id">
+                <view bindtouchend="touchE" bindtouchmove="touchM" bindtouchstart="touchS" class="dish-item" data-index="{{index}}" style="{{item.txtStyle}}">
+                    <view class="dish-item-wrp">
+                        <navigator url="../goods/index?objectId={{item.goods_id}}">
+                            <view bindtap="flowDetail" class="dish-item-pic">
+                                <image class="image" src="{{item.goods_thumb}}"></image>
+                            </view>
+                        </navigator>
+                        <view class="dish-item-info">
+                            <navigator url="../goods/index?objectId={{item.goods_id}}">
+                                <view>
+                                    <text bindtap="flowDetail" class=" {{item.goods_attr!=''?'onelist-hidden ':'twolist-hidden '}} f-30 col-3">{{item.goods_name}}</text>
+                                </view>
+                                <view class="goods-attr">
+                                    <text class=" col-7 f-24">{{item.goods_attr}}</text>
+                                </view>
+                                <view class="wx-goods_price">
+                                    <text class="dish-item-money">￥{{item.goods_price}} </text>
+                                </view>
+                            </navigator>
+                            <view class="selectNumber">
+                                <button bindtap="minusCount" class="default  {{item.goods_number>1?'':' default-active'}}" data-cid="{{item.goods_id}}" data-id="{{item.rec_id}}" type="default">-</button>
+                                <input bindinput="import" rreadOnly="true" type="number" value="{{item.goods_number}}"></input>
+                                <button bindtap="addCount" class="default" data-cid="{{item.goods_id}}" data-id="{{item.rec_id}}" type="default">+</button>
+                            </view>
+                            <view catchtap="del" class="flow-dete" data-id="{{item.rec_id}}" data-index="{{index}}">
+                                <text class="iconfont icon-lajixiang"></text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="cart-tab-wrp">
+                <view class="cart-item-total cart-tab-item">
+                    <text class="cart-item-total-price h4">合计：￥{{flowLists.total_price}}</text>
+                </view>
+                <view class="cart-tab-item">
+                    <view bindtap="flowCheckoutBtn" class="cart-tab-item-btn h4">结算({{flowLists.total_amount}})</view>
+                </view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="ectouch-notcont">
+                <text class="iconfont icon-meiyougengduo"></text>
+                <text class="cont">亲，购物车还没有商品哦</text>
+                <view bindtap="flowcartBtn" class="flow-btn-min">去购物</view>
+            </view>
+        </view>
+    </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

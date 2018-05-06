@@ -1,0 +1,42 @@
+<view class="container m-b6 p-bottom" wx:if="{{addressList!=undefined}}">
+    <view class="common-header-xian"></view>
+    <custom-ul class="addres-list" wx:if="{{addressList!=''}}">
+        <custom-li wx:for="{{addressList}}" wx:for-item="vo" wx:key="addressList">
+            <view class="address-header b-f dis-box m-top18">
+                <view class="flow-header-left pl-12">
+                    <view class="flow-checkout-admin">{{vo.consignee}}
+              <text>{{vo.mobile}}</text>
+                    </view>
+                    <view class="flow-checkout-address">{{vo.address}}</view>
+                </view>
+            </view>
+            <view class="address-list dis-flex b-f">
+                <view class="list address-left">
+                    <radio-group bindchange="setDefault" class="radio-group">
+                        <label class="radio">
+                            <radio checked="{{vo.default}}" color="#ff495e" value="{{vo.id}}"></radio>
+                            <text class="cont" wx:if="{{vo.default}}">默认</text>
+                            <text class="cont" wx:else>选择</text>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="list address-right">
+                    <text class="iconfont icon-buoumaotubiao30"></text>
+                    <text bindtap="editAddress" class="title" data-address="{{index}}">编辑</text>
+                    <text class="iconfont icon-lajixiang"></text>
+                    <text bindtap="removeAddress" class="title" data-address="{{vo.address_id}}">删除</text>
+                </view>
+            </view>
+        </custom-li>
+    </custom-ul>
+    <view wx:else>
+        <view class="ectouch-notcont">
+            <text class="iconfont icon-meiyougengduo"></text>
+            <text class="cont">亲，您还没有收货列表</text>
+        </view>
+    </view>
+    <view class="footer-fixed f-34">
+        <view bindtap="createAddress" class="order-bt" style="width:100%">添加新地址</view>
+    </view>
+</view>
+<loading hidden="{{hidden}}" wx:else>加载中…</loading>

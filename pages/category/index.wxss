@@ -1,0 +1,23 @@
+.index-search-box {
+    top: 1rpx;
+    left: 0rpx;
+    right: 0rpx;
+    z-index: 999;
+    position: fixed;
+    background: #fff;
+    padding: 18rpx 13rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.index-search {
+    border-bottom: 0;
+    background: #fff;
+    border-radius: 50rpx;
+    overflow: hidden;
+    position: relative;
+    font-size: 32rpx;
+    color: #999;
+    box-sizing: border-box;
+    height: 60rpx;
+    line-height: 60rpx;
+}

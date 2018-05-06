@@ -1,0 +1,27 @@
+.slide-image {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+    background: #fff;
+}
+
+.banner-box {
+    height: 750rpx;
+    border-bottom: 1rpx solid #e4e4e4;
+}
+
+.user-orderJtou {
+    color: #999;
+    font-size: 26rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -9rpx;
+}
+
+.goods-fixed-icon text {
+    color: #fff;
+    font-size: 22rpx;
+    text-align: center;
+    display: block;
+}

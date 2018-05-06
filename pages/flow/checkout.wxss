@@ -1,0 +1,3 @@
+.flow-header-left {
+    padding-left: 90rpx;
+}

@@ -1,0 +1,45 @@
+<view class="container">
+    <view class="help cont-box b-f">
+        <view>
+            <text class="h4">Q:关于小程序</text>
+        </view>
+        <view>
+            <text class="p">A:小程序本身无需下载，无需注册，不占用手机内存，可以跨平台使用，响应迅速，体验接近原生App。</text>
+        </view>
+    </view>
+    <view class="help cont-box b-f">
+        <view>
+            <text class="h4">Q:ECTouch小程序的优势</text>
+        </view>
+        <view>
+            <text class="p">A:ECTouch有丰富的电商系统开发经验，完善的电商解决方案，再将微商城丰富的功能与小程序的特性结合在一起。</text>
+        </view>
+    </view>
+    <view class="help cont-box b-f">
+        <view>
+            <text class="h4">Q:小程序的应用场景</text>
+        </view>
+        <view>
+            <text class="p">A: 1.触手可及：一扫码就有，一点击就打开。不用去搜索下载。 2.处处都有：身边到处的二维码，都是入口，人人都可以随便分享给你。 3.无需安装：一点就开，第一次加载较慢（一个1M以内），以后都很快。 4.无需卸载：不是安装，只不过是微信的缓存，一清就没了。
+      </text>
+        </view>
+    </view>
+    <view class="help cont-box b-f">
+        <view>
+            <text class="h4">Q:周边产品</text>
+        </view>
+        <view>
+            <text class="p">A:可以关注公众号“ECTouch微商城”，点击“产品演示”即可体验更多产品。多个产品之间可以做到数据完全同步
+      </text>
+        </view>
+    </view>
+    <view class="help cont-box b-f">
+        <view>
+            <text class="h4">Q:联系我们</text>
+        </view>
+        <view>
+            <text class="p">A:欢迎新老客户联系我们，了解关于小程序的一切，服务热线：4001-021-758
+      </text>
+        </view>
+    </view>
+</view>

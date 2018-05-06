@@ -1,0 +1,15 @@
+.user-list {
+    padding: 30rpx 15rpx;
+}
+
+.user-list .li .common-icon {
+    font-size: 46rpx;
+}
+
+.user-list-service {
+    padding: 30rpx 0 0 0;
+}
+
+.user-list-service .li {
+    padding-bottom: 45rpx;
+}

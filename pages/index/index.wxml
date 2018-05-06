@@ -1,0 +1,69 @@
+<view class="container">
+    <scroll-view bindscroll="scroll" scrollTop="{{scrollTop}}" scrollY="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+        <view class="index-banner">
+            <swiper autoplay="{{autoplay}}" class="banner-box swiper-box " duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+                <navigator hoverClass="none" url="{{item.link}}" wx:for="{{index.banner}}" wx:key="banner">
+                    <swiper-item>
+                        <image class="slide-image" src="{{item.pic}}"></image>
+                    </swiper-item>
+                </navigator>
+            </swiper>
+            <view class="index-search-box col-f ts-3 {{indexSearch>50?'active':''}}">
+                <view class="dis-box">
+                    <view class="index-search box-flex">
+                        <navigator class="cont t-c" hoverClass="none" openType="redirect" url="../search/index">
+                            <text class="iconfont icon-sousuo f-26"></text>
+                            <text class="f-28">搜索商品</text>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            <view class="linear"></view>
+        </view>
+        <view class="recommended-index-list m-top20">
+            <view class="title-header b-f t-c f-32 col-3">新品推荐</view>
+        </view>
+        <view class="index_sale ">
+            <scroll-view scrollX="true">
+                <navigator hoverClass="none" style="display: inline-block;" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{index.goodsList.new}}" wx:key="boutique_list">
+                    <view class="page-column">
+                        <view class="sale_img">
+                            <image mode="aspectFill" src="{{item.goods_thumb}}"></image>
+                        </view>
+                        <view class="content onelist-hidden ">
+                            <text>{{item.goods_name}}</text>
+                        </view>
+                        <text class="price col-m f-30">￥{{item.promote_price>0?item.promote_price:item.shop_price}}</text>
+                    </view>
+                </navigator>
+            </scroll-view>
+        </view>
+        <view class="title-hrbg" style="margin-top:10rpx">
+            <text class="cont">
+                <text class="iconfont icon-huo col-m"></text>猜您喜欢</text>
+            <view class="hr"></view>
+        </view>
+        <view class="category-list">
+            <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{index.goodsList.best}}" wx:key="list">
+                <view class="left">
+                    <view class="img">
+                        <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                    </view>
+                </view>
+                <view class="right">
+                    <view class="cont">
+                        <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                        <text class="price f-34 col-m f-w">￥{{item.promote_price>0?item.promote_price:item.shop_price}}</text>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="title-footer p-r">
+            <text class="f-24 col-9  cont">我是有底线的</text>
+            <view class="hr"></view>
+        </view>
+    </scroll-view>
+    <view bindtap="goTop" class="widget-goTop" wx:if="{{floorstatus}}">
+        <text class="iconfont icon-fanhuidingbu"></text>
+    </view>
+</view>

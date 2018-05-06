@@ -1,0 +1,125 @@
+<view class="container">
+    <view class="list-header">
+        <view class="index-search-box dis-box" style="position:static">
+            <navigator class="index-search box-flex" hoverClass="none" openType="redirect" url="../search/index?objectId={{category}}">
+                <view class="index-cont-search">
+                    <icon class="text-center" color="rgba(0,0,0,0.4)" size="16" type="search"></icon>
+                    <text>搜索商品</text>
+                </view>
+            </navigator>
+            <view bindtap="onChangeShowState" class="list-right f-28">
+                <text class="iconfont icon-pailie f-34" wx:if="{{showView}}"></text>
+                <text class="iconfont icon-viewlist" wx:else></text>
+            </view>
+        </view>
+        <view class="store_nav_cont  dis-box b-f  b-b">
+            <view bindtap="toCateAll" class="box-flex t-c p-r" data-index="0 " id="list-{{!hiddenCateAll?true:0}}">
+                <text>综合</text>
+            </view>
+            <view bindtap="toNum" class="box-flex t-c p-r" data-index="1" id="list-{{!hiddenNum?true:0}}">
+                <text> 销量</text>
+            </view>
+            <view bindtap="toPrice" class="box-flex t-c p-r" data-index="2" id="list-{{!hiddenPrice?true:0}}">
+                <text class="price"> 价格</text>
+                <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{showTop?'':'active'}}"></text>
+                <text class="iconfont icon-jiantou-copy bot_jiantou {{showBot?'':'active'}}"></text>
+            </view>
+            <view bindtap="toSynthesize" class="box-flex t-c p-r" data-index="sort_order" id="list-{{!hiddenSynthesize?true:0}}">
+                <text>筛选</text>
+                <text class="f-22 iconfont icon-shaixuan1 col-7" style="padding-left:2rpx"></text>
+            </view>
+        </view>
+        <scroll-view bindscroll="scroll" bindscrolltolower="bindDownLoad" bindscrolltoupper="upbindDownLoad" class="weui-panel weui-panel_access" scrollTop="{{scrollTop}}" scrollY="true" style="height: {{scrollHeight}}px; width: {{windowWidth}}px;" wx:if="{{list!=''}}">
+            <view class="new" hidden="{{hiddenCateAll}}">
+                <view class="category-list  {{arrange}}">
+                    <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
+                        <view class="left">
+                            <view class="img">
+                                <image class="goodsImg" mode="aspectFit" src="{{item.pic}}"></image>
+                            </view>
+                        </view>
+                        <view class="right">
+                            <view class="cont">
+                                <text class="f-30 title twolist-hidden m-top10">{{item.title}}</text>
+                                <view class="price f-34 col-m m-top10">￥{{item.money}}
+                    <text class="del f-22">{{item.market_price_formated}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="new" hidden="{{hiddenNum}}">
+                <view class="category-list  {{arrange}}">
+                    <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
+                        <view class="left">
+                            <view class="img">
+                                <image class="goodsImg" mode="aspectFit" src="{{item.pic}}"></image>
+                            </view>
+                        </view>
+                        <view class="right">
+                            <view class="cont">
+                                <text class="f-30 title twolist-hidden m-top10">{{item.title}}</text>
+                                <view class="price f-34 col-m m-top10">￥{{item.money}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="new" hidden="{{hiddenPrice}}">
+                <view class="category-list  {{arrange}}">
+                    <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
+                        <view class="left">
+                            <view class="img">
+                                <image class="goodsImg" mode="aspectFit" src="{{item.pic}}"></image>
+                            </view>
+                        </view>
+                        <view class="right">
+                            <view class="cont">
+                                <text class="f-30 title twolist-hidden m-top10">{{item.title}}</text>
+                                <view class="price f-34 col-m m-top10">￥{{item.money}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="new" hidden="{{hiddenSynthesize}}">
+                <view>筛选</view>
+            </view>
+            <view class="f-28 col-3 viewshow  {{bottomloading}} " wx:if="{{bottomloading!=''}}">
+                <view class="dis-box">
+                    <view class="loadEffect">
+                        <text></text>
+                        <text></text>
+                        <text></text>
+                        <text></text>
+                        <text></text>
+                        <text></text>
+                        <text></text>
+                        <text></text>
+                    </view>
+                    <view class="cont f-28 col-7">加载更多...</view>
+                </view>
+            </view>
+            <block wx:else>
+                <view class="title-footer" wx:if="{{isListData==false&&viewBox==true}}">
+                    <text class="f-24 col-9  cont">没有更多了</text>
+                    <view class="hr"></view>
+                </view>
+            </block>
+        </scroll-view>
+        <loading hidden="{{hidden}}" wx:else>加载中…</loading>
+    </view>
+    <view class="ectouch-notcont" style="margin-top:130px" wx:if="{{list==''}}">
+        <view class="img">
+            <image mode="aspectFit" src="../../images/no_content.png"></image>
+        </view>
+        <text class="cont">亲,没有相关内容</text>
+    </view>
+    <view wx:if="{{list}}">
+        <loading bindtap="loadingChange" hidden="{{hidden}}">加载中…</loading>
+    </view>
+    <view wx:else>
+        <view class="production-cont" hidden="{{hidden}}">没有更多了</view>
+    </view>
+</view>

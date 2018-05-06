@@ -1,0 +1,25 @@
+<view class="container m-b5">
+    <view class="goods_comment_box">
+        <view wx:if="{{goodsComment!=''}}">
+            <view class="cont-box goods-comment-box b-t b-f b-b m-top20" wx:for="{{goodsComment}}" wx:key="goodsComment">
+                <text class="admin">{{item.name}}</text>
+                <view class="com_xing">
+                    <text class="iconfont icon-shoucang1 {{item.comment_rank>0?'active ':''}}"></text>
+                    <text class="iconfont icon-shoucang1 {{item.comment_rank>1?'active ':''}}"></text>
+                    <text class="iconfont icon-shoucang1 {{item.comment_rank>2?'active ':''}}"></text>
+                    <text class="iconfont icon-shoucang1 {{item.comment_rank>3?'active ':''}}"></text>
+                    <text class="iconfont icon-shoucang1 {{item.comment_rank>4?'active ':''}}"></text>
+                </view>
+                <view class="goods-comment-cont m-top20">{{item.cont}}</view>
+                <view class="f-22 col-9 m-top10">{{item.time}}</view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="ectouch-notcont">
+                <image src="../../res/images/not.png"></image>
+                <text>亲,此处暂无数据</text>
+            </view>
+        </view>
+    </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

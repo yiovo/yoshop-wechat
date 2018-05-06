@@ -1,0 +1,27 @@
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
+    margin-bottom: 2rpx;
+}
+
+.swiper-box .wx-swiper-dot {
+    width: 13rpx;
+    display: inline-flex;
+    height: 13rpx;
+    margin-left: 10rpx;
+    justify-content: space-between;
+}
+
+.swiper-box .wx-swiper-dot::before {
+    content: '';
+    flex-grow: 1;
+    background: #fff;
+    border-radius: 13rpx;
+}
+
+.swiper-box .wx-swiper-dot-active::before {
+    background: #ff495e;
+}
+
+.index-search-box.active {
+    position: fixed;
+    background: #ff495e;
+}

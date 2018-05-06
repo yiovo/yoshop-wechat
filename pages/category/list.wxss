@@ -1,0 +1,57 @@
+.container {
+    position: relative;
+}
+
+.cate-btn {
+    background: #ff495e;
+    bottom: 18rpx;
+    right: 18rpx;
+    font-size: 20rpx;
+    color: #fff;
+    padding: 4px 18rpx;
+}
+
+.index-cont-search icon {
+    left: 0;
+    margin-left: 20rpx;
+}
+
+.index-search-box {
+    top: 1rpx;
+    left: 0rpx;
+    right: 0rpx;
+    z-index: 999;
+    position: fixed;
+    background: #fff;
+    padding: 18rpx 13rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.index-search {
+    border-bottom: 0;
+    background: #fff;
+    border-radius: 50rpx;
+    overflow: hidden;
+    position: relative;
+    font-size: 32rpx;
+    color: #999;
+    box-sizing: border-box;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.list-right {
+    width: 60rpx;
+}
+
+.list-right text {
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.list-header {
+    position: fixed;
+    top: 1rpx;
+    left: 0;
+    right: 0;
+}

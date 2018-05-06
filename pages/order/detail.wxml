@@ -1,0 +1,124 @@
+<view class="container p-bottom">
+    <scroll-view scrollY="true">
+        <view class="b-f">
+            <view class="flow-checkout-header b-f dis-flex">
+                <view class="flow-header-left pl-12">
+                    <view class="flow-checkout-admin f-32 col-3">{{orders.consignee}}
+            <text class="f-32 col-m">{{orders.mobile}}</text>
+                    </view>
+                    <view class="flow-checkout-address">{{orders.address}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="order-cont b-f m-top20">
+            <view class="order-header dis-flex">
+                <view class="flex-box">
+                    <text class="title">商品列表</text>
+                </view>
+                <view class="flex-box">
+                    <text class="cont fr col-m">{{orders.pay_status}} {{orders.shipping_status}} {{orders.order_status}}</text>
+                </view>
+            </view>
+            <view class="order-num">
+                <text>订单号：</text>{{orders.order_sn}}</view>
+            <view class="time">
+                <text>{{orders.add_time}}</text>
+            </view>
+        </view>
+        <view class="padding-box b-f">
+            <view bindtap="siteDetail" class="dis-flex flow-shopList b-f" data-index="{{index}}" wx:for="{{goodsList}}" wx:key="orders">
+                <view class="flow-list-left">
+                    <image mode="aspectFit" src="{{item.goods_thumb}}"></image>
+                </view>
+                <view class="flow-list-right">
+                    <text class="h4 twolist-hidden">{{item.goods_name}}</text>
+                    <text class="p f-22 col-7">{{item.goods_attr}}</text>
+                    <view class="flow-list-cont">
+                        <text class="flow-cont">{{item.goods_price}}</text>
+                        <text class="small">×{{item.goods_number}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="select b-f">
+            <view class="flow-distribution dis-flex m-top20">
+                <view class="flow-distribution-left pl-12">
+                    <text class="flow-dis col-7">配送方式</text>
+                    <text class="m-l flow-dis">{{orders.shipping_name}}</text>
+                </view>
+            </view>
+            <view class="flow-num-box b-f">共{{orders.total_number}}件商品，合计：
+        <text class="flow-money">{{orders.goods_amount}}</text>
+            </view>
+        </view>
+        <view class="flow-all-money b-f padding-box m-top20" wx:if="{{orders.invoice_type=='0'&&orders.inv_content!='0'&&orders.inv_content!=''}}">
+            <view class="dis-flex flow-all-list">
+                <text class="flex-five">发票信息</text>
+                <text class="flex-five col-3 t-r">普通发票</text>
+            </view>
+            <view class="dis-flex flow-all-list-cont">
+                <text class="flex-five col-7">发票类型</text>
+                <text class="flex-five col-m t-r">{{orders.inv_payee}}</text>
+            </view>
+            <view class="dis-flex flow-all-list-cont">
+                <text class="flex-five col-7">发票明细</text>
+                <text class="flex-five col-m t-r">{{orders.inv_content}}</text>
+            </view>
+        </view>
+        <view class="flow-all-money b-f padding-box m-top20" wx:if="{{orders.invoice_type=='1'}}">
+            <view class="dis-flex flow-all-list">
+                <text class="flex-five">发票信息</text>
+                <text class="flex-five col-3 t-r">增值发票</text>
+            </view>
+        </view>
+        <view class="flow-all-money b-f padding-box m-top20">
+            <view class="dis-flex flow-all-list">
+                <text class="flex-five">商品金额</text>
+                <text class="flex-five col-m t-r">{{orders.goods_amount}}</text>
+            </view>
+            <view class="dis-flex flow-all-list-cont" wx:if="{{orders.shipping_fee>=0}}">
+                <text class="flex-five col-7">快递运费</text>
+                <text class="flex-five col-m t-r">+{{orders.shipping_fee}}</text>
+            </view>
+            <view class="dis-flex flow-all-list-cont">
+                <text class="flex-five col-7">已付金额</text>
+                <text class="flex-five col-m t-r">￥{{orders.money_paid}}</text>
+            </view>
+            <view class="dis-flex flow-all-list-cont">
+                <text class="flex-five col-7">应付金额</text>
+                <text class="flex-five col-m t-r">{{orders.order_amount}}</text>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="flow-fixed-footer b-f">
+        <view class="dis-flex chackout-box" wx:if="{{orders.pay_status=='未付款'}}">
+            <view bindtap="cancel_order" class="flex-box chackout-left-detail t-c">取消订单</view>
+            <view bindtap="submitOrder" class="flex-box chackout-right-detail">
+                <text bindtap="pay_order" class="flow-btn" data-id="{{orders.order_id}}" wx:if="{{orders.pay_status=='未付款'}}">去付款</text>
+            </view>
+        </view>
+        <view class="flow-btn h3" wx:if="{{orders.shipping_status=='已发货'}}">
+            <view bindtap="confirm_order" data-id="{{orders.order_id}}">确认收货</view>
+        </view>
+    </view>
+    <view class="filter-menu {{nav_select?'active':''}}">
+        <view class="filter-menu-list ts-5">
+            <custom-ul>
+                <custom-li bindtap="nav" data-index="home">
+                    <text class="iconfont icon-home"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="fenlei">
+                    <text class="iconfont icon-fenlei"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="cart">
+                    <text class="iconfont icon-cart"></text>
+                </custom-li>
+                <custom-li bindtap="nav" data-index="profile">
+                    <text class="iconfont icon-profile"></text>
+                </custom-li>
+                <custom-li class="w"></custom-li>
+            </custom-ul>
+        </view>
+        <view bindtap="commonNav" class="filter-menu-title"></view>
+    </view>
+</view>

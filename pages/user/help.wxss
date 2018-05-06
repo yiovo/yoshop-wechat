@@ -1,0 +1,13 @@
+.help {
+    border-bottom: 1px solid #f6f6f9;
+}
+
+.help .h4 {
+    font-size: 32rpx;
+    color: #333;
+}
+
+.help .p {
+    font-size: 26rpx;
+    color: #666;
+}
