@@ -5,6 +5,7 @@
 .help .h4 {
     font-size: 32rpx;
     color: #333;
+    margin-bottom: 5px;
 }
 
 .help .p {

@@ -1269,7 +1269,7 @@ page {
   color: #fff;
   box-sizing: border-box;
   margin: 0 auto;
-  line-height: 45rpx;
+  line-height: 55rpx;
 }
 
 .index-search .cont .icon-sousuo {
