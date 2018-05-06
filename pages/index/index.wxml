@@ -11,7 +11,7 @@
             <view class="index-search-box col-f ts-3 {{indexSearch>50?'active':''}}">
                 <view class="dis-box">
                     <view class="index-search box-flex">
-                        <navigator class="cont t-c" hoverClass="none" openType="redirect" url="../search/index">
+                        <navigator class="cont t-c" hoverClass="none" openType="navigate" url="../category/list">
                             <text class="iconfont icon-sousuo f-26"></text>
                             <text class="f-28">搜索商品</text>
                         </navigator>
