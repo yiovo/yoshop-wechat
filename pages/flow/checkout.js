@@ -1,4 +1,4 @@
-var a, t, e, i = getApp(), n = {
+let a, t, e, i = getApp(), n = {
     consignee: 1,
     shipping: 1,
     msg: ""
@@ -13,7 +13,7 @@ Page({
     },
     onShow: function() {
         a = wx.getStorageSync("token");
-        var s = this;
+        let s = this;
         wx.request({
             url: i.apiUrl("ecapi.cart.flow"),
             method: "post",
@@ -24,17 +24,17 @@ Page({
             success: function(a) {
                 if (void 0 == a.data[400]) if (0 != a.data.cart_goods.length) {
                     n.consignee = a.data.consignees.address_id;
-                    var i = {
+                    let i = {
                         id: [],
                         name: []
                     };
                     t = a.data.cart_goods;
-                    for (var o in a.data.shipping) i.id.push(a.data.shipping[o].shipping_id), i.name.push(a.data.shipping[o].shipping_name);
+                    for (let o in a.data.shipping) i.id.push(a.data.shipping[o].shipping_id), i.name.push(a.data.shipping[o].shipping_name);
                     n.shipping = i.id[0];
-                    var d, r = "";
-                    for (var o in a.data.cart_goods) {
+                    let d, r = "";
+                    for (let o in a.data.cart_goods) {
                         d = a.data.cart_goods[o].goods_attr.split("\n");
-                        for (var c in d) "" != d[c] && (r += d[c] + ",");
+                        for (let c in d) "" != d[c] && (r += d[c] + ",");
                         a.data.cart_goods[o].goods_attr = r.substring(0, r.length - 1);
                     }
                     e = a.data.total, s.setData({
@@ -54,7 +54,7 @@ Page({
         }), this.loadingChange();
     },
     loadingChange: function() {
-        var a = this;
+        let a = this;
         setTimeout(function() {
             a.setData({
                 hidden: !0
@@ -62,9 +62,9 @@ Page({
         }, 2e3);
     },
     shippingChange: function(s) {
-        var o = 0;
+        let o = 0;
         void 0 != s && (o = s.detail.value), n.shipping = this.data.shipping.id[o];
-        var d = this;
+        let d = this;
         this.setData({
             index: o
         }), wx.request({
@@ -95,7 +95,7 @@ Page({
         wx.stopPullDownRefresh();
     },
     siteDetail: function(a) {
-        var t = this, e = a.currentTarget.dataset.index, i = t.data.checkList[e].goods_id;
+        let t = this, e = a.currentTarget.dataset.index, i = t.data.checkList[e].goods_id;
         wx.navigateTo({
             url: "../goods/index?objectId=" + i
         });
@@ -114,7 +114,7 @@ Page({
                 "X-ECTouch-Authorization": a
             },
             success: function(a) {
-                var t = a.data.order.order_id;
+                let t = a.data.order.order_id;
                 "" != t && wx.redirectTo({
                     url: "../flow/done?id=" + t
                 });
@@ -125,13 +125,13 @@ Page({
         n.msg = a.detail.value;
     },
     commonNav: function() {
-        var a = this;
+        let a = this;
         a.setData({
             nav_select: !a.data.nav_select
         });
     },
     nav: function(a) {
-        var t = a.currentTarget.dataset.index;
+        let t = a.currentTarget.dataset.index;
         "home" == t ? wx.switchTab({
             url: "../index/index"
         }) : "fenlei" == t ? wx.switchTab({

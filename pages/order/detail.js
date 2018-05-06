@@ -1,4 +1,4 @@
-var t, o, e = getApp();
+let t, o, e = getApp();
 
 Page({
     data: {
@@ -14,7 +14,7 @@ Page({
         t = wx.getStorageSync("token"), this.loadOrderDetail(o);
     },
     loadOrderDetail: function(o) {
-        var r = this;
+        let r = this;
         wx.request({
             url: e.apiUrl("ecapi.order.get"),
             data: {
@@ -26,10 +26,10 @@ Page({
                 "X-ECTouch-Authorization": t
             },
             success: function(t) {
-                var o, e = "";
-                for (var a in t.data.order.goods) {
+                let o, e = "";
+                for (let a in t.data.order.goods) {
                     o = t.data.order.goods[a].goods_attr.split("\n");
-                    for (var n in o) "" != o[n] && (e += o[n] + ",");
+                    for (let n in o) "" != o[n] && (e += o[n] + ",");
                     t.data.order.goods[a].goods_attr = e.substring(0, e.length - 1);
                 }
                 r.setData({
@@ -67,7 +67,7 @@ Page({
         });
     },
     loadingChange: function() {
-        var t = this;
+        let t = this;
         setTimeout(function() {
             t.setData({
                 hidden: !0
@@ -75,15 +75,15 @@ Page({
         }, 2e3);
     },
     siteDetail: function(t) {
-        var o = this, e = t.currentTarget.dataset.index;
+        let o = this, e = t.currentTarget.dataset.index;
         console.log(e);
-        var r = o.data.goodsList[e].goods_id;
+        let r = o.data.goodsList[e].goods_id;
         wx.navigateTo({
             url: "../goods/goods?objectId=" + r
         });
     },
     cancel_order: function(r) {
-        var a = this;
+        let a = this;
         wx.showModal({
             title: "提示",
             content: "确认取消订单？",
@@ -110,17 +110,17 @@ Page({
         wx.stopPullDownRefresh();
     },
     pay_order: function(o) {
-        var r = o.currentTarget.dataset.id, a = wx.getStorageSync("openid");
+        let r = o.currentTarget.dataset.id, a = wx.getStorageSync("openid");
         e.payOrder(r, a, t);
     },
     commonNav: function() {
-        var t = this;
+        let t = this;
         t.setData({
             nav_select: !t.data.nav_select
         });
     },
     nav: function(t) {
-        var o = t.currentTarget.dataset.index;
+        let o = t.currentTarget.dataset.index;
         "home" == o ? wx.switchTab({
             url: "../index/index"
         }) : "fenlei" == o ? wx.switchTab({

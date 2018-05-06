@@ -1,4 +1,4 @@
-var e, n = getApp();
+let e, n = getApp();
 
 Page({
     data: {
@@ -50,13 +50,13 @@ Page({
         });
     },
     onShow: function() {
-        var e = this;
+        let e = this;
         n.getUserInfo(function(n) {
             e.setData({
                 userInfo: n
             });
         });
-        var t = wx.getStorageSync("token");
+        let t = wx.getStorageSync("token");
         wx.setStorageSync("flowcheckout", {
             from: "user"
         }), wx.request({
@@ -78,7 +78,7 @@ Page({
         }), this.loadingChange();
     },
     loadingChange: function() {
-        var e = this;
+        let e = this;
         this.setData({
             hidden: !1
         }), setTimeout(function() {
@@ -88,13 +88,13 @@ Page({
         }, 2e3);
     },
     siteDetail: function(e) {
-        var n = this, t = e.currentTarget.dataset.index, a = n.data.recommend[t].goods_id;
+        let n = this, t = e.currentTarget.dataset.index, a = n.data.recommend[t].goods_id;
         wx.navigateTo({
             url: "../goods/index?objectId=" + a
         });
     },
     invoiceNav: function(t) {
-        var a = this;
+        let a = this;
         e = wx.getStorageSync("token"), wx.request({
             url: n.apiUrl("user/invoice/detail"),
             method: "POST",

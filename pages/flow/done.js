@@ -1,4 +1,4 @@
-var e, t = getApp();
+let e, t = getApp();
 
 Page({
     data: {
@@ -22,9 +22,9 @@ Page({
     },
     onLoad: function(a) {
         e = wx.getStorageSync("token");
-        var n = this;
+        let n = this;
         this.loadingChange();
-        var i = a.id;
+        let i = a.id;
         wx.request({
             url: t.apiUrl("ecapi.order.get"),
             method: "post",
@@ -43,7 +43,7 @@ Page({
         });
     },
     loadingChange: function() {
-        var e = this;
+        let e = this;
         setTimeout(function() {
             e.setData({
                 hidden: !0
@@ -54,7 +54,7 @@ Page({
         wx.stopPullDownRefresh();
     },
     primary: function(a) {
-        var n = a.currentTarget.dataset.id, i = wx.getStorageSync("openid");
+        let n = a.currentTarget.dataset.id, i = wx.getStorageSync("openid");
         t.payOrder(n, i, e);
     },
     orderDetail: function(e) {

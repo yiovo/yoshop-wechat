@@ -1,4 +1,4 @@
-var e, t = getApp(), n = "";
+let e, t = getApp(), n = "";
 
 Page({
     data: {
@@ -16,9 +16,9 @@ Page({
         this.getRecentSearch();
     },
     getRecentSearch: function() {
-        for (var e, t = wx.getStorageSync("recentKeyword").split(","), n = [], r = 0; r < t.length; r++) if ("" != t[r]) {
+        for (let e, t = wx.getStorageSync("recentKeyword").split(","), n = [], r = 0; r < t.length; r++) if ("" != t[r]) {
             e = !1;
-            for (var c = 0; c < n.length; c++) t[r] == n[c] && (e = !0);
+            for (let c = 0; c < n.length; c++) t[r] == n[c] && (e = !0);
             0 == e && n.push(t[r]);
         }
         wx.setStorageSync("recentKeyword", n.join(",")), this.setData({
@@ -32,7 +32,7 @@ Page({
         n = e.detail.value;
     },
     search: function() {
-        var r = wx.getStorageSync("recentKeyword");
+        let r = wx.getStorageSync("recentKeyword");
         r = "" == r ? n : r + "," + n, wx.setStorageSync("recentKeyword", r), t.redirectTo("../category/list?content=" + n + "&id=" + e);
     },
     gosearch: function(n) {

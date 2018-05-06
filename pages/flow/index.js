@@ -1,4 +1,4 @@
-var t, o = getApp();
+let t, o = getApp();
 
 Page({
     data: {
@@ -13,7 +13,7 @@ Page({
         }
     },
     flowCheckoutBtn: function(t) {
-        var e = wx.getStorageSync("token");
+        let e = wx.getStorageSync("token");
         wx.setStorageSync("flowcheckout", {
             from: "checkout"
         }), wx.request({
@@ -47,10 +47,10 @@ Page({
                 "X-ECTouch-Authorization": t
             },
             success: function(t) {
-                var o, a = "";
-                for (var n in t.data.goods_groups.goods) {
+                let o, a = "";
+                for (let n in t.data.goods_groups.goods) {
                     o = t.data.goods_groups.goods[n].goods_attr.split("\n"), a = "";
-                    for (var s in o) "" != o[s] && (a += o[s] + ",");
+                    for (let s in o) "" != o[s] && (a += o[s] + ",");
                     t.data.goods_groups.goods[n].goods_attr = a.substring(0, a.length - 1);
                 }
                 "" == t.data.goods_groups ? e.setData({
@@ -65,11 +65,11 @@ Page({
     },
     onLoad: function() {
         t = wx.getStorageSync("token");
-        var o = this;
+        let o = this;
         this.getCartGoods(o), this.loadingChange();
     },
     loadingChange: function() {
-        var t = this;
+        let t = this;
         setTimeout(function() {
             t.setData({
                 hidden: !0
@@ -77,10 +77,10 @@ Page({
         }, 1e3);
     },
     addCount: function(t) {
-        var e = this, a = t.currentTarget.dataset, n = this.data.total, s = this.data.flowLists, r = s.goods.find(function(t) {
+        let e = this, a = t.currentTarget.dataset, n = this.data.total, s = this.data.flowLists, r = s.goods.find(function(t) {
             return t.rec_id == a.id;
         });
-        r.goods_number = parseInt(r.goods_number) + 1, n.count += 1, s.total_price += parseInt(r.goods_price), 
+        r.goods_number = parseInt(r.goods_number) + 1, n.count += 1, s.total_price += parseInt(r.goods_price),
         wx.request({
             url: o.apiUrl("ecapi.cart.update"),
             data: {
@@ -94,11 +94,11 @@ Page({
         });
     },
     minusCount: function(t) {
-        var e = this, a = t.currentTarget.dataset, n = (this.data.total, this.data.flowLists), s = n.goods.find(function(t) {
+        let e = this, a = t.currentTarget.dataset, n = (this.data.total, this.data.flowLists), s = n.goods.find(function(t) {
             return t.rec_id == a.id;
         });
         if (n.total_price -= parseInt(s.goods_price), parseInt(n.total_price) < 0) n.total_price += parseInt(s.goods_price); else {
-            if (s.goods_number = parseInt(s.goods_number) - 1, parseInt(s.goods_number) < 1) return s.goods_number = parseInt(s.goods_number) + 1, 
+            if (s.goods_number = parseInt(s.goods_number) - 1, parseInt(s.goods_number) < 1) return s.goods_number = parseInt(s.goods_number) + 1,
             void (n.total_price += parseInt(s.goods_price));
             wx.request({
                 url: o.apiUrl("ecapi.cart.update"),
@@ -114,7 +114,7 @@ Page({
         }
     },
     del: function(e) {
-        var a = this, n = e.currentTarget.dataset;
+        let a = this, n = e.currentTarget.dataset;
         wx.showModal({
             title: "提示",
             content: "您确定要移除当前商品吗?",
@@ -150,17 +150,17 @@ Page({
         });
     },
     onShow: function() {
-        var t = this;
+        let t = this;
         this.getCartGoods(t);
     },
     siteDetail: function(t) {
-        var o = this, e = t.currentTarget.dataset.index, a = o.data.flowLists.goods[e].goods_id;
+        let o = this, e = t.currentTarget.dataset.index, a = o.data.flowLists.goods[e].goods_id;
         wx.navigateTo({
             url: "../goods/goods?objectId=" + a
         });
     },
     onPullDownRefresh: function() {
-        var t = this;
+        let t = this;
         this.getCartGoods(t), wx.stopPullDownRefresh(), t.onLoad();
     }
 });

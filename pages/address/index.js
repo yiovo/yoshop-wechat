@@ -1,11 +1,11 @@
-var e = getApp();
+let e = getApp();
 
 Page({
     data: {
         addressList: []
     },
     onShow: function(t) {
-        var a = this, s = wx.getStorageSync("token");
+        let a = this, s = wx.getStorageSync("token");
         wx.setStorageSync("pageOptions", t), wx.request({
             url: e.apiUrl("ecapi.region.list"),
             method: "get",
@@ -19,7 +19,7 @@ Page({
         }), a.addressData(), this.loadingChange();
     },
     addressData: function() {
-        var t = this, a = wx.getStorageSync("token");
+        let t = this, a = wx.getStorageSync("token");
         wx.request({
             url: e.apiUrl("ecapi.consignee.list"),
             method: "POST",
@@ -34,7 +34,7 @@ Page({
         });
     },
     loadingChange: function() {
-        var e = this;
+        let e = this;
         setTimeout(function() {
             e.setData({
                 hidden: !0
@@ -50,7 +50,7 @@ Page({
         });
     },
     editAddress: function(e) {
-        var t = this, a = e.currentTarget.dataset.address, s = t.data.addressList[a];
+        let t = this, a = e.currentTarget.dataset.address, s = t.data.addressList[a];
         wx.setStorage({
             key: "addressData",
             data: s,
@@ -62,7 +62,7 @@ Page({
         });
     },
     removeAddress: function(t) {
-        var a = this, s = wx.getStorageSync("token"), n = t.currentTarget.dataset.address;
+        let a = this, s = wx.getStorageSync("token"), n = t.currentTarget.dataset.address;
         wx.showModal({
             title: "提示",
             content: "您确定要移除当前收货地址吗?",
@@ -77,7 +77,7 @@ Page({
                         consignee: n
                     },
                     success: function() {
-                        var e = wx.getStorageSync("pageOptions");
+                        let e = wx.getStorageSync("pageOptions");
                         a.onShow(e);
                     }
                 });
@@ -85,7 +85,7 @@ Page({
         });
     },
     setDefault: function(t) {
-        var a = this, s = t.detail.value, n = wx.getStorageSync("token");
+        let a = this, s = t.detail.value, n = wx.getStorageSync("token");
         wx.request({
             url: e.apiUrl("ecapi.consignee.setDefault"),
             method: "POST",
@@ -99,7 +99,7 @@ Page({
                 wx.showToast({
                     title: "设置成功",
                     success: function() {
-                        var e = wx.getStorageSync("pageOptions");
+                        let e = wx.getStorageSync("pageOptions");
                         a.onLoad(e), e.from, wx.navigateBack({
                             delta: 1
                         });

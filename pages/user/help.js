@@ -4,7 +4,7 @@ Page({
         this.loadingChange();
     },
     loadingChange: function() {
-        var e = this;
+        let e = this;
         setTimeout(function() {
             e.setData({
                 hidden: !0

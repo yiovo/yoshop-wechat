@@ -7,7 +7,7 @@ function t(t, e, o) {
     }) : t[e] = o, t;
 }
 
-var e, o = require("../../wxParse/wxParse.js"), a = getApp(), i = {
+let e, o = require("../../wxParse/wxParse.js"), a = getApp(), i = {
     id: "",
     num: 1,
     pro: [],
@@ -30,11 +30,11 @@ Page({
         autoplay: !0,
         interval: 4e3,
         duration: 1e3
-    }, t(e, "current", 0), t(e, "number", 1), t(e, "hidden", !1), t(e, "showView", !0), 
-    t(e, "scrollTop", 0), t(e, "floorstatus", !1), t(e, "goodsImg", []), t(e, "goods", {}), 
+    }, t(e, "current", 0), t(e, "number", 1), t(e, "hidden", !1), t(e, "showView", !0),
+    t(e, "scrollTop", 0), t(e, "floorstatus", !1), t(e, "goodsImg", []), t(e, "goods", {}),
     t(e, "parameteCont", []), t(e, "selectedPro", ""), e),
     onLoad: function(t) {
-        var e = this, n = t.objectId;
+        let e = this, n = t.objectId;
         i.id = n, wx.request({
             url: a.apiUrl("ecapi.product.get"),
             data: {
@@ -53,7 +53,7 @@ Page({
                     parameteCont: t.data.properties,
                     total_price: t.data.price
                 });
-                for (var a in t.data.specification) e.getProper(t.data.specification[a].values[0].id);
+                for (let a in t.data.specification) e.getProper(t.data.specification[a].values[0].id);
                 e.getGoodsTotal();
             }
         }), this.loadingChange();
@@ -62,7 +62,7 @@ Page({
         i.num = 1, i.pro = [];
     },
     loadingChange: function() {
-        var t = this;
+        let t = this;
         setTimeout(function() {
             t.setData({
                 hidden: !0
@@ -70,7 +70,7 @@ Page({
         }, 1e3);
     },
     goodsCheckout: function(t) {
-        var e = wx.getStorageSync("token"), o = t.currentTarget.id || "cart";
+        let e = wx.getStorageSync("token"), o = t.currentTarget.id || "cart";
         wx.request({
             url: a.apiUrl("ecapi.cart.add"),
             data: {
@@ -87,7 +87,7 @@ Page({
                 if (0 == t.data.error_code) if ("cart" == o) wx.switchTab({
                     url: "../flow/index"
                 }); else {
-                    var e = wx.getStorageSync("token");
+                    let e = wx.getStorageSync("token");
                     wx.request({
                         url: a.apiUrl("ecapi.consignee.list"),
                         method: "POST",
@@ -132,19 +132,19 @@ Page({
         });
     },
     up: function() {
-        var t = this.data.num;
+        let t = this.data.num;
         ++t >= 99 && (t = 99), this.setData({
             num: t
         }), i.num = t, this.getGoodsTotal();
     },
     down: function() {
-        var t = this.data.num;
+        let t = this.data.num;
         --t <= 1 && (t = 1), this.setData({
             num: t
         }), i.num = t, this.getGoodsTotal();
     },
     import: function(t) {
-        var e = Math.floor(t.detail.value);
+        let e = Math.floor(t.detail.value);
         e <= 1 && (e = 1), e >= 999 && (e = 999), this.setData({
             num: e
         }), i.num = e, this.getGoodsTotal();
@@ -154,19 +154,19 @@ Page({
     },
     getProper: function(t) {
         r = [], s = [];
-        var e = this.data.carModels;
-        for (var o in e) for (var a in e[o].values) e[o].values[a].checked = !1, e[o].values[a].id == t && (i.pro[e[o].name] = t, 
+        let e = this.data.carModels;
+        for (let o in e) for (let a in e[o].values) e[o].values[a].checked = !1, e[o].values[a].id == t && (i.pro[e[o].name] = t,
         i.prostr[e[o].name] = e[o].values[a].label);
-        for (var o in e) if (void 0 != i.pro[e[o].name] && "" != i.pro[e[o].name]) for (var a in e[o].values) e[o].values[a].id == i.pro[e[o].name] && (e[o].values[a].checked = !0);
-        for (var n in i.pro) r.push(i.pro[n]);
-        for (var d in i.prostr) s.push(i.prostr[d]);
+        for (let o in e) if (void 0 != i.pro[e[o].name] && "" != i.pro[e[o].name]) for (let a in e[o].values) e[o].values[a].id == i.pro[e[o].name] && (e[o].values[a].checked = !0);
+        for (let n in i.pro) r.push(i.pro[n]);
+        for (let d in i.prostr) s.push(i.prostr[d]);
         this.setData({
             carModels: e,
             selectedPro: s.join(",")
         });
     },
     getGoodsTotal: function() {
-        var t = this, e = wx.getStorageSync("token");
+        let t = this, e = wx.getStorageSync("token");
         wx.request({
             url: a.apiUrl("ecapi.goods.property.total"),
             data: {
@@ -249,14 +249,14 @@ Page({
         });
     },
     imgPreview: function() {
-        var t = this.data.goodsImg;
+        let t = this.data.goodsImg;
         wx.previewImage({
             current: t[this.data.currentIndex - 1],
             urls: t
         });
     },
     onChangeShowState: function() {
-        var t = this;
+        let t = this;
         t.setData({
             showView: !t.data.showView
         });
@@ -274,13 +274,13 @@ Page({
         });
     },
     commonNav: function() {
-        var t = this;
+        let t = this;
         t.setData({
             nav_select: !t.data.nav_select
         });
     },
     nav: function(t) {
-        var e = t.currentTarget.dataset.index;
+        let e = t.currentTarget.dataset.index;
         "home" == e ? wx.switchTab({
             url: "../index/index"
         }) : "fenlei" == e ? wx.switchTab({

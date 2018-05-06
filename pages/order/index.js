@@ -1,6 +1,6 @@
 require("../../wxParse/wxParse.js");
 
-var t, e = getApp();
+let t, e = getApp();
 
 Page({
     data: {
@@ -38,7 +38,7 @@ Page({
         });
     },
     onLoad: function(e) {
-        var r = this;
+        let r = this;
         t = wx.getStorageSync("token"), r.data.current = e.id || 0, this.shiftanimation = wx.createAnimation({
             duration: 500,
             timingFunction: "ease"
@@ -48,13 +48,13 @@ Page({
         }), this.orderStatus(this, r.data.current), this.loadingChange();
     },
     siteDetail: function(t) {
-        var e = this, r = t.currentTarget.dataset.index, a = e.data.orders[r].order_id;
+        let e = this, r = t.currentTarget.dataset.index, a = e.data.orders[r].order_id;
         wx.navigateTo({
             url: "../order/detail?objectId=" + a
         });
     },
     cancel_order: function(r) {
-        var a = this, n = "";
+        let a = this, n = "";
         wx.showModal({
             title: "提示",
             content: "确认取消订单？",
@@ -70,7 +70,7 @@ Page({
                     },
                     method: "POST",
                     success: function(t) {
-                        t.data.error_code > 0 ? n = "取消失败" : 0 == t.data.error_code && (n = "取消成功", a.orderStatus(a, a.data.current)), 
+                        t.data.error_code > 0 ? n = "取消失败" : 0 == t.data.error_code && (n = "取消成功", a.orderStatus(a, a.data.current)),
                         wx.showToast({
                             title: n,
                             icon: "warn",
@@ -82,7 +82,7 @@ Page({
         });
     },
     pay_order: function(r) {
-        var a = this, n = r.currentTarget.dataset.id, o = wx.getStorageSync("openid");
+        let a = this, n = r.currentTarget.dataset.id, o = wx.getStorageSync("openid");
         e.payOrder(n, o, t), a.orderStatus(a, a.data.current);
     },
     confirm_order: function(r) {
@@ -101,7 +101,7 @@ Page({
                     },
                     method: "POST",
                     success: function(t) {
-                        t.data.error_code > 0 ? error_msg = "确认失败" : 0 == t.data.error_code && (error_msg = "确认成功", 
+                        t.data.error_code > 0 ? error_msg = "确认失败" : 0 == t.data.error_code && (error_msg = "确认成功",
                         that.orderStatus(that, that.data.current)), wx.showToast({
                             title: error_msg,
                             icon: "warn",
@@ -113,7 +113,7 @@ Page({
         });
     },
     loadingChange: function() {
-        var t = this;
+        let t = this;
         setTimeout(function() {
             t.setData({
                 hidden: !0

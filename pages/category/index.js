@@ -1,4 +1,4 @@
-var t = getApp();
+let t = getApp();
 
 Page({
     data: {
@@ -12,7 +12,7 @@ Page({
         cateRight: []
     },
     onLoad: function() {
-        var e = this;
+        let e = this;
         wx.request({
             url: t.apiUrl("ecapi.category.all.list"),
             data: {
@@ -36,7 +36,7 @@ Page({
         }), this.loadingChange();
     },
     loadingChange: function() {
-        var t = this;
+        let t = this;
         setTimeout(function() {
             t.setData({
                 hidden: !0
@@ -44,7 +44,7 @@ Page({
         }, 1e3);
     },
     selectNav: function(t) {
-        var e = t.target.dataset.id, a = parseInt(t.target.dataset.index);
+        let e = t.target.dataset.id, a = parseInt(t.target.dataset.index);
         self = this, this.setData({
             curNav: e,
             curIndex: a,

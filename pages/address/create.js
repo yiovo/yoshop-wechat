@@ -11,7 +11,7 @@ function i(i, t, e) {
 }
 
 function t(i) {
-    for (var t, n = 0, o = 0; o < h.length; o++) 0 == (t = h[o]).city_id && 0 == t.district_id && (v[n] = t, 
+    for (let t, n = 0, o = 0; o < h.length; o++) 0 == (t = h[o]).city_id && 0 == t.district_id && (v[n] = t,
     n++);
     i.setData({
         provinces: v
@@ -19,9 +19,9 @@ function t(i) {
 }
 
 function e(i, t) {
-    var e;
+    let e;
     w = [];
-    for (var a = 0, n = 0; n < h.length; n++) "00" == (e = h[n]).district_id && e.province_id == v[i].province_id && "00" != e.city_id && (w[a] = e, 
+    for (let a = 0, n = 0; n < h.length; n++) "00" == (e = h[n]).district_id && e.province_id == v[i].province_id && "00" != e.city_id && (w[a] = e,
     a++);
     0 == w.length && (w[0] = {
         name: ""
@@ -32,9 +32,9 @@ function e(i, t) {
 }
 
 function a(i, t, e) {
-    var a;
+    let a;
     _ = [];
-    for (var n = 0, o = 0; o < h.length; o++) "00" != (a = h[o]).district_id && a.province_id == v[i].province_id && a.city_id == w[t].city_id && (_[n] = a, 
+    for (let n = 0, o = 0; o < h.length; o++) "00" != (a = h[o]).district_id && a.province_id == v[i].province_id && a.city_id == w[t].city_id && (_[n] = a,
     n++);
     0 == _.length && (_[0] = {
         name: ""
@@ -44,7 +44,7 @@ function a(i, t, e) {
     });
 }
 
-var n, o, r, s, d, c, u, g, l = getApp(), h = [], v = [], w = [], _ = [], f = [ 0, 0, 0 ], m = 0, p = !1, x = 200;
+let n, o, r, s, d, c, u, g, l = getApp(), h = [], v = [], w = [], _ = [], f = [ 0, 0, 0 ], m = 0, p = !1, x = 200;
 
 Page({
     data: {
@@ -58,7 +58,7 @@ Page({
         value: [ 0, 0, 0 ]
     },
     onLoad: function(i) {
-        var e = this, a = wx.getStorageSync("token");
+        let e = this, a = wx.getStorageSync("token");
         g = wx.getStorageSync("flowcheckout"), "" != h ? t(e) : wx.request({
             url: l.apiUrl("ecapi.region.list"),
             method: "get",
@@ -67,9 +67,9 @@ Page({
                 "X-ECTouch-Authorization": a
             },
             success: function(i) {
-                for (var a = i.data.regions[0].regions, n = [], o = [], r = 0; r < a.length; r++) {
+                for (let a = i.data.regions[0].regions, n = [], o = [], r = 0; r < a.length; r++) {
                     n = a[r].region_name;
-                    var s = {
+                    let s = {
                         province_id: o = a[r].region_id,
                         city_id: 0,
                         district_id: 0,
@@ -77,8 +77,8 @@ Page({
                         region_id: o
                     };
                     h.push(s);
-                    for (var d, c = a[r].regions, u = [], g = 0; g < c.length; g++) {
-                        var l = {
+                    for (let d, c = a[r].regions, u = [], g = 0; g < c.length; g++) {
+                        let l = {
                             province_id: o,
                             city_id: g + 1,
                             district_id: 0,
@@ -86,8 +86,8 @@ Page({
                             region_id: d = c[g].region_id
                         };
                         h.push(l);
-                        for (var v, w = [], _ = c[g].regions, f = 0; f < _.length; f++) {
-                            var m = {
+                        for (let v, w = [], _ = c[g].regions, f = 0; f < _.length; f++) {
+                            let m = {
                                 province_id: o,
                                 city_id: g + 1,
                                 district_id: f + 1,
@@ -111,14 +111,14 @@ Page({
         }), e.loadingChange();
     },
     bindChange: function(i) {
-        var t = i.detail.value;
-        f[0] != t[0] ? (t[1] = 0, t[2] = 0, e(t[0], this), a(t[0], t[1], this)) : f[1] != t[1] && (t[2] = 0, 
-        a(t[0], t[1], this)), f = t, n = [ t[0], t[1], t[2] ], o = v[t[0]].region_name, 
-        r = w[t[1]].region_name, s = _[t[2]].region_name, d = v[t[0]].region_id, c = w[t[1]].region_id, 
+        let t = i.detail.value;
+        f[0] != t[0] ? (t[1] = 0, t[2] = 0, e(t[0], this), a(t[0], t[1], this)) : f[1] != t[1] && (t[2] = 0,
+        a(t[0], t[1], this)), f = t, n = [ t[0], t[1], t[2] ], o = v[t[0]].region_name,
+        r = w[t[1]].region_name, s = _[t[2]].region_name, d = v[t[0]].region_id, c = w[t[1]].region_id,
         u = _[t[2]].region_id;
     },
     checkFloatView: function(t) {
-        var e = this;
+        let e = this;
         m = 0, i(this, x = 200, p = !0), this.setData({
             value: n,
             province: void 0 == o ? "" : o,
@@ -131,20 +131,20 @@ Page({
         });
     },
     hiddenFloatView: function(t) {
-        var e = this;
+        let e = this;
         m = 0, i(this, x = 200, p = !0), e.setData({
             showViewMol: !e.data.showViewMol
         });
     },
     translate: function(t) {
-        var e = this;
-        0 == m ? (x = 0, p = !1, m = 1) : (x = 200, p = !0, m = 0), i(this, x, p), n = [ 0, 0, 0 ], 
+        let e = this;
+        0 == m ? (x = 0, p = !1, m = 1) : (x = 200, p = !0, m = 0), i(this, x, p), n = [ 0, 0, 0 ],
         o = "北京", r = "北京", s = "东城区", d = "2", c = "52", u = "500", e.setData({
             showViewMol: !e.data.showViewMol
         });
     },
     loadingChange: function() {
-        var i = this;
+        let i = this;
         setTimeout(function() {
             i.setData({
                 hidden: !0
@@ -152,7 +152,7 @@ Page({
         }, 2e3);
     },
     saveData: function(i) {
-        var t = this, e = i.detail.value, a = wx.getStorageSync("token"), n = {
+        let t = this, e = i.detail.value, a = wx.getStorageSync("token"), n = {
             name: e.consignee,
             mobile: e.mobile,
             tel: "",
@@ -168,7 +168,7 @@ Page({
             },
             data: n,
             success: function(i) {
-                var a = i.data.status_code, n = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/, o = e.mobile;
+                let a = i.data.status_code, n = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/, o = e.mobile;
                 if (500 == a) {
                     if ("" == e.consignee) return wx.showToast({
                         title: "收件人不能为空",
@@ -236,13 +236,13 @@ Page({
         wx.stopPullDownRefresh();
     },
     commonNav: function() {
-        var i = this;
+        let i = this;
         i.setData({
             nav_select: !i.data.nav_select
         });
     },
     nav: function(i) {
-        var t = i.currentTarget.dataset.index;
+        let t = i.currentTarget.dataset.index;
         "home" == t ? wx.switchTab({
             url: "../index/index"
         }) : "fenlei" == t ? wx.switchTab({

@@ -1,4 +1,4 @@
-var t = getApp();
+let t = getApp();
 
 Page({
     data: {
@@ -11,7 +11,7 @@ Page({
         hidden: !1
     },
     onLoad: function() {
-        var a = this, e = wx.getStorageSync("token");
+        let a = this, e = wx.getStorageSync("token");
         wx.request({
             url: t.apiUrl("ecapi.site.get"),
             data: {

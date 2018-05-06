@@ -1,4 +1,4 @@
-var t, e = getApp().apiUrl("ecapi.product.list"), a = 1, i = "", n = "0", o = "1", s = "", r = "", d = "", c = "", h = function(h) {
+let t, e = getApp().apiUrl("ecapi.product.list"), a = 1, i = "", n = "0", o = "1", s = "", r = "", d = "", c = "", h = function(h) {
     h.setData({
         hidden: !1
     }), t = wx.getStorageSync("token"), 1 == h.data.isListData && wx.request({
@@ -21,7 +21,7 @@ var t, e = getApp().apiUrl("ecapi.product.list"), a = 1, i = "", n = "0", o = "1
             "X-ECTouch-Authorization": t
         },
         success: function(t) {
-            for (var e = h.data.list, i = 0; i < t.data.list.length; i++) e.push(t.data.list[i]);
+            for (let e = h.data.list, i = 0; i < t.data.list.length; i++) e.push(t.data.list[i]);
             h.setData({
                 list: e
             }), a++, h.setData({
@@ -49,8 +49,8 @@ Page({
         showBot: !0
     },
     onLoad: function(t) {
-        var e = this;
-        r = t.objectId ? t.objectId : "", i = t.id ? t.id : "", s = t.content ? t.content : "", 
+        let e = this;
+        r = t.objectId ? t.objectId : "", i = t.id ? t.id : "", s = t.content ? t.content : "",
         d = t.brand_id ? t.brand_id : "", c = t.filter_attr ? t.filter_attr : "", e.setData({
             category: t.id ? t.id : ""
         }), wx.getSystemInfo({
@@ -63,7 +63,7 @@ Page({
         }), a = 1, h(e), this.loadingChange();
     },
     loadingChange: function() {
-        var t = this;
+        let t = this;
         setTimeout(function() {
             t.setData({
                 hidden: !0
@@ -76,7 +76,7 @@ Page({
         });
     },
     toCateAll: function(t) {
-        var e = this;
+        let e = this;
         "list-0" == t.currentTarget.id && (a = 1, e.setData({
             hiddenCateAll: !1,
             hiddenSynthesize: !0,
@@ -90,7 +90,7 @@ Page({
         }), n = t.currentTarget.dataset.index, h(e));
     },
     toNum: function(t) {
-        var e = this;
+        let e = this;
         "list-0" == t.currentTarget.id && (a = 1, e.setData({
             hiddenCateAll: !0,
             hiddenSynthesize: !0,
@@ -104,7 +104,7 @@ Page({
         }), n = t.currentTarget.dataset.index, h(e));
     },
     toPrice: function(t) {
-        var e = this;
+        let e = this;
         o = "1" == o ? "0" : "1", e.setData({
             hiddenCateAll: !0,
             hiddenSynthesize: !0,
@@ -125,7 +125,7 @@ Page({
     },
     upbindDownLoad: function() {
         console.log("到顶部了"), a = 1;
-        var t = this;
+        let t = this;
         t.setData({
             list: [],
             scrollTop: 0
@@ -143,7 +143,7 @@ Page({
         }), h(this);
     },
     onChangeShowState: function() {
-        var t = this;
+        let t = this;
         t.setData({
             showView: !t.data.showView,
             arrange: t.data.arrange ? "" : "arrange"

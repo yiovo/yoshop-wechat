@@ -1,4 +1,4 @@
-var t = getApp(), e = 0;
+let t = getApp(), e = 0;
 
 Page({
     data: {
@@ -8,7 +8,7 @@ Page({
         duration: 1e3
     },
     onLoad: function(o) {
-        var a = this;
+        let a = this;
         e = o.objectId, wx.request({
             url: t.apiUrl("ecapi.product.get"),
             data: {
@@ -26,7 +26,7 @@ Page({
         }), this.loadingChange();
     },
     loadingChange: function() {
-        var t = this;
+        let t = this;
         setTimeout(function() {
             t.setData({
                 hidden: !0
