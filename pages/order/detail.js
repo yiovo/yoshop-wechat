@@ -55,7 +55,7 @@ Page({
                     },
                     method: "POST",
                     success: function(t) {
-                        t.data.error_code > 0 ? error_msg = "确认失败" : 0 == t.data.error_code && (error_msg = "确认成功", 
+                        t.data.error_code > 0 ? error_msg = "确认失败" : 0 == t.data.error_code && (error_msg = "确认成功",
                         that.orderStatus(that, that.data.current)), wx.showToast({
                             title: error_msg,
                             icon: "warn",
@@ -99,7 +99,7 @@ Page({
                     },
                     method: "POST",
                     success: function(t) {
-                        t.data.error_code > 0 ? e.shwomessage("取消失败", 1e3, "clear") : 0 == t.data.error_code && (e.shwomessage("取消成功", 1e3, "warn"), 
+                        t.data.error_code > 0 ? e.showMessage("取消失败", 1e3, "clear") : 0 == t.data.error_code && (e.showMessage("取消成功", 1e3, "warn"),
                         a.orderStatus(a, a.data.current));
                     }
                 });

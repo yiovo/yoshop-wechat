@@ -119,7 +119,7 @@ Page({
                     url: "../flow/done?id=" + t
                 });
             }
-        }) : i.shwomessage("没有收货地址");
+        }) : i.showMessage("没有收货地址");
     },
     getmsg: function(a) {
         n.msg = a.detail.value;
