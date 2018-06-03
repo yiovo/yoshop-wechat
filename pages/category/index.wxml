@@ -1,7 +1,7 @@
 <view class="container">
     <view class="common-header-xian"></view>
     <view class="index-search-box">
-        <navigator class="index-search " hoverClass="none" openType="redirect" url="../search/index">
+        <navigator class="index-search " hoverClass="none" openType="navigate" url="../search/index">
             <view class="index-cont-search t-c">
                 <icon class="text-center" color="{{searchColor}}" size="{{searchSize}}" type="search"></icon>
                 <text>{{searchName}}</text>

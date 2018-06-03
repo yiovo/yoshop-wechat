@@ -1,7 +1,7 @@
 <view class="container">
     <view class="list-header">
         <view class="index-search-box dis-box" style="position:static">
-            <navigator class="index-search box-flex" hoverClass="none" openType="redirect" url="../search/index?objectId={{category}}">
+            <navigator class="index-search box-flex" hoverClass="none" openType="navigate" url="../search/index?objectId={{category}}">
                 <view class="index-cont-search">
                     <icon class="text-center" color="rgba(0,0,0,0.4)" size="16" type="search"></icon>
                     <text>搜索商品</text>
