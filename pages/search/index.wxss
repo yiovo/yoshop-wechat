@@ -28,10 +28,6 @@
     line-height: 30rpx;
 }
 
-.serch-button button {
-    background: #fd4a5f;
-}
-
 .search-cont {
     padding: 0 15px;
     background: #fff;
@@ -39,10 +35,6 @@
 
 .search-box .left {
     width: 28px;
-}
-
-.search-box .left icon {
-    padding: 15rpx;
 }
 
 .search-box .right {

@@ -1191,8 +1191,8 @@ page {
 }
 
 .search-input-box {
-  height: 60rpx;
-  overflow: hidden;
+  height: 64rpx;
+  /* overflow: hidden; */
 }
 
 .search-input {
@@ -1205,10 +1205,9 @@ page {
 }
 
 .search-input input {
-  font-size: 28rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  padding-left: 10px;
+  font-size: 30rpx;
+  height: 64rpx;
+  line-height: 64rpx;
 }
 
 .serch-button {
@@ -1217,8 +1216,8 @@ page {
 }
 
 .serch-button button {
-  line-height: 60rpx;
-  height: 60rpx;
+  line-height: 64rpx;
+  height: 64rpx;
   font-size: 28rpx;
   border-radius: 0 5px 5px 0;
 }
@@ -3651,7 +3650,7 @@ button.submit_btn {
 }
 
 .search-box .left icon {
-  padding: 15rpx;
+  padding: 18rpx;
 }
 
 .search-box .right {

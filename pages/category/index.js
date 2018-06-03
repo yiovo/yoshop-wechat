@@ -3,7 +3,7 @@ let t = getApp();
 Page({
     data: {
         searchColor: "rgba(0,0,0,0.4)",
-        searchSize: "16",
+        searchSize: "15",
         searchName: "搜索商品",
         hidden: !1,
         curNav: 1,

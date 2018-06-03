@@ -36,8 +36,8 @@
     font-size: 32rpx;
     color: #999;
     box-sizing: border-box;
-    height: 60rpx;
-    line-height: 60rpx;
+    height: 64rpx;
+    line-height: 64rpx;
 }
 
 .list-right {

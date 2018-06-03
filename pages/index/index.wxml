@@ -2,24 +2,21 @@
 
   <scroll-view bindscroll="scroll" scrollTop="{{scrollTop}}" scrollY="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
 
-
-
     <!-- 搜索框 -->
     <view class="index-search-box col-f ts-3">
       <view class="dis-box">
         <view class="index-search box-flex angle-radius text-center">
           <navigator class="cont" hoverClass="none" openType="navigate" url="../search/index">
             <text class="iconfont icon-sousuo f-30"></text>
-            <text class="f-30">搜索商品</text>
+            <text class="f-28">搜索商品</text>
           </navigator>
         </view>
       </view>
     </view>
 
-
     <!-- banner轮播 -->
     <view class="index-banner">
-      <swiper autoplay="{{autoplay}}" class="banner-box swiper-box dot-square" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" indicator-color="#fff" indicator-active-color="#000">
+      <swiper autoplay="{{autoplay}}" class="banner-box swiper-box dot-round" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" indicator-color="#fff" indicator-active-color="#000">
         <navigator hoverClass="none" url="{{item.link}}" wx:for="{{index.banner}}" wx:key="banner">
           <swiper-item>
             <image class="slide-image" src="{{item.pic}}"></image>
@@ -50,6 +47,7 @@
         </navigator>
       </scroll-view>
     </view>
+
     <!-- 猜您喜欢 -->
     <view class="title-hrbg" style="margin-top:10rpx">
       <text class="cont">
@@ -71,14 +69,17 @@
         </view>
       </navigator>
     </view>
+
     <!-- 底线 -->
     <view class="title-footer p-r">
       <text class="f-24 col-9  cont">我是有底线的</text>
       <view class="hr"></view>
     </view>
   </scroll-view>
+
   <!-- 返回顶部 -->
   <view bindtap="goTop" class="widget-goTop" wx:if="{{floorstatus}}">
     <text class="iconfont icon-fanhuidingbu"></text>
   </view>
+
 </view>
