@@ -298,22 +298,20 @@ page {
 }
 
 .dis-box {
+  display: box !important;
   display: -webkit-box !important;
   display: -moz-box !important;
   display: -ms-box !important;
-  display: box !important;
 }
 
 .box-flex {
-  -moz-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   display: block;
   width: 100%;
 }
 
 .dis-flex {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -1267,7 +1265,7 @@ page {
   position: relative;
   color: #fff;
   box-sizing: border-box;
-  margin: 0 auto;
+   margin: 0 auto; 
   line-height: 55rpx;
 }
 
@@ -3806,7 +3804,7 @@ button.submit_btn {
 
 .store_nav_cont #list-0 .top_jiantou {
   position: absolute;
-  right: 26px;
+  right: 52rpx;
   top: 50%;
   margin-top: -16rpx;
   font-size: 18rpx;
@@ -3824,7 +3822,7 @@ button.submit_btn {
 
 .store_nav_cont #list-0 .bot_jiantou {
   position: absolute;
-  right: 26px;
+  right: 52rpx;
   top: 50%;
   margin-top: -2rpx;
   font-size: 18rpx;

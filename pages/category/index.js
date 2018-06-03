@@ -27,6 +27,7 @@ Page({
                 "Content-Type": "application/json"
             },
             success: function(t) {
+              console.log(t.data.right);
                 e.setData({
                     cateLeft: t.data.left,
                     cateRight: t.data.right,

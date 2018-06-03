@@ -4,14 +4,11 @@ Page({
   data: {
     indicatorDots: true,
     autoplay: !0,
-    interval: 1000,//4
+    interval: 4000,
     duration: 1000,
     scrollTop: 0,
-    hasLocation: !1,
-    hidden: !1,
-
-
-
+    hasLocation: false,
+    hidden: false,
   },
   onLoad: function () {
     let a = this, e = wx.getStorageSync("token");

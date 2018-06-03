@@ -3,29 +3,29 @@
         <view class="index-search-box dis-box" style="position:static">
             <navigator class="index-search box-flex" hoverClass="none" openType="navigate" url="../search/index?objectId={{category}}">
                 <view class="index-cont-search">
-                    <icon class="text-center" color="rgba(0,0,0,0.4)" size="16" type="search"></icon>
+                    <icon class="text-center" color="rgba(0,0,0,0.4)" size="15" type="search"></icon>
                     <text>搜索商品</text>
                 </view>
             </navigator>
             <view bindtap="onChangeShowState" class="list-right f-28">
-                <text class="iconfont icon-pailie f-34" wx:if="{{showView}}"></text>
+                <text class="iconfont icon-pailie" wx:if="{{showView}}"></text>
                 <text class="iconfont icon-viewlist" wx:else></text>
             </view>
         </view>
-        <view class="store_nav_cont  dis-box b-f  b-b">
-            <view bindtap="toCateAll" class="box-flex t-c p-r" data-index="0 " id="list-{{!hiddenCateAll?true:0}}">
+        <view class="store_nav_cont dis-flex b-f b-b">
+            <view bindtap="toCateAll" class="flex-box t-c p-r" data-index="0 " id="list-{{!hiddenCateAll?true:0}}">
                 <text>综合</text>
             </view>
-            <view bindtap="toNum" class="box-flex t-c p-r" data-index="1" id="list-{{!hiddenNum?true:0}}">
+            <view bindtap="toNum" class="flex-box t-c p-r" data-index="1" id="list-{{!hiddenNum?true:0}}">
                 <text> 销量</text>
             </view>
-            <view bindtap="toPrice" class="box-flex t-c p-r" data-index="2" id="list-{{!hiddenPrice?true:0}}">
+            <view bindtap="toPrice" class="flex-box t-c p-r" data-index="2" id="list-{{!hiddenPrice?true:0}}">
                 <text class="price"> 价格</text>
                 <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{showTop?'':'active'}}"></text>
                 <text class="iconfont icon-jiantou-copy bot_jiantou {{showBot?'':'active'}}"></text>
             </view>
-            <view bindtap="toSynthesize" class="box-flex t-c p-r" data-index="sort_order" id="list-{{!hiddenSynthesize?true:0}}">
-                <text>筛选</text>
+            <view bindtap="toSynthesize" class="flex-box t-c p-r" data-index="sort_order" id="list-{{!hiddenSynthesize?true:0}}">
+                <text>筛选 </text>
                 <text class="f-22 iconfont icon-shaixuan1 col-7" style="padding-left:2rpx"></text>
             </view>
         </view>
