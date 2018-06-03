@@ -1933,8 +1933,8 @@ buy_number {
 }
 
 .swiper-box .wx-swiper-dot {
-  width: 0rpx;
-  height: 0rpx;
+  /* width: 0rpx;
+  height: 0rpx; */
 }
 
 .goods_comment_box .comment_btn {

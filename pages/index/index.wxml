@@ -1,7 +1,7 @@
 <view class="container">
 
-
   <scroll-view bindscroll="scroll" scrollTop="{{scrollTop}}" scrollY="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+
 
 
     <!-- 搜索框 -->
@@ -19,7 +19,7 @@
 
     <!-- banner轮播 -->
     <view class="index-banner">
-      <swiper autoplay="{{autoplay}}" class="banner-box swiper-box " duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+      <swiper autoplay="{{autoplay}}" class="banner-box swiper-box dot-square" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" indicator-color="#fff" indicator-active-color="#000">
         <navigator hoverClass="none" url="{{item.link}}" wx:for="{{index.banner}}" wx:key="banner">
           <swiper-item>
             <image class="slide-image" src="{{item.pic}}"></image>
@@ -27,8 +27,10 @@
         </navigator>
       </swiper>
 
-      <!-- <view class="linear"></view> -->
+      <!-- 顶部置灰 -->
+      <!-- <view class="linear"></view>  -->
     </view>
+
     <!-- 商品推荐 -->
     <view class="recommended-index-list m-top20">
       <view class="title-header b-f t-c f-32 col-3">新品推荐</view>
