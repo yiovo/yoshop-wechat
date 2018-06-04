@@ -1,0 +1,19 @@
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: 2rpx;
+}
+
+/* banner组件按钮 */
+
+.swiper-box .wx-swiper-dot {
+  height: 20rpx;
+  width: 20rpx;
+}
+
+.swiper-box.dot-rectangle .wx-swiper-dot {
+  width: 30rpx;
+  border-radius: unset;
+}
+
+.swiper-box.dot-square .wx-swiper-dot {
+  border-radius: unset;
+}

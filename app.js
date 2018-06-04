@@ -24,7 +24,13 @@ App({
    */
   onShow: function (options) {
     // 获取小程序基础信息
-    this.getWxappBase();
+    this.getWxappBase(function (wxapp) {
+      // 设置navbar标题、颜色
+      wx.setNavigationBarColor({
+        frontColor: wxapp.navbar.top_text_color.text,
+        backgroundColor: wxapp.navbar.top_background_color
+      })
+    });
   },
 
   /**
@@ -32,7 +38,8 @@ App({
    */
   setApiRoot: function () {
     let siteroot = this.siteInfo.siteroot.replace('app/index.php', '');
-    this.api_root = siteroot + 'addons/active_lite/source/web/index.php?s=/api/';
+    // this.api_root = siteroot + 'addons/active_lite/source/web/index.php?s=/api/';
+    this.api_root = siteroot + 'index.php?s=/api/';
   },
 
   /**
@@ -43,8 +50,8 @@ App({
     App._get('wxapp/base', {}, function (result) {
       if (result.code === 1) {
         // 记录小程序基础信息
-        wx.setStorageSync('wxapp', result.data);
-        callback && callback();
+        wx.setStorageSync('wxapp', result.data.wxapp);
+        callback && callback(result.data.wxapp);
       } else {
         App.showError(result.msg);
       }
@@ -52,7 +59,7 @@ App({
   },
 
   /**
-   * 用户登录
+   * 执行用户登录
    * 自动检测当前登录态并实现微信登录
    */
   doLogin: function (callback) {
@@ -73,7 +80,7 @@ App({
   },
 
   /**
-   * 微信登录
+   * 微信登录接口
    */
   wxLogin: function (callback) {
     let App = this;
@@ -237,21 +244,23 @@ App({
    * 设置当前页面标题
    */
   setTitle: function () {
-    let App = this, wxapp;
+    let App = this
+      , wxapp;
     if (wxapp = wx.getStorageSync('wxapp')) {
-      wx.setNavigationBarTitle({ title: wxapp.app_name });
+      wx.setNavigationBarTitle({ title: wxapp.navbar.wxapp_title });
     } else {
       App.getWxappBase(function () { App.setTitle(); });
     }
   },
 
 
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
+
+
+
+
+  //////////////////////////////////////////////////////////////////////
+  ////
+  //////
 
   /**
    * 获取用户信息
@@ -300,7 +309,7 @@ App({
   },
 
   /**
-   * 执行登录
+   * 执行登录 (废弃)
    */
   doLogin_bak: function (e, t) {
     var o = this;

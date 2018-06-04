@@ -19,10 +19,9 @@
         "pages/address/detail"
     ],
     "window": {
-        "backgroundColor": "#efeff4",
-        "navigationBarBackgroundColor": "#fd4a5f",
-        "navigationBarTitleText": "首页",
-        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black",
         "backgroundTextStyle": "dark"
     },
     "tabBar": {

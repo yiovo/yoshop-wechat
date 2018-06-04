@@ -1,0 +1,38 @@
+
+/* 搜索框(非固定) */
+
+.index-search-box {
+  position: unset;
+  background: #f1f1f2;
+  padding: 10px 0;
+}
+
+.index-search-box .index-search {
+  padding: 0 10px;
+  line-height: 60rpx;
+  border-radius: unset;
+}
+
+.index-search-box text {
+  color: #999;
+}
+
+/* 输入框四角风格 */
+
+.index-search-box .index-search.angle-radius {
+  border-radius: 5px;
+}
+
+.index-search-box .index-search.angle-round {
+  border-radius: 80rpx;
+}
+
+/* 文字对齐 */
+
+.index-search-box .index-search.text-center {
+  text-align: center;
+}
+
+.index-search-box .index-search.text-right {
+  text-align: right;
+}

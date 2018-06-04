@@ -1,0 +1,11 @@
+<!-- 搜索框 -->
+<view class="index-search-box col-f ts-3">
+  <view class="dis-box">
+    <view class="index-search box-flex angle-radius text-center">
+      <navigator class="cont" hoverClass="none" openType="navigate" url="../search/index">
+        <text class="iconfont icon-sousuo f-30"></text>
+        <text class="f-28">搜索商品</text>
+      </navigator>
+    </view>
+  </view>
+</view>

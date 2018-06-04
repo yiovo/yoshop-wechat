@@ -1221,7 +1221,7 @@ page {
 }
 
 .banner-box {
-  height: 335rpx;
+  /* height: 335rpx; */
 }
 
 .slide-image {

@@ -2,31 +2,21 @@
 
   <scroll-view bindscroll="scroll" scrollTop="{{scrollTop}}" scrollY="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
 
-    <!-- 搜索框 -->
-    <view class="index-search-box col-f ts-3">
-      <view class="dis-box">
-        <view class="index-search box-flex angle-radius text-center">
-          <navigator class="cont" hoverClass="none" openType="navigate" url="../search/index">
-            <text class="iconfont icon-sousuo f-30"></text>
-            <text class="f-28">搜索商品</text>
-          </navigator>
-        </view>
-      </view>
-    </view>
+    <block wx:for="{{items}}" wx:for-item="item" wx:for-index="item_key" wx:key="*this">
+    
+      <!-- 搜索框 -->
+      <block wx:if="{{item.type === 'search'}}">
+        <include src="components/search/search.wxml" />
+      </block>
 
-    <!-- banner轮播 -->
-    <view class="index-banner">
-      <swiper autoplay="{{autoplay}}" class="banner-box swiper-box dot-round" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" indicator-color="#fff" indicator-active-color="#000">
-        <navigator hoverClass="none" url="{{item.link}}" wx:for="{{index.banner}}" wx:key="banner">
-          <swiper-item>
-            <image class="slide-image" src="{{item.pic}}"></image>
-          </swiper-item>
-        </navigator>
-      </swiper>
+      <!-- banner轮播 -->
+      <block wx:if="{{item.type === 'banner'}}">
+        <include src="components/banner/banner.wxml" />
+      </block>
 
-      <!-- 顶部置灰 -->
-      <!-- <view class="linear"></view>  -->
-    </view>
+    </block>
+
+
 
     <!-- 商品推荐 -->
     <view class="recommended-index-list m-top20">
