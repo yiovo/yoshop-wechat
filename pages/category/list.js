@@ -131,6 +131,10 @@ Page({
       viewBox: !1
     }), n = t.currentTarget.dataset.index, a = 1, h(e);
   },
+
+  /**
+   * 滚动到底部
+   */
   bindDownLoad: function () {
     console.log("到底部了"), h(this);
   },

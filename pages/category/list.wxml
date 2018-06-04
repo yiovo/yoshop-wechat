@@ -29,7 +29,7 @@
                 <text class="f-22 iconfont icon-shaixuan1 col-7" style="padding-left:2rpx"></text>
             </view>
         </view>
-        <scroll-view bindscroll="scroll" bindscrolltolower="bindDownLoad" bindscrolltoupper="upbindDownLoad" class="weui-panel weui-panel_access" scrollTop="{{scrollTop}}" scrollY="true" style="height: {{scrollHeight}}px; width: {{windowWidth}}px;" wx:if="{{list!=''}}">
+        <scroll-view bindscroll="scroll" bindscrolltolower="bindDownLoad" bindscrolltoupper="upbindDownLoad" class="weui-panel weui-panel_access" scroll-top="{{scrollTop}}" scroll-y="true" style="height: {{scrollHeight}}px; width: {{windowWidth}}px;" wx:if="{{list!=''}}">
             <view class="new" hidden="{{hiddenCateAll}}">
                 <view class="category-list  {{arrange}}">
                     <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
