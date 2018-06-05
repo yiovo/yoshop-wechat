@@ -1,38 +1,31 @@
 <view class="container">
 
-  <scroll-view bindscroll="scroll" scrollTop="{{scrollTop}}" scrollY="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
-
-    <block wx:for="{{items}}" wx:for-item="item" wx:for-index="item_key" wx:key="*this">
-    
+  <scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+    <block wx:for="{{items}}" wx:for-item="item" wx:for-index="item_key" wx:key="this">
       <!-- 搜索框 -->
       <block wx:if="{{item.type === 'search'}}">
         <include src="components/search/search.wxml" />
       </block>
-
       <!-- banner轮播 -->
       <block wx:if="{{item.type === 'banner'}}">
         <include src="components/banner/banner.wxml" />
       </block>
-
     </block>
-
-
-
     <!-- 商品推荐 -->
     <view class="recommended-index-list m-top20">
       <view class="title-header b-f t-c f-32 col-3">新品推荐</view>
     </view>
     <view class="index_sale ">
-      <scroll-view scrollX="true">
-        <navigator hoverClass="none" style="display: inline-block;" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{index.goodsList.new}}" wx:key="boutique_list">
+      <scroll-view scroll-x="true">
+        <navigator hover-class="none" style="display: inline-block;" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{newest}}" wx:key="this">
           <view class="page-column">
             <view class="sale_img">
-              <image mode="aspectFill" src="{{item.goods_thumb}}"></image>
+              <image mode="aspectFill" src="{{item.image[0].file.file_name.file_path}}"></image>
             </view>
-            <view class="content onelist-hidden ">
+            <view class="content onelist-hidden">
               <text>{{item.goods_name}}</text>
             </view>
-            <text class="price col-m f-30">￥{{item.promote_price>0?item.promote_price:item.shop_price}}</text>
+            <text class="price col-m f-30">￥{{item.spec[0].goods_price}}</text>
           </view>
         </navigator>
       </scroll-view>
@@ -41,20 +34,21 @@
     <!-- 猜您喜欢 -->
     <view class="title-hrbg" style="margin-top:10rpx">
       <text class="cont">
-                <text class="iconfont icon-huo col-m"></text>猜您喜欢</text>
+        <text class="iconfont icon-huo col-m"></text>猜您喜欢
+      </text>
       <view class="hr"></view>
     </view>
     <view class="category-list">
-      <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{index.goodsList.best}}" wx:key="list">
+      <navigator class="list b-f" hover-class="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{best}}" wx:key="this">
         <view class="left">
           <view class="img">
-            <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
+            <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file.file_name.file_path}}"></image>
           </view>
         </view>
         <view class="right">
           <view class="cont">
             <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
-            <text class="price f-34 col-m f-w">￥{{item.promote_price>0?item.promote_price:item.shop_price}}</text>
+            <text class="price f-34 col-m f-w">￥{{item.spec[0].goods_price}}</text>
           </view>
         </view>
       </navigator>
@@ -62,7 +56,7 @@
 
     <!-- 底线 -->
     <view class="title-footer p-r">
-      <text class="f-24 col-9  cont">我是有底线的</text>
+      <text class="f-24 col-9 cont">我是有底线的</text>
       <view class="hr"></view>
     </view>
   </scroll-view>

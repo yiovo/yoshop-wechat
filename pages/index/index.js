@@ -5,13 +5,15 @@ Page({
     // banner轮播组件属性
     indicatorDots: true,  // 是否显示面板指示点	
     autoplay: true,       // 是否自动切换
-    interval: 1000,       // 自动切换时间间隔
+    interval: 3000,       // 自动切换时间间隔
     duration: 800,        // 滑动动画时长
     imgHeights: {},       // 图片的高度
     imgCurrent: {},       // 当前banne所在滑块指针
 
     // 页面元素
     items: {},
+    newest: {},
+    best: {},
 
     scrollTop: 0,
   },
@@ -31,11 +33,29 @@ Page({
     let _this = this;
     App._get('index/page', {}, function (result) {
       if (result.code === 1) {
-        _this.setData({
-          items: result.data.items
-        });
+        _this.setData(result.data);
       } else {
         App.showError(result.msg);
+      }
+    });
+
+
+    let token = wx.getStorageSync("token");
+    wx.request({
+      url: App.apiUrl("ecapi.site.get"),
+      data: {
+        per_page: "8",
+        page: "1"
+      },
+      header: {
+        "Content-Type": "application/json",
+        "X-ECTouch-Authorization": token
+      },
+      method: "POST",
+      success: function (t) {
+        _this.setData({
+          index: t.data
+        });
       }
     });
 

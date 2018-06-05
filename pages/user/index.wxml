@@ -8,14 +8,14 @@
         <view class="user-order">
             <view class="user-order-cont dis-flex">
                 <view class="flex-box p-r">
-                    <navigator hoverClass="navigator-hover" url="../order/index?id=0">
+                    <navigator hover-class="navigator-hover" url="../order/index?id=0">
                         <text class="iconfont icon-form orderListIcon "></text>
                         <text class="listCont">全部订单</text>
                         <text class="user-tag p-a" wx:if="{{orderNum.all_num>0}}">{{orderNum.all_num}}</text>
                     </navigator>
                 </view>
                 <view class="flex-box p-r">
-                    <navigator hoverClass="navigator-hover" url="../order/index?id=1">
+                    <navigator hover-class="navigator-hover" url="../order/index?id=1">
                         <text class="iconfont icon-daifukuan orderListIcon "></text>
                         <text class="listCont">待付款</text>
                         <text class="user-tag p-a" wx:if="{{orderNum.no_paid_num>0}}">{{orderNum.no_paid_num}}</text>
@@ -28,7 +28,7 @@
                     <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text>
                 </view>
                 <view class="flex-box p-r">
-                    <navigator hoverClass="navigator-hover" url="../order/index?id=2">
+                    <navigator hover-class="navigator-hover" url="../order/index?id=2">
                         <text class="iconfont icon-daishouhuo orderListIcon "></text>
                         <text class="listCont">待收货</text>
                         <text class="user-tag p-a" wx:if="{{orderNum.no_received_num>0}}">{{orderNum.no_received_num}}</text>
@@ -76,7 +76,7 @@
         <view class="hr"></view>
     </view>
     <view class="category-list">
-        <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{recommend.goodsList.best}}" wx:key="list">
+        <navigator class="list b-f" hover-class="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{recommend.goodsList.best}}" wx:key="list">
             <view class="left">
                 <view class="img">
                     <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>

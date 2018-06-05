@@ -1,7 +1,7 @@
 <view class="container">
     <view class="common-header-xian"></view>
     <view class="index-search-box">
-        <navigator class="index-search " hoverClass="none" openType="navigate" url="../search/index">
+        <navigator class="index-search " hover-class="none" openType="navigate" url="../search/index">
             <view class="index-cont-search t-c">
                 <icon class="text-center" color="{{searchColor}}" size="{{searchSize}}" type="search"></icon>
                 <text>{{searchName}}</text>
@@ -9,16 +9,16 @@
         </navigator>
     </view>
     <view class="cate-content">
-        <scroll-view class="cate-left f-28 " scrollY="true">
+        <scroll-view class="cate-left f-28 " scroll-y="true">
             <text bindtap="selectNav" class="type-nav {{curNav==item.cat_id?'selected':''}}" data-id="{{item.cat_id}}" data-index="{{index}}" wx:for="{{cateLeft}}" wx:key="cateLeft">{{item.cat_name}}</text>
         </scroll-view>
-        <scroll-view class="cate-right b-f" scrollTop="{{scrollTop}}" scrollY="true">
+        <scroll-view class="cate-right b-f" scroll-top="{{scrollTop}}" scroll-y="true">
             <view wx:if="{{cateRight[curIndex]}}">
                 <view class="cate-right-cont">
                     <view class="cate-two-box">
                         <view class=" cate-cont-box dis-flex">
                             <view class="flex-three" data-list="{{index}}" wx:for="{{cateRight[curIndex]}}" wx:key="cit">
-                                <navigator hoverClass="none" url="../category/list?id={{item.cat_id}}">
+                                <navigator hover-class="none" url="../category/list?id={{item.cat_id}}">
                                     <view class="cate-img" id="{{item.id}}">
                                         <image src="{{item.goods_thumb}}"></image>
                                     </view>

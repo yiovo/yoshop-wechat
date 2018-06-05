@@ -1,5 +1,5 @@
 <view class="container p-bottom">
-    <navigator hoverClass="navigator-hover" url="{{addresss_link}}">
+    <navigator hover-class="navigator-hover" url="{{addresss_link}}">
         <view wx:if="{{addresss!=''}}">
             <view class="b-f">
                 <view class="flow-checkout-header dis-box">

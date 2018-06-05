@@ -5,7 +5,7 @@
             <view bindtap="bindHeaderTap" class="{{current==1?'active':''}}" data-index="1">待付款</view>
             <view bindtap="bindHeaderTap" class="{{current==2?'active':''}}" data-index="2">待收货</view>
         </view>
-        <scroll-view bindscrolltolower="bindDownLoad" scrollY="true" style="height:{{scrollHeight}}px;">
+        <scroll-view bindscrolltolower="bindDownLoad" scroll-y="true" style="height:{{scrollHeight}}px;">
             <view class="wrapper">
                 <view wx:if="{{orders!=''}}">
                     <view class="m-top20 " wx:for="{{orders}}" wx:key="orders">

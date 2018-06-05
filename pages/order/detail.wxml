@@ -1,5 +1,5 @@
 <view class="container p-bottom">
-    <scroll-view scrollY="true">
+    <scroll-view scroll-y="true">
         <view class="b-f">
             <view class="flow-checkout-header b-f dis-flex">
                 <view class="flow-header-left pl-12">

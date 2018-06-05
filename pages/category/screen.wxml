@@ -109,7 +109,7 @@
         <view class="cont-box">
           <view class="dis-flex m-top20 screen_btn">
             <view class="flex-box list">
-              <button disabled="{{disabled}}" formType="reset" hoverClass="other-button-hover" loading="{{loading}}" plain="{{plain}}" size="{{defaultSize}}" type="default"> 重置 </button>
+              <button disabled="{{disabled}}" formType="reset" hover-class="other-button-hover" loading="{{loading}}" plain="{{plain}}" size="{{defaultSize}}" type="default"> 重置 </button>
             </view>
             <view class="flex-box list">
               <button disabled="{{disabled}}" formType="submit" loading="{{loading}}" plain="{{plain}}" size="{{primarySize}}" type="primary"> 确认 </button>

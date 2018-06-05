@@ -1,5 +1,5 @@
 <import src="../../wxParse/wxParse.wxml"></import>
-<scroll-view bindscroll="scroll" scrollTop="{{scrollTop}}" scrollY="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+<scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
     <view class="container">
         <view bindtap="imgPreview">
             <swiper autoplay="{{true}}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
@@ -34,7 +34,7 @@
         </view>
         <view class="cart bright789_view_hide{{showView?'bright789_view_show':''}}">
             <view class="modal_cont_box">
-                <scroll-view class="goods-list-box" scrollY="true">
+                <scroll-view class="goods-list-box" scroll-y="true">
                     <view class="cf tmall-types " wx:for="{{carModels}}" wx:for-index="attr_id" wx:key="carModels">
                         <view class="tipstxt" id="{{attr_id}}">{{item.name}}</view>
                         <view class="cf cartypelist" wx:for="{{item.values}}" wx:for-index="attr_id_child" wx:key="carModelChild">

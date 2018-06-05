@@ -1,7 +1,7 @@
 <view class="container">
     <view class="list-header">
         <view class="index-search-box dis-box" style="position:static">
-            <navigator class="index-search box-flex" hoverClass="none" openType="navigate" url="../search/index?objectId={{category}}">
+            <navigator class="index-search box-flex" hover-class="none" openType="navigate" url="../search/index?objectId={{category}}">
                 <view class="index-cont-search">
                     <icon class="text-center" color="rgba(0,0,0,0.4)" size="15" type="search"></icon>
                     <text>搜索商品</text>
@@ -32,7 +32,7 @@
         <scroll-view bindscroll="scroll" bindscrolltolower="bindDownLoad" bindscrolltoupper="upbindDownLoad" class="weui-panel weui-panel_access" scroll-top="{{scrollTop}}" scroll-y="true" style="height: {{scrollHeight}}px; width: {{windowWidth}}px;" wx:if="{{list!=''}}">
             <view class="new" hidden="{{hiddenCateAll}}">
                 <view class="category-list  {{arrange}}">
-                    <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
+                    <navigator class="list b-f" hover-class="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
                         <view class="left">
                             <view class="img">
                                 <image class="goodsImg" mode="aspectFit" src="{{item.pic}}"></image>
@@ -51,7 +51,7 @@
             </view>
             <view class="new" hidden="{{hiddenNum}}">
                 <view class="category-list  {{arrange}}">
-                    <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
+                    <navigator class="list b-f" hover-class="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
                         <view class="left">
                             <view class="img">
                                 <image class="goodsImg" mode="aspectFit" src="{{item.pic}}"></image>
@@ -68,7 +68,7 @@
             </view>
             <view class="new" hidden="{{hiddenPrice}}">
                 <view class="category-list  {{arrange}}">
-                    <navigator class="list b-f" hoverClass="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
+                    <navigator class="list b-f" hover-class="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{list}}" wx:key="list">
                         <view class="left">
                             <view class="img">
                                 <image class="goodsImg" mode="aspectFit" src="{{item.pic}}"></image>
