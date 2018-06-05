@@ -40,24 +40,24 @@ Page({
     });
 
 
-    let token = wx.getStorageSync("token");
-    wx.request({
-      url: App.apiUrl("ecapi.site.get"),
-      data: {
-        per_page: "8",
-        page: "1"
-      },
-      header: {
-        "Content-Type": "application/json",
-        "X-ECTouch-Authorization": token
-      },
-      method: "POST",
-      success: function (t) {
-        _this.setData({
-          index: t.data
-        });
-      }
-    });
+    // let token = wx.getStorageSync("token");
+    // wx.request({
+    //   url: App.apiUrl("ecapi.site.get"),
+    //   data: {
+    //     per_page: "8",
+    //     page: "1"
+    //   },
+    //   header: {
+    //     "Content-Type": "application/json",
+    //     "X-ECTouch-Authorization": token
+    //   },
+    //   method: "POST",
+    //   success: function (t) {
+    //     _this.setData({
+    //       index: t.data
+    //     });
+    //   }
+    // });
 
 
   },

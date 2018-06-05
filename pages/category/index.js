@@ -1,49 +1,40 @@
-let t = getApp();
+let App = getApp();
 
 Page({
   data: {
     searchColor: "rgba(0,0,0,0.4)",
     searchSize: "15",
     searchName: "搜索商品",
-    // hidden: false,
+
     curNav: true,
     curIndex: 0,
-    cateLeft: [],
-    cateRight: []
+  
+    list: [],
   },
+
   onLoad: function () {
     let _this = this;
-    wx.request({
-      url: t.apiUrl("ecapi.category.all.list"),
-      data: {
-        id: "0",
-        per_page: "5",
-        category: "1",
-        shop: 1,
-        page: 1
-      },
-      method: "post",
-      header: {
-        "Content-Type": "application/json"
-      },
-      success: function (t) {
+
+    // 获取分类列表
+    this.getCategoryList();
+  },
+
+  /**
+   * 获取分类列表
+   */
+  getCategoryList: function () {
+    let _this = this;
+    App._get('category/lists', {}, function (result) {
+      if (result.code === 1) {
         _this.setData({
-          cateLeft: t.data.left,
-          cateRight: t.data.right,
-          curNav: t.data.left[0].cat_id
+          list: result.data.list,
+          curNav: result.data.list[0].category_id
         });
+      } else {
+        App.showError(result.msg);
       }
     });
-    // this.loadingChange();
   },
-  // loadingChange: function () {
-  //   let t = this;
-  //   setTimeout(function () {
-  //     t.setData({
-  //       hidden: true
-  //     });
-  //   }, 1e3);
-  // },
 
   /**
    * 选中分类
@@ -57,6 +48,7 @@ Page({
       scrollTop: 0
     });
   },
+
   onPullDownRefresh: function () {
     wx.stopPullDownRefresh();
   },
@@ -71,4 +63,5 @@ Page({
       path: "/pages/category/index"
     };
   }
+  
 });

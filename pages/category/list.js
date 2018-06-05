@@ -1,167 +1,110 @@
-let t,
-  e = getApp().apiUrl("ecapi.product.list"),
-  a = 1, i = "", n = "0", o = "1", s = "", r = "", d = "", c = "",
-  h = function (page) {
-    page.setData({
-      hidden: false
-    }), t = wx.getStorageSync("token"), 1 == page.data.isListData && wx.request({
-      url: e,
-      data: {
-        page: a,
-        per_page: 6,
-        category: i,
-        keyword: s,
-        grade_info: r,
-        brand_id: d,
-        filter_attr: c,
-        shop: 1,
-        sort_key: n,
-        sort_value: o
-      },
-      method: "post",
-      header: {
-        "Content-Type": "application/json",
-        "X-ECTouch-Authorization": t
-      },
-      success: function (result) {
-        let list = page.data.list;
-        for (var i = 0; i < result.data.list.length; i++) {
-          list.push(result.data.list[i]);
-        }
-        page.setData({
-          list: list
-        });
-        a++;
-        page.setData({
-          hidden: true
-        });
-      }
-    });
-  };
+let App = getApp();
 
 Page({
   data: {
-    hidden: !0,
-    scrollHeight: 0,
-    current: "0",
+    searchColor: "rgba(0,0,0,0.4)",
+    searchSize: "15",
+    searchName: "搜索商品",
+
+    scrollHeight: null,
+    showView: false,
+    arrange: "",
+
+    sortType: 'all',
+    sortPrice: true,
+
     list: [],
-    scrollTop: 0,
-    showView: !0,
-    arrange: "arrange",
-    isListData: !0,
-    hiddenCateAll: !1,
-    hiddenNum: !0,
-    hiddenPrice: !0,
-    hiddenSynthesize: !0,
-    showTop: !1,
-    showBot: !0
   },
-  onLoad: function (t) {
+
+  onLoad: function () {
     let _this = this;
-    r = t.objectId ? t.objectId : "", i = t.id ? t.id : "", s = t.content ? t.content : "",
-      d = t.brand_id ? t.brand_id : "", c = t.filter_attr ? t.filter_attr : "", _this.setData({
-        category: t.id ? t.id : ""
-      }), wx.getSystemInfo({
-        success: function (t) {
-          _this.setData({
-            scrollHeight: t.windowHeight - 90,
-            windowWidth: t.windowWidth
-          });
-        }
-      }), a = 1, h(_this), this.loadingChange();
+
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          scrollHeight: res.windowHeight - 90,
+        });
+      }
+    })
+
+    // 获取分类列表
+    this.getGoodsList();
   },
-  loadingChange: function () {
-    let t = this;
-    setTimeout(function () {
-      t.setData({
-        hidden: !0
-      });
-    }, 2e3);
+
+  /**
+   * 获取分类列表
+   */
+  getGoodsList: function () {
+    let _this = this;
+    App._get('goods/lists', {}, function (result) {
+      if (result.code === 1) {
+        _this.setData({
+          list: result.data.list,
+        });
+      } else {
+        App.showError(result.msg);
+      }
+    });
   },
+
+  /**
+   * 选中分类
+   */
+  selectNav: function (t) {
+    let curNav = t.target.dataset.id
+      , curIndex = parseInt(t.target.dataset.index);
+    this.setData({
+      curNav,
+      curIndex,
+      scrollTop: 0
+    });
+  },
+
+  /**
+   * 切换排序方式
+   */
+  switchSortType: function (e) {
+    let _this = this;
+    let sortType = e.currentTarget.dataset.type;
+    this.setData({
+      sortType,
+      sortPrice: sortType === 'price' ? !this.data.sortPrice : true
+    });
+  },
+
   /**
    * 跳转筛选
    */
   toSynthesize: function (t) {
     wx.navigateTo({
-      url: "../category/screen?objectId=" + i
+      url: "../category/screen?objectId="
     });
-  },
-  toCateAll: function (t) {
-    let e = this;
-    "list-0" == t.currentTarget.id && (a = 1, e.setData({
-      hiddenCateAll: !1,
-      hiddenSynthesize: !0,
-      hiddenNum: !0,
-      hiddenPrice: !0,
-      list: [],
-      current: t.currentTarget.dataset.index,
-      isListData: !0,
-      scrollTop: 0,
-      viewBox: !1
-    }), n = t.currentTarget.dataset.index, h(e));
-  },
-  toNum: function (t) {
-    let e = this;
-    "list-0" == t.currentTarget.id && (a = 1, e.setData({
-      hiddenCateAll: !0,
-      hiddenSynthesize: !0,
-      hiddenNum: !1,
-      hiddenPrice: !0,
-      list: [],
-      current: t.currentTarget.dataset.index,
-      isListData: !0,
-      scrollTop: 0,
-      viewBox: !1
-    }), n = t.currentTarget.dataset.index, h(e));
-  },
-  toPrice: function (t) {
-    let e = this;
-    o = "1" == o ? "0" : "1", e.setData({
-      hiddenCateAll: !0,
-      hiddenSynthesize: !0,
-      hiddenNum: !0,
-      hiddenPrice: !1,
-      showPrice: !e.data.showPrice,
-      showTop: !e.data.showTop,
-      showBot: !e.data.showBot,
-      list: [],
-      current: t.currentTarget.dataset.index,
-      isListData: !0,
-      scrollTop: 0,
-      viewBox: !1
-    }), n = t.currentTarget.dataset.index, a = 1, h(e);
   },
 
   /**
-   * 滚动到底部
+   * 切换列表显示方式
    */
-  bindDownLoad: function () {
-    console.log("到底部了"), h(this);
-  },
-  upbindDownLoad: function () {
-    console.log("到顶部了"), a = 1;
-    let t = this;
-    t.setData({
-      list: [],
-      scrollTop: 0
-    }), h(t);
-  },
-  scroll: function (t) {
-    this.setData({
-      scrollTop: t.detail.scrollTop,
-      viewBox: !0
-    });
-  },
-  topLoad: function (t) {
-    a = 1, this.setData({
-      scrollTop: 0
-    }), h(this);
-  },
   onChangeShowState: function () {
-    let t = this;
-    t.setData({
-      showView: !t.data.showView,
-      arrange: t.data.arrange ? "" : "arrange"
+    let _this = this;
+    _this.setData({
+      showView: !_this.data.showView,
+      arrange: _this.data.arrange ? "" : "arrange"
     });
-  }
+  },
+
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+  },
+
+  /**
+   * 设置分享内容
+   */
+  onShareAppMessage: function () {
+    return {
+      title: "全部分类",
+      desc: "",
+      path: "/pages/category/index"
+    };
+  },
+
 });
