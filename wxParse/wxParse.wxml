@@ -350,7 +350,7 @@
     <template is="WxEmojiView" data="{{item:item}}" wx:elif="{{item.node=='text'}}"></template>
 </template>
 <template name="wxParse">
-    <template is="wxParse0" data="{{item:item}}" wx:for="{{wxParseData}}"></template>
+    <template is="wxParse0" data="{{item:item}}" wx:for="{{wxParseData}}" wx:key="this"></template>
 </template>
 <template name="WxEmojiView">
     <view class="WxEmojiView wxParse-inline" style="{{item.styleStr}}">

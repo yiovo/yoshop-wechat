@@ -57,3 +57,9 @@
   left: 0;
   right: 0;
 }
+
+.no-more {
+  text-align: center;
+  color: #737373;
+  margin-top: 10px;
+}

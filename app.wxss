@@ -883,7 +883,7 @@ page {
 
 .widget-goTop {
   position: fixed;
-  bottom: 130rpx;
+  bottom: 150rpx;
   z-index: 20;
   right: 12px;
   background: rgba(255, 255, 255, 0.9);
@@ -904,7 +904,7 @@ page {
 .filter-menu {
   position: fixed;
   right: 12px;
-  bottom: 220rpx;
+  bottom: 250rpx;
   z-index: 10;
 }
 
@@ -2102,19 +2102,19 @@ buy_number {
 .top-nav-bar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 12px 0;
+  /* justify-content: space-around; */
+  padding: 12px;
   font-size: 31rpx;
 }
 
 #top-nav-bar-true span {
-  border-bottom: 1rpx #ff495e solid;
-  color: #ff495e;
-  padding-bottom: 12px;
+    border-bottom: 1rpx #ff495e solid;
+    color: #ff495e;
+    padding-bottom: 12px;
 }
 
 #top-nav-bar-0 span {
-  color: #444;
+    color: #444;
 }
 
 .goods-cont-li image {
@@ -2805,8 +2805,8 @@ button.submit_btn {
 }
 
 #top-nav-bar-true text {
-  border: 1rpx #ff495e solid;
-  color: #ff495e;
+   border: 1rpx #ff495e solid;
+  color: #ff495e; 
 }
 
 .invoice-box .list text {
