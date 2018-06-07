@@ -2108,13 +2108,13 @@ buy_number {
 }
 
 #top-nav-bar-true span {
-    border-bottom: 1rpx #ff495e solid;
-    color: #ff495e;
-    padding-bottom: 12px;
+  border-bottom: 1rpx #ff495e solid;
+  color: #ff495e;
+  padding-bottom: 12px;
 }
 
 #top-nav-bar-0 span {
-    color: #444;
+  color: #444;
 }
 
 .goods-cont-li image {
@@ -2622,6 +2622,10 @@ buy_number {
   border-bottom: 1rpx solid #eee;
 }
 
+.flow-all-money .flow-all-list:last-child {
+  border-bottom: none;
+}
+
 .flow-all-money .flow-all-list-cont {
   font-size: 28rpx;
   padding: 16rpx 0;
@@ -2805,8 +2809,8 @@ button.submit_btn {
 }
 
 #top-nav-bar-true text {
-   border: 1rpx #ff495e solid;
-  color: #ff495e; 
+  border: 1rpx #ff495e solid;
+  color: #ff495e;
 }
 
 .invoice-box .list text {

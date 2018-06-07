@@ -121,6 +121,19 @@ Page({
     });
   },
 
+  nav: function (e) {
+    let index = e.currentTarget.dataset.index;
+    "home" == index ? wx.switchTab({
+      url: "../index/index"
+    }) : "fenlei" == index ? wx.switchTab({
+      url: "../category/index"
+    }) : "cart" == index ? wx.switchTab({
+      url: "../flow/index"
+    }) : "profile" == index && wx.switchTab({
+      url: "../user/index"
+    });
+  },
+
   /**
    * 加入购物车and立即购买
    */
