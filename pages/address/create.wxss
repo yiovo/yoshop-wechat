@@ -140,10 +140,6 @@ picker-view-column view {
     font-size: 31rpx;
 }
 
-.f-30 {
-    font-size: 30rpx;
-}
-
 .f-28 {
     font-size: 28rpx;
 }
@@ -182,4 +178,8 @@ picker-view-column view {
 
 .m-top20 {
     margin-top: 25rpx;
+}
+
+.m-top35 {
+    margin-top: 35rpx;
 }

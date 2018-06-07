@@ -1,96 +1,74 @@
 <view class="container">
-    <view class="common-header-xian"></view>
-    <form bindreset="formReset" bindsubmit="saveData">
-        <view class="address-cont-title b-f b-b">
-            <view class="list address-box dis-box b-b">
-                <view class="left-name">
-                    <text class="admin f-30">收货人</text>
-                </view>
-                <view class="right-cont box-flex">
-                    <input name="consignee" placeholder="请输入收货人姓名" placeholderStyle="color:#999" value="{{consignee}}"></input>
-                </view>
-            </view>
-            <view class="list address-box dis-box">
-                <view class="left-name">
-                    <text class="admin f-30">手机号</text>
-                </view>
-                <view class="right-cont box-flex">
-                    <input maxlength="11" name="mobile" placeholder="请输入收货人联系电话" placeholderStyle="color:#999" type="number" value="{{mobile}}"></input>
-                </view>
-            </view>
+  <view class="common-header-xian"></view>
+  <!-- 表单 -->
+  <form bindreset="formReset" bindsubmit="saveData">
+    <view class="address-cont-title b-f b-b">
+      <view class="list address-box dis-box b-b">
+        <view class="left-name">
+          <text class="f-30">收货人</text>
         </view>
-        <view class="address-cont-title b-f b-b">
-            <view class="dis-box list address-box m-top20 b-b">
-                <view class="left-name">
-                    <text class="admin f-30">所在地区</text>
-                </view>
-                <view class="address-cont-box box-flex">
-                    <text bindtap="translate" class="infoText f-30">
-                        <block wx:if="{{province!=''&&city!=''}}">{{province}} {{city}} {{district}}</block>
-                        <text class="col-7" wx:else>选择省、市、区</text>
-                    </text>
-                </view>
-            </view>
-            <view class="dis-box list address-box ">
-                <view class="left-name">
-                    <text class="admin f-30">详细地址</text>
-                </view>
-                <view class="right-cont box-flex">
-                    <input name="address" placeholder="请输入街道小区楼层" placeholderStyle="color:#999" type="text" value="{{address}}"></input>
-                </view>
-            </view>
+        <view class="right-cont box-flex">
+          <input name="name" placeholder="请输入收货人姓名"></input>
         </view>
-        <view class="padding-box m-top20 profile-btn">
-            <button formType="submit">保存</button>
+      </view>
+      <view class="list address-box dis-box">
+        <view class="left-name">
+          <text class="f-30">手机号</text>
         </view>
-        <view class="padding-box m-top20 ">
-            <button formType="reset">取消</button>
+        <view class="right-cont box-flex">
+          <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number"></input>
         </view>
-        <view animation="{{animation}}" bindtap="hiddenFloatView" class="animation-element-wrapper" data-id="444" style="visibility:{{show?'visible':'hidden'}}">
-            <view catchtap="nono" class="animation-element">
-                <text catchtap="hiddenFloatView" class="address-text left-bt" data-id="555">取消</text>
-                <text catchtap="checkFloatView" class="address-text right-bt" data-id="666">确定</text>
-                <view class="line"></view>
-                <picker-view bindchange="bindChange" catchtap="nono" indicatorStyle="height: 50rpx;" value="{{value}}">
-                    <picker-view-column>
-                        <view wx:for="{{provinces}}" wx:for-item="sheng">
-              {{sheng.region_name}}
-            </view>
-                    </picker-view-column>
-                    <picker-view-column>
-                        <view wx:for="{{citys}}">
-              {{item.region_name}}
-            </view>
-                    </picker-view-column>
-                    <picker-view-column>
-                        <view wx:for="{{districts}}">
-              {{item.region_name}}
-            </view>
-                    </picker-view-column>
-                </picker-view>
-            </view>
-        </view>
-        <view class="bargain-commont-bg bright789_view_hide{{showViewMol?'bright789_view_show':''}}"></view>
-    </form>
-    <view class="filter-menu {{nav_select?'active':''}}">
-        <view class="filter-menu-list ts-5">
-            <custom-ul>
-                <custom-li bindtap="nav" data-index="home">
-                    <text class="iconfont icon-home"></text>
-                </custom-li>
-                <custom-li bindtap="nav" data-index="fenlei">
-                    <text class="iconfont icon-fenlei"></text>
-                </custom-li>
-                <custom-li bindtap="nav" data-index="cart">
-                    <text class="iconfont icon-cart"></text>
-                </custom-li>
-                <custom-li bindtap="nav" data-index="profile">
-                    <text class="iconfont icon-profile"></text>
-                </custom-li>
-                <custom-li class="w"></custom-li>
-            </custom-ul>
-        </view>
-        <view bindtap="commonNav" class="filter-menu-title"></view>
+      </view>
     </view>
+    <view class="address-cont-title b-f b-b">
+      <view class="dis-box list address-box m-top20 b-b">
+        <view class="left-name">
+          <text class="f-30">所在地区</text>
+        </view>
+        <view class="address-cont-box box-flex">
+          <picker mode="region" bindchange="bindRegionChange">
+            <text wx:if="{{region}}" class="f-30">{{region}}</text>
+            <text wx:else class="f-30 col-7">选择省、市、区</text>
+          </picker>
+        </view>
+      </view>
+      <view class="dis-box list address-box ">
+        <view class="left-name">
+          <text class="f-30">详细地址</text>
+        </view>
+        <view class="right-cont box-flex">
+          <input name="detail" placeholder="请输入街道小区楼层" type="text"></input>
+        </view>
+      </view>
+    </view>
+    <view class="padding-box m-top35 profile-btn">
+      <button formType="submit" disabled="{{disabled}}">保存</button>
+    </view>
+    <!-- <view class="padding-box m-top20 ">
+      <button formType="reset">取消</button>
+    </view> -->
+
+  </form>
+
+  <!-- 快捷导航 -->
+  <view class="filter-menu {{nav_select?'active':''}}">
+    <view class="filter-menu-list ts-5">
+      <custom-ul>
+        <custom-li bindtap="nav" data-index="home">
+          <text class="iconfont icon-home"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="fenlei">
+          <text class="iconfont icon-fenlei"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="cart">
+          <text class="iconfont icon-cart"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="profile">
+          <text class="iconfont icon-profile"></text>
+        </custom-li>
+        <custom-li class="w"></custom-li>
+      </custom-ul>
+    </view>
+    <view bindtap="commonNav" class="filter-menu-title"></view>
+  </view>
 </view>
-<loading hidden="{{hidden}}">加载中…</loading>

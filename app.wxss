@@ -3477,6 +3477,11 @@ button.submit_btn {
   color: white;
 }
 
+.profile-btn button[disabled] {
+  background: #f16474;
+   color: white;
+}
+
 .product_screen_header {
   width: 100%;
   height: 40px;

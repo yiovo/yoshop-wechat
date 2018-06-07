@@ -1,6 +1,6 @@
 <view class="container p-bottom">
   <!-- 配送地址 -->
-  <navigator hover-class="navigator-hover" url="{{addresss_link}}">
+  <view catchtap="selectAddress">
     <view wx:if="{{addresss}}">
       <view class="b-f">
         <view class="flow-checkout-header dis-box">
@@ -30,7 +30,7 @@
         </view>
       </view>
     </view>
-  </navigator>
+  </view>
 
   <!-- 商品列表 -->
   <view class="m-top20">
@@ -64,7 +64,7 @@
         <text class="col-m">￥{{order_total_price}}</text>
       </view>
     </view>
-     <view class="dis-flex flow-all-list">
+    <view class="dis-flex flow-all-list">
       <text class="flex-five">配送费用:</text>
       <view class="flex-five t-r">
         <text class="col-m" wx:if="{{addresss}}">+￥{{order_total_price}}</text>

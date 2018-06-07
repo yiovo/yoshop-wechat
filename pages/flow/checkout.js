@@ -6,12 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addresss_link: "../address/index?from=flow",    // 添加配送地址
     nav_select: false,    // 快捷导航
     options: {},    // 当前页面参数
     address: {},    // 收货地址
     goods: {},      // 商品信息
-
   },
 
   /**
@@ -20,14 +18,14 @@ Page({
   onLoad: function (options) {
     // 当前页面参数
     this.data.options = options;
-    this.getOrderData();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 获取当前订单信息
+    this.getOrderData();
   },
 
   /**
@@ -36,7 +34,6 @@ Page({
   getOrderData: function () {
     let _this = this
       , options = _this.data.options;
-
     // 立即购买
     if (options.order_type === 'buyNow') {
       App._get('order/buyNow', {
@@ -44,17 +41,22 @@ Page({
         goods_num: options.goods_num
       }, function (result) {
         if (result.code === 1) {
-            _this.setData(result.data);
+          _this.setData(result.data);
         } else {
           App.showError(result.msg);
         }
       });
     }
-
-
-
   },
 
+  /**
+   * 选择收货地址
+   */
+  selectAddress: function () {
+    wx.navigateTo({
+      url: this.data.address ? '../address/index?from=flow' : '../address/create'
+    });
+  },
 
   /**
    * 快捷导航 显示/隐藏

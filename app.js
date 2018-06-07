@@ -4,7 +4,6 @@ App({
    * 全局变量
    */
   globalData: {
-    // userInfo: null,
     user_id: null,
   },
 
@@ -133,11 +132,9 @@ App({
       content: msg,
       showCancel: false,
       success: function (res) {
-        if (callback) {
-          setTimeout(function () {
-            callback();
-          }, 1500);
-        }
+        callback && (setTimeout(function () {
+          callback();
+        }, 1500));
       }
     });
   },
