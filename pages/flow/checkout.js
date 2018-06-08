@@ -8,7 +8,8 @@ Page({
   data: {
     nav_select: false,    // 快捷导航
     options: {},    // 当前页面参数
-    address: {},    // 收货地址
+    address: {},    // 默认收货地址
+    exist_address: false,   // 是否存在收货地址
     goods: {},      // 商品信息
   },
 
@@ -54,7 +55,7 @@ Page({
    */
   selectAddress: function () {
     wx.navigateTo({
-      url: this.data.address ? '../address/index?from=flow' : '../address/create'
+      url: '../address/' + (this.data.exist_address ? 'index?from=flow' : 'create')
     });
   },
 

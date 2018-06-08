@@ -22,7 +22,7 @@
       <view class="flow-checkout-header dis-box">
         <text class="iconfont icon-dingwei1"></text>
         <view class="flow-header-left">
-          <view class="f-28 col-6">去添加配送地址
+          <view class="f-28 col-6">去选择配送地址
           </view>
         </view>
         <view class="flow-header-right no-flow p-r15">
@@ -67,7 +67,7 @@
     <view class="dis-flex flow-all-list">
       <text class="flex-five">配送费用:</text>
       <view class="flex-five t-r">
-        <text class="col-m" wx:if="{{addresss}}">+￥{{order_total_price}}</text>
+        <text class="col-m" wx:if="{{address.address_id}}">+￥{{order_total_price}}</text>
         <text class="col-7" wx:else>请先选择配送地址</text>
       </view>
     </view>

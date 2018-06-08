@@ -6,6 +6,11 @@ Page({
     default_id: null,
   },
 
+  onLoad: function (options) {
+    // 当前页面参数
+    this.data.options = options;
+  },
+
   onShow: function () {
     // 获取收货地址列表
     this.getAddressList();
@@ -16,10 +21,8 @@ Page({
    */
   getAddressList: function () {
     let _this = this;
-
     App._get('address/lists', {}, function (result) {
       if (result.code === 1) {
-        console.log(result.data);
         _this.setData(result.data);
       } else {
         App.showError(result.msg);
@@ -72,7 +75,9 @@ Page({
       address_id = e.detail.value;
     App._post_form('address/setDefault', { address_id }, function (result) {
       if (result.code === 1) {
-        // _this.getAddressList();
+        if (_this.data.options.from === 'flow') {
+          wx.navigateBack();
+        }
       } else {
         App.showError(result.msg);
       }
