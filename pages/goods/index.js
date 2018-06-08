@@ -26,16 +26,18 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    _this.data.goods_id = options.objectId;
-    _this.getGoodsDetail(options.objectId);
+    // 商品id
+    _this.data.goods_id = options.goods_id;
+    // 获取商品信息
+    _this.getGoodsDetail();
   },
 
   /**
    * 获取商品信息
    */
-  getGoodsDetail: function (goods_id) {
+  getGoodsDetail: function () {
     let _this = this;
-    App._get('goods/detail', { goods_id: 10072 }, function (result) {
+    App._get('goods/detail', { goods_id: _this.data.goods_id }, function (result) {
       if (result.code === 1) {
         wxParse.wxParse("content", "html", result.data.detail.content, _this, 0)
         _this.setData({
@@ -142,8 +144,19 @@ Page({
       , submitType = e.currentTarget.dataset.type;
 
     if (submitType === 'bugNow') {
-      wx.redirectTo({
+
+
+console.log(
+  '../flow/checkout?' + App.urlEncode({
+    order_type:'buyNow',
+    goods_id: _this.data.goods_id,
+    goods_num: _this.data.goods_num
+  })
+);
+
+      wx.navigateTo({
         url: '../flow/checkout?' + App.urlEncode({
+          order_type: 'buyNow',
           goods_id: _this.data.goods_id,
           goods_num: _this.data.goods_num
         })
