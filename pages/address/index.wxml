@@ -7,7 +7,9 @@
           <view class="flow-checkout-admin">{{item.name}}
             <text>{{item.phone}}</text>
           </view>
-          <view class="flow-checkout-address">{{item.detail}}</view>
+          <view class="flow-checkout-address">
+            {{item.region.province}} {{item.region.city}} {{item.region.region}} {{item.detail}}
+          </view>
         </view>
       </view>
       <view class="address-list dis-flex b-f">

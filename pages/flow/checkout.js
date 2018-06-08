@@ -7,10 +7,13 @@ Page({
    */
   data: {
     nav_select: false,    // 快捷导航
-    options: {},    // 当前页面参数
-    address: {},    // 默认收货地址
-    exist_address: false,   // 是否存在收货地址
-    goods: {},      // 商品信息
+    options: {},          // 当前页面参数
+    address: {},          // 默认收货地址
+    exist_address: false, // 是否存在收货地址
+    goods: {},            // 商品信息
+
+    disabled: false,
+    error: '',
   },
 
   /**
@@ -41,11 +44,17 @@ Page({
         goods_id: options.goods_id,
         goods_num: options.goods_num
       }, function (result) {
-        if (result.code === 1) {
-          _this.setData(result.data);
-        } else {
+        if (result.code !== 1) {
           App.showError(result.msg);
+          return false;
         }
+        // 收货地址不在配送范围内
+        if (!result.data.intra_region) {
+          _this.data.disabled = true;
+          _this.data.error = result.data.intra_region_error;
+          App.showError(_this.data.error);
+        }
+        _this.setData(result.data);
       });
     }
   },
@@ -57,6 +66,17 @@ Page({
     wx.navigateTo({
       url: '../address/' + (this.data.exist_address ? 'index?from=flow' : 'create')
     });
+  },
+
+  /**
+   * 订单提交
+   */
+  submitOrder: function () {
+    let _this = this;
+    if (_this.data.disabled) {
+      App.showError(_this.data.error);
+      return false;
+    }
   },
 
   /**

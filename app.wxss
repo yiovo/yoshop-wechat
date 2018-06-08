@@ -9,7 +9,7 @@
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  /* font-size: 16px; */
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2494,7 +2494,7 @@ buy_number {
 }
 
 .flow-checkout-header .flow-checkout-admin text {
-  padding: 0 10rpx;
+  /* padding: 0 10rpx; */
 }
 
 .flow-checkout-header .flow-checkout-address {

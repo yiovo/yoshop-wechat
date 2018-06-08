@@ -6,11 +6,14 @@
         <view class="flow-checkout-header dis-box">
           <text class="iconfont icon-dingwei1"></text>
           <view class="flow-header-left">
-            <view class="flow-checkout-admin f-30 col-3">{{address.name}}
+            <view class="flow-checkout-admin f-30 col-3">
+              <text>{{address.name}}</text>
               <text>{{address.phone}}</text>
               <text class="col-m"></text>
             </view>
-            <view class="flow-checkout-address">{{address.detail}}</view>
+            <view class="flow-checkout-address">
+              {{address.region.province}} {{address.region.city}} {{address.region.region}} {{address.detail}}
+            </view>
           </view>
           <view class="flow-header-right pr-12">
             <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
@@ -38,20 +41,21 @@
       <navigator url="../goods/index?objectId={{item.goods_id}}">
         <view class="dis-flex flow-shopList" data-index="{{index}}">
           <view class="flow-list-left">
-            <image mode="aspectFit" src="{{item.image[0].file.file_name.file_path}}"></image>
+            <image mode="scaleToFill" src="{{item.image[0].file.file_name.file_path}}"></image>
           </view>
           <view class="flow-list-right box-flex">
             <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
             <text class="f-26 col-7">{{item.goods_attr}}</text>
             <view class="flow-list-cont">
               <text class="flow-cont">{{item.goods_price}}</text>
-              <text class="small">×{{item.goods_buy_num}}</text>
+              <text class="small">×{{item.total_num}}</text>
             </view>
           </view>
         </view>
       </navigator>
     </view>
-    <view class="flow-num-box b-f"> 共{{order_total_num}}件商品，合计：
+    <view class="flow-num-box b-f">
+      <text>共{{order_total_num}}件商品，合计：</text>
       <text class="flow-money col-m">￥{{order_total_price}}</text>
     </view>
   </view>
@@ -67,8 +71,13 @@
     <view class="dis-flex flow-all-list">
       <text class="flex-five">配送费用:</text>
       <view class="flex-five t-r">
-        <text class="col-m" wx:if="{{address.address_id}}">+￥{{order_total_price}}</text>
-        <text class="col-7" wx:else>请先选择配送地址</text>
+        <view wx:if="{{address.address_id}}">
+          <text class="col-m" wx:if="{{intra_region}}">+￥{{delivery_fee}}</text>
+          <text wx:else>不在配送范围</text>
+        </view>
+        <view wx:else>
+          <text class="col-7">请先选择配送地址</text>
+        </view>
       </view>
     </view>
   </view>
@@ -77,7 +86,7 @@
   <view class="flow-fixed-footer b-f m-top10">
     <view class="dis-flex chackout-box">
       <view class=" chackout-left pl-12 ">实付款：
-        <text class="col-m">￥{{order_total_price}}</text>
+        <text class="col-m">￥{{order_pay_price}}</text>
       </view>
       <view bindtap="submitOrder" class=" chackout-right">
         <text class="flow-btn">提交订单</text>
