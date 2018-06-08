@@ -1,16 +1,16 @@
 <view class="container p-bottom">
   <!-- 配送地址 -->
   <view catchtap="selectAddress">
-    <view wx:if="{{addresss}}">
+    <view wx:if="{{address.address_id}}">
       <view class="b-f">
         <view class="flow-checkout-header dis-box">
           <text class="iconfont icon-dingwei1"></text>
           <view class="flow-header-left">
-            <view class="flow-checkout-admin f-30 col-3">{{addresss.consignee}}
-              <text>{{addresss.mobile}}</text>
+            <view class="flow-checkout-admin f-30 col-3">{{address.name}}
+              <text>{{address.phone}}</text>
               <text class="col-m"></text>
             </view>
-            <view class="flow-checkout-address">{{addresss.address}}</view>
+            <view class="flow-checkout-address">{{address.detail}}</view>
           </view>
           <view class="flow-header-right pr-12">
             <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>

@@ -1,238 +1,140 @@
-function i(i, t, e) {
-    i.animation = wx.createAnimation({
-        transformOrigin: "50% 50%",
-        duration: 400,
-        timingFunction: "ease",
-        delay: 0
-    }), i.animation.translateY(t + "vh").step(), i.setData({
-        animation: i.animation.export(),
-        show: e
-    });
-}
-
-function t(i) {
-    let t;
-    f = [];
-    for (let e = 0, a = 0; a < m.length; a++) 0 == (t = m[a]).city_id && 0 == t.district_id && (f[e] = t,
-    e++);
-    i.setData({
-        provinces: f
-    });
-}
-
-function e(i, t) {
-    let e;
-    w = [];
-    for (let a = 0, n = 0; n < m.length; n++) 0 == (e = m[n]).district_id && e.province_id == f[i].province_id && 0 != e.city_id && (w[a] = e,
-    a++);
-    0 == w.length && (w[0] = {
-        name: ""
-    }), t.setData({
-        citys: w
-    });
-}
-
-function a(i, t, e) {
-    let a;
-    y = [];
-    for (let n = 0, r = 0; r < m.length; r++) 0 != (a = m[r]).district_id && a.province_id == f[i].province_id && a.city_id == w[t].city_id && (y[n] = a,
-    n++);
-    0 == y.length && (y[0] = {
-        name: ""
-    }), e.setData({
-        districts: y
-    });
-}
-
-let n, r, o, d, s, c, g, v, _, l, h, u, p = getApp(), m = [], f = [], w = [], y = [], D = [ 0, 0, 0 ], x = 0, S = !1, b = 200;
+let App = getApp();
 
 Page({
-    data: {
-        show: S,
-        province: f,
-        city: w,
-        district: y,
-        province_id: f,
-        city_id: w,
-        district_id: y,
-        value: [ 0, 0, 0 ]
-    },
-    onLoad: function(i) {
-        let s = this;
-        wx.getStorageSync("token");
-        u = wx.getStorageSync("addressData");
-        let c = wx.getStorageSync("regions");
-        if (n = i.objectId, "" != m) s.addressData(); else {
-            for (let g = c[0].regions, v = [], _ = [], l = 0; l < g.length; l++) {
-                v = g[l].region_name;
-                let h = {
-                    province_id: _ = g[l].region_id,
-                    city_id: 0,
-                    district_id: 0,
-                    region_name: v,
-                    region_id: _
-                };
-                m.push(h);
-                for (let p, f = g[l].regions, w = [], y = 0; y < f.length; y++) {
-                    let D = {
-                        province_id: _,
-                        city_id: y + 1,
-                        district_id: 0,
-                        region_name: w = f[y].region_name,
-                        region_id: p = f[y].region_id
-                    };
-                    m.push(D);
-                    for (let x, b = [], V = f[y].regions, M = 0; M < V.length; M++) {
-                        let k = {
-                            province_id: _,
-                            city_id: y + 1,
-                            district_id: M + 1,
-                            region_name: b = V[M].region_name,
-                            region_id: x = V[M].region_id
-                        };
-                        m.push(k);
-                    }
-                }
-            }
-            t(s);
-            let _ = u.province, T = u.city, A = u.district;
-            r = 0, o = 0, d = 0;
-            for (let C = 0; C < s.data.provinces.length; C++) s.data.provinces[C].province_id == _ && (r = C);
-            e(r, s);
-            for (let F = 0; F < s.data.citys.length; F++) s.data.citys[F].region_id == T && (o = F);
-            a(r, o, s);
-            for (let P = 0; P < s.data.districts.length; P++) s.data.districts[P].region_id == A && (d = P);
-            s.setData({
-                value: [ r, o, d ]
-            }), s.setData({
-                consignee: u.consignee,
-                mobile: u.full_mobile,
-                address: u.full_address,
-                province: u.province_name,
-                city: u.city_name,
-                district: u.district_name,
-                province_id: u.province,
-                city_id: u.city,
-                district_id: u.district
-            });
-        }
-        s.animation = wx.createAnimation({
-            transformOrigin: "50% 50%",
-            duration: 0,
-            timingFunction: "ease",
-            delay: 0
-        }), s.animation.translateY("200vh").step(), s.setData({
-            animation: s.animation.export(),
-            show: S
-        }), s.loadingChange();
-    },
-    loadingChange: function() {
-        let i = this;
-        setTimeout(function() {
-            i.setData({
-                hidden: !0
-            });
-        }, 2e3);
-    },
-    addressData: function() {
-        let i = this;
-        wx.getStorageSync("token");
-        u = wx.getStorageSync("addressData");
-        wx.getStorageSync("regions");
-        t(i);
-        let n = u.province, s = u.city, c = u.district;
-        r = 0, o = 0, d = 0;
-        for (let g = 0; g < i.data.provinces.length; g++) i.data.provinces[g].province_id == n && (r = g);
-        e(r, i);
-        for (let v = 0; v < i.data.citys.length; v++) i.data.citys[v].region_id == s && (o = v);
-        a(r, o, i);
-        for (let _ = 0; _ < i.data.districts.length; _++) i.data.districts[_].region_id == c && (d = _);
-        i.setData({
-            value: [ r, o, d ]
-        }), i.setData({
-            consignee: u.consignee,
-            mobile: u.full_mobile,
-            address: u.full_address,
-            province: u.province_name,
-            city: u.city_name,
-            district: u.district_name,
-            province_id: u.province,
-            city_id: u.city,
-            district_id: u.district
-        });
-    },
-    bindChange: function(i) {
-        let t = i.detail.value;
-        D[0] != t[0] ? (t[1] = 0, t[2] = 0, e(t[0], this), a(t[0], t[1], this)) : D[1] != t[1] && (t[2] = 0,
-        a(t[0], t[1], this)), D = t, s = [ t[0], t[1], t[2] ], c = f[t[0]].region_name,
-        g = w[t[1]].region_name, v = y[t[2]].region_name, _ = f[t[0]].region_id, l = w[t[1]].region_id,
-        h = y[t[2]].region_id, this.setData({
-            value: [ t[0], t[1], t[2] ]
-        });
-    },
-    checkFloatView: function(t) {
-        let e = this;
-        x = 0, i(this, b = 200, S = !0), this.setData({
-            value: s,
-            province: void 0 == c ? "" : c,
-            city: void 0 == g ? "" : g,
-            district: void 0 == v ? "" : v,
-            province_id: void 0 == _ ? "0" : _,
-            city_id: void 0 == l ? "0" : l,
-            district_id: void 0 == h ? "0" : h,
-            showViewMol: !e.data.showViewMol
-        });
-    },
-    hiddenFloatView: function(t) {
-        let e = this;
-        x = 0, i(this, b = 200, S = !0), e.setData({
-            showViewMol: !e.data.showViewMol
-        });
-    },
-    translate: function(t) {
-        let e = this;
-        0 == x ? (b = 0, S = !1, x = 1) : (b = 200, S = !0, x = 0), i(this, b, S), e.setData({
-            showViewMol: !e.data.showViewMol
-        });
-    },
-    saveData: function(i) {
-        let t = this, e = wx.getStorageSync("token"), a = i.detail.value, n = {
-            name: a.consignee,
-            region: t.data.district_id,
-            mobile: a.mobile,
-            tel: "",
-            zip_code: "",
-            address: a.address,
-            consignee: u.address_id
-        };
-        wx.request({
-            url: p.apiUrl("ecapi.consignee.update"),
-            method: "post",
-            header: {
-                "X-ECTouch-Authorization": e
-            },
-            data: n,
-            success: function(i) {
-                i.data;
-                0 != i.data.error_code ? wx.showToast({
-                    title: "更新失败",
-                    image: "../../images/failure.png",
-                    duration: 2e3
-                }) : wx.showToast({
-                    title: "保存成功",
-                    duration: 2e3,
-                    success: function() {
-                        wx.navigateBack({
-                            delta: 1
-                        }), wx.redirectTo({
-                            url: "./index"
-                        });
-                    }
-                });
-            }
-        });
-    },
-    onPullDownRefresh: function() {
-        wx.stopPullDownRefresh();
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    disabled: false,
+    nav_select: false,    // 快捷导航
+    region: '',
+    detail: {},
+
+    error: '',
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // 获取当前地址信息
+    this.getAddressDetail(options.address_id);
+  },
+
+  /**
+   * 获取当前地址信息
+   */
+  getAddressDetail: function (address_id) {
+    let _this = this;
+    App._get('address/detail', { address_id }, function (result) {
+      if (result.code === 1) {
+        _this.setData(result.data);
+      } else {
+        App.showError(result.msg);
+      }
+    });
+  },
+
+  /**
+   * 表单提交
+   */
+  saveData: function (e) {
+    let _this = this
+      , values = e.detail.value
+    values.region = this.data.region;
+
+    // 表单验证
+    if (!_this.validation(values)) {
+      App.showError(_this.data.error);
+      return false;
     }
-});
+
+    // 按钮禁用
+    _this.setData({ disabled: true });
+
+    // 提交到后端
+    values.address_id = _this.data.detail.address_id;
+    App._post_form('address/edit', values, function (result) {
+      if (result.code === 1) {
+        App.showSuccess(result.msg, function () {
+          wx.navigateBack();
+        });
+      } else {
+        App.showError(result.msg);
+      }
+      // 解除禁用
+      _this.setData({ disabled: false });
+    });
+  },
+
+  /**
+   * 表单验证
+   */
+  validation: function (values) {
+    if (values.name === '') {
+      this.data.error = '收件人不能为空';
+      return false;
+    }
+    if (values.phone.length < 1) {
+      this.data.error = '手机号不能为空';
+      return false;
+    }
+    if (values.phone.length !== 11) {
+      this.data.error = '手机号长度有误';
+      return false;
+    }
+    let reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    if (!reg.test(values.phone)) {
+      this.data.error = '手机号不符合要求';
+      return false;
+    }
+    if (!this.data.region) {
+      this.data.error = '省市区不能空';
+      return false;
+    }
+    if (values.detail === '') {
+      this.data.error = '详细地址不能为空';
+      return false;
+    }
+    return true;
+  },
+
+  /**
+   * 修改地区
+   */
+  bindRegionChange: function (e) {
+    this.setData({
+      region: e.detail.value
+    })
+  },
+
+
+  /**
+   * 快捷导航 显示/隐藏
+   */
+  commonNav: function () {
+    this.setData({
+      nav_select: !this.data.nav_select
+    });
+  },
+
+  /**
+   * 快捷导航跳转
+   */
+  nav: function (e) {
+    let url = '';
+    switch (e.currentTarget.dataset.index) {
+      case 'home':
+        url = '../index/index'; break;
+      case 'fenlei':
+        url = '../category/index'; break;
+      case 'cart':
+        url = '../flow/index'; break;
+      case 'profile':
+        url = '../user/index'; break;
+    }
+    wx.switchTab({ url });
+  },
+
+})

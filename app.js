@@ -114,11 +114,9 @@ App({
       title: msg,
       icon: 'success',
       success: function () {
-        if (callback) {
-          setTimeout(function () {
-            callback();
-          }, 1500);
-        }
+        callback && (setTimeout(function () {
+          callback();
+        }, 1500));
       }
     });
   },

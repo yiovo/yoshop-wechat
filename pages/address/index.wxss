@@ -1,107 +1,107 @@
 .address-list {
-    border-bottom: 1px solid #f6f6f9;
+  border-bottom: 1px solid #f6f6f9;
 }
 
 .address-list .list {
-    padding: 15rpx;
+  padding: 15rpx;
 }
 
 .address-list .list .title {
-    font-size: 28rpx;
-    padding: 0 24rpx 0 6rpx;
-    color: #666;
+  font-size: 30rpx;
+  padding: 0 24rpx 0 6rpx;
+  color: #666;
 }
 
 .address-list .list .cont {
-    font-size: 30rpx;
-    color: #333;
+  font-size: 30rpx;
+  color: #333;
 }
 
 .address-list .list navigator {
-    display: inline-block;
+  display: inline-block;
 }
 
 .address-list .list image {
-    width: 28rpx;
-    height: 28rpx;
+  width: 28rpx;
+  height: 28rpx;
 }
 
 .address-left {
-    flex: 6;
+  flex: 6;
 }
 
 .address-right {
-    flex: 3.2;
+  flex: 3.2;
 }
 
 .address-right .iconfont {
-    color: #777;
-    font-size: 30rpx;
+  color: #777;
+  font-size: 30rpx;
 }
 
 .flow-fixed-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #f42424;
-    z-index: 4999;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f42424;
+  z-index: 4999;
 }
 
 .flow-fixed-footer .chackout-left {
-    font-size: 32rpx;
-    line-height: 44px;
-    color: #777;
+  font-size: 32rpx;
+  line-height: 44px;
+  color: #777;
 }
 
 .flow-fixed-footer .chackout-right {
-    font-size: 34rpx;
+  font-size: 34rpx;
 }
 
 .flow-btn {
-    background-color: #ff495e;
-    color: #fff;
-    text-align: center;
-    line-height: 44px;
-    display: block;
+  background-color: #ff495e;
+  color: #fff;
+  text-align: center;
+  line-height: 44px;
+  display: block;
 }
 
 .address-header {
-    padding: 28rpx 0;
-    border-bottom: 1px solid #f6f6f9;
-    background-size: 120rpx auto;
-    font-size: 1.7rem;
+  padding: 28rpx 0;
+  border-bottom: 1px solid #f6f6f9;
+  background-size: 120rpx auto;
+  font-size: 1.7rem;
 }
 
 .flow-header-left {
-    flex: 14;
+  flex: 14;
 }
 
 .flow-header-right {
-    flex: 1;
+  flex: 1;
 }
 
 .flow-header-right image {
-    width: 34rpx;
-    height: 34rpx;
-    margin-top: 20rpx;
-    float: right;
+  width: 34rpx;
+  height: 34rpx;
+  margin-top: 20rpx;
+  float: right;
 }
 
 .address-header .flow-checkout-admin {
-    font-size: 34rpx;
-    color: #444;
+  font-size: 34rpx;
+  color: #444;
 }
 
 .address-header .flow-checkout-admin text {
-    padding: 0 10rpx;
+  padding: 0 10rpx;
 }
 
 .address-header .flow-checkout-address {
-    font-size: 26rpx;
-    color: #777;
-    margin-top: 6rpx;
+  font-size: 26rpx;
+  color: #777;
+  margin-top: 6rpx;
 }
 
 .radio-group raido {
-    color: #f42424;
+  color: #f42424;
 }
