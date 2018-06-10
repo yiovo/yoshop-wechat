@@ -96,17 +96,28 @@ Page({
   },
 
   /**
+   * 购物车结算
+   */
+  submit: function (t) {
+    wx.navigateTo({
+      url: '../flow/checkout?order_type=cart'
+    });
+  },
+
+  /**
    * 加法
    */
-  mathadd: function (a, b) {
-    return (((parseFloat(a) * 100) + (parseFloat(b) * 100)) / 100).toFixed(2);
+  mathadd: function (arg1, arg2) {
+    // return (((parseFloat(a) * 100) + (parseFloat(b) * 100)) / 100).toFixed(2);
+    return (Number(arg1) + Number(arg2)).toFixed(2);
   },
 
   /**
    * 减法
    */
-  mathsub: function (a, b) {
-    return (((parseFloat(a) * 100) - (parseFloat(b) * 100)) / 100).toFixed(2);
+  mathsub: function (arg1, arg2) {
+    // return (((parseFloat(a) * 100) - (parseFloat(b) * 100)) / 100).toFixed(2);
+    return (Number(arg1) - Number(arg2)).toFixed(2);
   },
 
 })

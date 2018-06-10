@@ -8,7 +8,8 @@ Page({
   data: {
     nav_select: false,    // 快捷导航
     options: {},          // 当前页面参数
-    address: {},          // 默认收货地址
+
+    address: null,        // 默认收货地址
     exist_address: false, // 是否存在收货地址
     goods: {},            // 商品信息
 
@@ -38,25 +39,40 @@ Page({
   getOrderData: function () {
     let _this = this
       , options = _this.data.options;
+
+    // 获取订单信息回调方法
+    let callback = function (result) {
+      if (result.code !== 1) {
+        App.showError(result.msg);
+        return false;
+      }
+
+      // 收货地址不在配送范围内
+      if (result.data.address !== null && !result.data.intra_region) {
+        _this.data.disabled = true;
+        _this.data.error = result.data.intra_region_error;
+        App.showError(_this.data.error);
+      }
+      _this.setData(result.data);
+    };
+
     // 立即购买
     if (options.order_type === 'buyNow') {
       App._get('order/buyNow', {
         goods_id: options.goods_id,
         goods_num: options.goods_num
       }, function (result) {
-        if (result.code !== 1) {
-          App.showError(result.msg);
-          return false;
-        }
-        // 收货地址不在配送范围内
-        if (!result.data.intra_region) {
-          _this.data.disabled = true;
-          _this.data.error = result.data.intra_region_error;
-          App.showError(_this.data.error);
-        }
-        _this.setData(result.data);
+        callback(result);
       });
     }
+
+    // 购物车结算
+    else if (options.order_type === 'cart') {
+      App._get('order/cart', {}, function (result) {
+        callback(result);
+      });
+    }
+
   },
 
   /**
@@ -80,17 +96,28 @@ Page({
       return false;
     }
 
-    // 订单提交
-    App._post_form('order/buyNow', {
-      goods_id: options.goods_id,
-      goods_num: options.goods_num
-    }, function (result) {
-      if (result.code === 1) {
-        
-      } else {
-        App.showError(result.msg);
-      }
-    });
+    let callback = function (result) {
+      console.log(result  );
+    };
+
+
+    // 创建订单-立即购买
+    if (options.order_type === 'buyNow') {
+      App._post_form('order/buyNow', {
+        goods_id: options.goods_id,
+        goods_num: options.goods_num
+      }, function (result) {
+        callback(result);
+      });
+    }
+
+    // 创建订单-购物车结算
+    else if (options.order_type === 'cart') {
+      App._post_form('order/cart', {}, function (result) {
+        callback(result);
+      });
+    }
+
 
   },
 

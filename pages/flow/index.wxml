@@ -38,7 +38,7 @@
           <text class="cart-item-total-price h4">合计：￥{{order_total_price}}</text>
         </view>
         <view class="cart-tab-item">
-          <view bindtap="flowCheckoutBtn" class="cart-tab-item-btn h4">去结算</view>
+          <view bindtap="submit" class="cart-tab-item-btn h4">去结算</view>
         </view>
       </view>
     </view>
