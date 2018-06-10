@@ -108,7 +108,6 @@ Page({
    * 加法
    */
   mathadd: function (arg1, arg2) {
-    // return (((parseFloat(a) * 100) + (parseFloat(b) * 100)) / 100).toFixed(2);
     return (Number(arg1) + Number(arg2)).toFixed(2);
   },
 
@@ -116,7 +115,6 @@ Page({
    * 减法
    */
   mathsub: function (arg1, arg2) {
-    // return (((parseFloat(a) * 100) - (parseFloat(b) * 100)) / 100).toFixed(2);
     return (Number(arg1) - Number(arg2)).toFixed(2);
   },
 
