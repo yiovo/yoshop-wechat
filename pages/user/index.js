@@ -75,18 +75,9 @@ Page({
                     recommend: n.data
                 });
             }
-        }), this.loadingChange();
+        });
     },
-    loadingChange: function() {
-        let e = this;
-        this.setData({
-            hidden: !1
-        }), setTimeout(function() {
-            e.setData({
-                hidden: !0
-            });
-        }, 2e3);
-    },
+   
     siteDetail: function(e) {
         let n = this, t = e.currentTarget.dataset.index, a = n.data.recommend[t].goods_id;
         wx.navigateTo({
