@@ -119,8 +119,8 @@
       </view>
       <view bindtap="flowCart" class="goods-fixed-icon">
         <image class="flow-img" src="../../images/flow.png"></image>
-        <view class="flow_num" wx:if="{{flowNum>0}}">
-          <text>{{flowNum}}</text>
+        <view class="flow_num" wx:if="{{cart_total_num > 0}}">
+          <text>{{cart_total_num}}</text>
         </view>
       </view>
       <block wx:if="{{detail.spec[0].stock_num > 0}}">

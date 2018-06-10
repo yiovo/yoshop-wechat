@@ -1,166 +1,94 @@
-let t, o = getApp();
+let App = getApp();
 
 Page({
-    data: {
-        items: [],
-        startX: 0,
-        startY: 0,
-        toView: "blue",
-        selectedMenuId: 1,
-        total: {
-            count: 0,
-            money: 0
-        }
-    },
-    flowCheckoutBtn: function(t) {
-        let e = wx.getStorageSync("token");
-        wx.setStorageSync("flowcheckout", {
-            from: "checkout"
-        }), wx.request({
-            url: o.apiUrl("ecapi.consignee.list"),
-            method: "POST",
-            header: {
-                "Content-Type": "application/json",
-                "X-ECTouch-Authorization": e
-            },
-            success: function(t) {
-                "" != t.data.consignees ? wx.navigateTo({
-                    url: "../flow/checkout"
-                }) : wx.showModal({
-                    title: "提示",
-                    content: "您还没有地址去填地址？",
-                    success: function(t) {
-                        t.confirm ? wx.navigateTo({
-                            url: "../address/create"
-                        }) : t.cancel;
-                    }
-                });
-            }
-        });
-    },
-    getCartGoods: function(e) {
-        wx.request({
-            url: o.apiUrl("ecapi.cart.get"),
-            method: "POST",
-            header: {
-                "Content-Type": "application/json",
-                "X-ECTouch-Authorization": t
-            },
-            success: function(t) {
-                let o, a = "";
-                for (let n in t.data.goods_groups.goods) {
-                    o = t.data.goods_groups.goods[n].goods_attr.split("\n"), a = "";
-                    for (let s in o) "" != o[s] && (a += o[s] + ",");
-                    t.data.goods_groups.goods[n].goods_attr = a.substring(0, a.length - 1);
-                }
-                "" == t.data.goods_groups ? e.setData({
-                    flowLists: {
-                        goods: ""
-                    }
-                }) : e.setData({
-                    flowLists: t.data.goods_groups
-                });
-            }
-        });
-    },
-    onLoad: function() {
-        t = wx.getStorageSync("token");
-        let o = this;
-        this.getCartGoods(o), this.loadingChange();
-    },
-    loadingChange: function() {
-        let t = this;
-        setTimeout(function() {
-            t.setData({
-                hidden: !0
-            });
-        }, 1e3);
-    },
-    addCount: function(t) {
-        let e = this, a = t.currentTarget.dataset, n = this.data.total, s = this.data.flowLists, r = s.goods.find(function(t) {
-            return t.rec_id == a.id;
-        });
-        r.goods_number = parseInt(r.goods_number) + 1, n.count += 1, s.total_price += parseInt(r.goods_price),
-        wx.request({
-            url: o.apiUrl("ecapi.cart.update"),
-            data: {
-                good: a.id,
-                amount: r.goods_number
-            },
-            method: "POST",
-            success: function() {
-                e.onLoad();
-            }
-        });
-    },
-    minusCount: function(t) {
-        let e = this, a = t.currentTarget.dataset, n = (this.data.total, this.data.flowLists), s = n.goods.find(function(t) {
-            return t.rec_id == a.id;
-        });
-        if (n.total_price -= parseInt(s.goods_price), parseInt(n.total_price) < 0) n.total_price += parseInt(s.goods_price); else {
-            if (s.goods_number = parseInt(s.goods_number) - 1, parseInt(s.goods_number) < 1) return s.goods_number = parseInt(s.goods_number) + 1,
-            void (n.total_price += parseInt(s.goods_price));
-            wx.request({
-                url: o.apiUrl("ecapi.cart.update"),
-                data: {
-                    good: a.id,
-                    amount: s.goods_number
-                },
-                method: "POST",
-                success: function() {
-                    e.onLoad();
-                }
-            });
-        }
-    },
-    del: function(e) {
-        let a = this, n = e.currentTarget.dataset;
-        wx.showModal({
-            title: "提示",
-            content: "您确定要移除当前商品吗?",
-            success: function(e) {
-                e.confirm && wx.request({
-                    url: o.apiUrl("ecapi.cart.delete"),
-                    data: {
-                        good: n.id
-                    },
-                    method: "POST",
-                    header: {
-                        "Content-Type": "application/json",
-                        "X-ECTouch-Authorization": t
-                    },
-                    success: function(t) {
-                        0 == t.data.error_code ? wx.showToast({
-                            title: "删除成功",
-                            icon: "warn",
-                            duration: 2e3
-                        }) : wx.showToast({
-                            title: "删除失败",
-                            icon: "warn",
-                            duration: 2e3
-                        }), a.onLoad();
-                    }
-                });
-            }
-        });
-    },
-    flowcartBtn: function() {
-        wx.switchTab({
-            url: "../categroy/categroy"
-        });
-    },
-    onShow: function() {
-        let t = this;
-        this.getCartGoods(t);
-    },
-    siteDetail: function(t) {
-        let o = this, e = t.currentTarget.dataset.index, a = o.data.flowLists.goods[e].goods_id;
-        wx.navigateTo({
-            url: "../goods/goods?objectId=" + a
-        });
-    },
-    onPullDownRefresh: function() {
-        let t = this;
-        this.getCartGoods(t), wx.stopPullDownRefresh(), t.onLoad();
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    goods_list: [],    // 商品列表
+    order_total_num: 0,
+    order_total_price: 0,
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.getCartList();
+  },
+
+  /**
+   * 获取购物车列表
+   */
+  getCartList: function () {
+    let _this = this;
+    App._get('cart/lists', {}, function (result) {
+      if (result.code === 1) {
+        _this.setData(result.data);
+      } else {
+        App.showError(result.msg);
+      }
+    });
+  },
+
+  /**
+   * 递增指定的商品数量
+   */
+  addCount: function (e) {
+    let index = e.currentTarget.dataset.index
+      , goods = this.data.goods_list[index]
+      , order_total_price = this.data.order_total_price;
+    // 后端同步更新
+    App._post_form('cart/add', {
+      goods_id: goods.goods_id,
+      goods_num: 1
+    });
+    goods.total_num++;
+    this.setData({
+      ['goods_list[' + index + ']']: goods,
+      order_total_price: this.mathadd(order_total_price, goods.goods_price)
+    });
+  },
+
+  /**
+   * 递减指定的商品数量
+   */
+  minusCount: function (e) {
+    let index = e.currentTarget.dataset.index
+      , goods = this.data.goods_list[index]
+      , order_total_price = this.data.order_total_price;
+
+    if (goods.total_num > 1) {
+      // 后端同步更新
+      App._post_form('cart/sub', { goods_id: goods.goods_id });
+      goods.total_num--;
+      this.setData({
+        ['goods_list[' + index + ']']: goods,
+        order_total_price: this.mathsub(order_total_price, goods.goods_price)
+      });
     }
-});
+  },
+
+  /**
+   * 加法
+   */
+  mathadd: function (a, b) {
+    return (((parseFloat(a) * 100) + (parseFloat(b) * 100)) / 100).toFixed(2);
+  },
+
+  /**
+   * 减法
+   */
+  mathsub: function (a, b) {
+    return (((parseFloat(a) * 100) - (parseFloat(b) * 100)) / 100).toFixed(2);
+  },
+
+})

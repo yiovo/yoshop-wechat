@@ -9,7 +9,6 @@ Page({
   data: {
     nav_select: false,    // 快捷导航
 
-    // banner轮播组件属性
     indicatorDots: true,  // 是否显示面板指示点	
     autoplay: true,       // 是否自动切换
     interval: 3000,       // 自动切换时间间隔
@@ -19,6 +18,9 @@ Page({
     floorstatus: false, // 返回顶部
     goods_num: 1,       // 商品数量
     showView: true,     // 显示商品规格
+
+    detail: {},         // 商品详情信息
+    cart_total_num: 0 , // 购物车商品总数量
   },
 
   /**
@@ -42,6 +44,7 @@ Page({
         wxParse.wxParse("content", "html", result.data.detail.content, _this, 0)
         _this.setData({
           detail: result.data.detail,
+          cart_total_num: result.data.cart_total_num,
         });
       } else {
         App.showError(result.msg);
@@ -63,9 +66,8 @@ Page({
    * 控制商品规格/数量的显示隐藏
    */
   onChangeShowState: function () {
-    let t = this;
-    t.setData({
-      showView: !t.data.showView
+    this.setData({
+      showView: !this.data.showView
     });
   },
 
@@ -144,16 +146,7 @@ Page({
       , submitType = e.currentTarget.dataset.type;
 
     if (submitType === 'bugNow') {
-
-
-console.log(
-  '../flow/checkout?' + App.urlEncode({
-    order_type:'buyNow',
-    goods_id: _this.data.goods_id,
-    goods_num: _this.data.goods_num
-  })
-);
-
+      // 立即购买
       wx.navigateTo({
         url: '../flow/checkout?' + App.urlEncode({
           order_type: 'buyNow',
@@ -162,7 +155,18 @@ console.log(
         })
       });
     } else if (submitType === 'addCart') {
-      console.log('addCart');
+      // 加入购物车
+      App._post_form('cart/add', {
+        goods_id: _this.data.goods_id,
+        goods_num: _this.data.goods_num
+      }, function (result) {
+        if (result.code === 1) {
+          App.showSuccess(result.msg);
+          _this.setData(result.data);
+        } else {
+          App.showError(result.msg);
+        }
+      });
     }
     /////////////
   },
