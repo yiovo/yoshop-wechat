@@ -61,7 +61,7 @@
     </view>
 
     <!-- 商品评论 -->
-    <block wx:if="{{goodsComment!=''}}">
+    <block wx:if="{{goodsComment}}">
       <view class="cont-box b-f goods-property-box m-top20">
         <text class="col-3 f-30">评价</text>
         <text bindtap="toChild" class="comment-num">查看更多</text>
