@@ -72,7 +72,7 @@
       <text class="flex-five">配送费用:</text>
       <view class="flex-five t-r">
         <view wx:if="{{address.address_id}}">
-          <text class="col-m" wx:if="{{intra_region}}">+￥{{delivery_fee}}</text>
+          <text class="col-m" wx:if="{{intra_region}}">+￥{{express_price}}</text>
           <text wx:else>不在配送范围</text>
         </view>
         <view wx:else>

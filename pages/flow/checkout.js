@@ -72,11 +72,26 @@ Page({
    * 订单提交
    */
   submitOrder: function () {
-    let _this = this;
+    let _this = this
+      , options = _this.data.options;
+
     if (_this.data.disabled) {
       App.showError(_this.data.error);
       return false;
     }
+
+    // 订单提交
+    App._post_form('order/buyNow', {
+      goods_id: options.goods_id,
+      goods_num: options.goods_num
+    }, function (result) {
+      if (result.code === 1) {
+        
+      } else {
+        App.showError(result.msg);
+      }
+    });
+
   },
 
   /**
