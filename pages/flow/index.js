@@ -47,10 +47,7 @@ Page({
       , goods = this.data.goods_list[index]
       , order_total_price = this.data.order_total_price;
     // 后端同步更新
-    App._post_form('cart/add', {
-      goods_id: goods.goods_id,
-      goods_num: 1
-    });
+    App._post_form('cart/add', { goods_id: goods.goods_id, goods_num: 1 });
     goods.total_num++;
     this.setData({
       ['goods_list[' + index + ']']: goods,
@@ -75,6 +72,27 @@ Page({
         order_total_price: this.mathsub(order_total_price, goods.goods_price)
       });
     }
+  },
+
+  /**
+   * 删除商品
+   */
+  del: function (e) {
+    let _this = this
+      , goods_id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: "提示",
+      content: "您确定要移除当前商品吗?",
+      success: function (e) {
+        e.confirm && App._post_form('cart/delete', { goods_id }, function (result) {
+          if (result.code === 1) {
+            _this.getCartList();
+          } else {
+            App.showError(result.msg);
+          }
+        });
+      }
+    });
   },
 
   /**

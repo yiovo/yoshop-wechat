@@ -52,7 +52,7 @@
             </view>
             <view class="selectNumber">
               <button bindtap="down" class="default  {{goods_num>1?'':' default-active'}}" type="default">-</button>
-              <input bindinput="import" type="number" value="{{goods_num}}"></input>
+              <input bindinput="import" type="number" value="{{goods_num}}" disabled></input>
               <button bindtap="up" class="default" type="default">+</button>
             </view>
           </view>
