@@ -1,10 +1,12 @@
+let App = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    user_info: {},
   },
 
   /**
@@ -18,24 +20,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 获取当前用户信息
+    this.getUserDetail();
   },
 
-  bindProfile: function () {
-    wx.navigateTo({
-      url: "../profile/profile"
-    });
-  },
-
-  bindMoney: function () {
-    wx.navigateTo({
-      url: "../account/account"
-    });
-  },
-
-  bindOrder: function () {
-    wx.navigateTo({
-      url: "../user_order/order"
+  /**
+   * 获取当前用户信息
+   */
+  getUserDetail: function () {
+    let _this = this;
+    App._get('user/detail', {}, function (result) {
+      if (result.code === 1) {
+        _this.setData(result.data);
+      } else {
+        App.showError(result.msg);
+      }
     });
   },
 

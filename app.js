@@ -5,7 +5,6 @@ App({
    */
   globalData: {
     user_id: null,
-    
   },
 
   api_root: '', // api地址
@@ -112,7 +111,7 @@ App({
         && wx.setStorageSync("currentPage", currentPage);
     }
     // 跳转授权页面
-    wx.redirectTo({
+    wx.navigateTo({
       url: "/pages/login/login"
     });
   },
@@ -183,11 +182,11 @@ App({
             App.showError('网络请求出错');
             return false;
           }
+           
           if (res.data.code === -1) {
             // 登录态失效, 重新登录
-            App.doLogin(function () {
-              App._get(url, data, success, fail, false);
-            });
+            wx.hideNavigationBarLoading();
+            App.doLogin();
           } else {
             success && success(res.data);
           }

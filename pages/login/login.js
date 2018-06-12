@@ -21,8 +21,10 @@ Page({
    */
   authorLogin: function (e) {
     let _this = this;
+    if (e.detail.errMsg !== 'getUserInfo:ok') {
+      return false;
+    }
     wx.showLoading({ title: "正在登录", mask: true });
-
     // 执行微信登录
     wx.login({
       success: function (res) {
@@ -59,11 +61,11 @@ Page({
    * 授权成功 跳转回原页面
    */
   navigateBack: function () {
-    let currentPage = wx.getStorageSync('currentPage');
-    wx.redirectTo({
-      url: "/" + currentPage.route + "?" + App.urlEncode(currentPage.options)
-    });
+    wx.navigateBack();
+    // let currentPage = wx.getStorageSync('currentPage');
+    // wx.redirectTo({
+    //   url: '/' + currentPage.route + '?' + App.urlEncode(currentPage.options)
+    // });
   },
-
 
 })

@@ -41,11 +41,8 @@ Page({
     let _this = this;
     App._get('goods/detail', { goods_id: _this.data.goods_id }, function (result) {
       if (result.code === 1) {
-        wxParse.wxParse("content", "html", result.data.detail.content, _this, 0)
-        _this.setData({
-          detail: result.data.detail,
-          cart_total_num: result.data.cart_total_num,
-        });
+        wxParse.wxParse("content", "html", result.data.detail.content, _this, 0);
+        _this.setData(result.data);
       } else {
         App.showError(result.msg);
       }
