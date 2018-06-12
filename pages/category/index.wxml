@@ -37,11 +37,5 @@
       </view>
       <view wx:else></view>
     </scroll-view>
-
   </view>
-
-
-
-
-  
 </view>
