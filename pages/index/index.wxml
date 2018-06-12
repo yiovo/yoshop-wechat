@@ -20,7 +20,7 @@
         <navigator hover-class="none" style="display: inline-block;" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{newest}}" wx:key="this">
           <view class="page-column">
             <view class="sale_img">
-              <image mode="aspectFill" src="{{item.image[0].file.file_name.file_path}}"></image>
+              <image mode="aspectFill" src="{{item.image[0].file_path}}"></image>
             </view>
             <view class="content onelist-hidden">
               <text>{{item.goods_name}}</text>
@@ -42,7 +42,7 @@
       <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{best}}" wx:key="this">
         <view class="left">
           <view class="img">
-            <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file.file_name.file_path}}"></image>
+            <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
           </view>
         </view>
         <view class="right">

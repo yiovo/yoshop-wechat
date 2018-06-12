@@ -41,7 +41,7 @@
       <navigator url="../goods/index?objectId={{item.goods_id}}">
         <view class="dis-flex flow-shopList" data-index="{{index}}">
           <view class="flow-list-left">
-            <image mode="scaleToFill" src="{{item.image[0].file.file_name.file_path}}"></image>
+            <image mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
           </view>
           <view class="flow-list-right box-flex">
             <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>

@@ -4,7 +4,7 @@
     <view bindtap="imgPreview">
       <swiper autoplay="{{autoplay}}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}" indicator-dots="{{indicatorDots}}" interval="{{interval}}">
         <swiper-item wx:for="{{detail.image}}" wx:key="this">
-          <image class="slide-image" mode="aspectFill" src="{{item.file.file_name.file_path}}"></image>
+          <image class="slide-image" mode="aspectFill" src="{{item.file_path}}"></image>
         </swiper-item>
       </swiper>
       <view class="number-banner">

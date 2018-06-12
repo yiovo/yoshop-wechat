@@ -24,7 +24,7 @@
         <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{sortPrice?'active':''}}"></text>
         <text class="iconfont icon-jiantou-copy bot_jiantou {{sortPrice?'':'active'}}"></text>
       </view>
-      
+
       <!-- <view bindtap="toSynthesize" class="flex-box t-c p-r" data-index="sort_order" id="list-0">
         <text>筛选 </text>
         <text class="f-22 iconfont icon-shaixuan1 col-7" style="padding-left:2rpx"></text>
@@ -38,7 +38,7 @@
           <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="list">
             <view class="left">
               <view class="img">
-                <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file.file_name.file_path}}"></image>
+                <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
               </view>
             </view>
             <view class="right">
@@ -55,11 +55,7 @@
           </navigator>
         </view>
       </view>
-
-
-    <view hidden="{{!no_more}}" class="no-more f-32">亲, 没有更多了</view>
-
-
+      <view hidden="{{!no_more}}" class="no-more f-32">亲, 没有更多了</view>
     </scroll-view>
   </view>
 
