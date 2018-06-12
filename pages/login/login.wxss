@@ -1,5 +1,6 @@
 page {
     background: #fff;
+    font-size: 32rpx;
 }
 
 .login-btn {

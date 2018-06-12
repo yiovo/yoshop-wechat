@@ -5,6 +5,7 @@ App({
    */
   globalData: {
     user_id: null,
+    
   },
 
   api_root: '', // api地址
@@ -37,7 +38,6 @@ App({
    */
   setApiRoot: function () {
     let siteroot = this.siteInfo.siteroot.replace('app/index.php', '');
-    // this.api_root = siteroot + 'addons/active_lite/source/web/index.php?s=/api/';
     this.api_root = siteroot + 'web/index.php?s=/api/';
   },
 
@@ -57,45 +57,63 @@ App({
     }, false, false);
   },
 
-  /**
-   * 执行用户登录
-   * 自动检测当前登录态并实现微信登录
-   */
-  doLogin: function (callback) {
-    let App = this;
-    if (wx.getStorageSync('token').length !== 32) {
-      return App.wxLogin(callback);
-    }
-    // 自动检测登录
-    wx.checkSession({
-      success: function () {
-        callback && callback();
-      },
-      fail: function () {
-        // session_key 已经失效，需要重新执行登录流程
-        App.wxLogin(callback);
-      }
-    });
-  },
+  // /**
+  //  * 执行用户登录
+  //  * 自动检测当前登录态并实现微信登录
+  //  */
+  // doLogin: function (callback) {
+  //   let App = this;
+  //   if (wx.getStorageSync('token').length !== 32) {
+  //     return App.wxLogin(callback);
+  //   }
+  //   // 自动检测登录
+  //   wx.checkSession({
+  //     success: function () {
+  //       callback && callback();
+  //     },
+  //     fail: function () {
+  //       // session_key 已经失效，需要重新执行登录流程
+  //       App.wxLogin(callback);
+  //     }
+  //   });
+  // },
+
+  // /**
+  //  * 微信登录接口
+  //  */
+  // wxLogin: function (callback) {
+  //   let App = this;
+  //   wx.login({
+  //     success: function (res) {
+  //       App._post_form('user/login', { code: res.code }, function (result) {
+  //         if (result.code === 1) {
+  //           console.log(result.data);
+  //           wx.setStorageSync('token', result.data.token);
+  //           wx.setStorageSync('user_id', result.data.user_id);
+  //           callback && callback();
+  //         } else {
+  //           App.showError(result.msg);
+  //         }
+  //       });
+  //     }
+  //   });
+  // },
+
 
   /**
-   * 微信登录接口
+   * 执行用户登录
    */
-  wxLogin: function (callback) {
-    let App = this;
-    wx.login({
-      success: function (res) {
-        App._post_form('user/login', { code: res.code }, function (result) {
-          if (result.code === 1) {
-            console.log(result.data);
-            wx.setStorageSync('token', result.data.token);
-            wx.setStorageSync('user_id', result.data.user_id);
-            callback && callback();
-          } else {
-            App.showError(result.msg);
-          }
-        });
-      }
+  doLogin: function () {
+    // 保存当前页面
+    let pages = getCurrentPages();
+    if (pages.length) {
+      let currentPage = pages[pages.length - 1];
+      "pages/login/login" != currentPage.route
+        && wx.setStorageSync("currentPage", currentPage);
+    }
+    // 跳转授权页面
+    wx.redirectTo({
+      url: "/pages/login/login"
     });
   },
 
@@ -140,14 +158,15 @@ App({
   /**
    * get请求
    */
-  _get: function (url, data, success, fail, check_login) {
+  _get: function (url, data, success, fail, complete, check_login) {
     wx.showNavigationBarLoading();
     let App = this;
     // 构造请求参数
     data = data || {};
     data.wxapp_id = App.siteInfo.uniacid;
-    if (typeof check_login === 'undefined')
-      check_login = true;
+
+    // if (typeof check_login === 'undefined')
+    //   check_login = true;
 
     // 构造get请求
     let request = function () {
@@ -159,7 +178,6 @@ App({
         },
         data: data,
         success: function (res) {
-          console.log(res);
           if (res.statusCode !== 200 || typeof res.data !== 'object') {
             console.log(res);
             App.showError('网络请求出错');
@@ -167,7 +185,7 @@ App({
           }
           if (res.data.code === -1) {
             // 登录态失效, 重新登录
-            App.wxLogin(function () {
+            App.doLogin(function () {
               App._get(url, data, success, fail, false);
             });
           } else {
@@ -182,6 +200,7 @@ App({
         },
         complete: function (res) {
           wx.hideNavigationBarLoading();
+          complete && complete(res);
         },
       });
     };
@@ -192,7 +211,7 @@ App({
   /**
    * post提交
    */
-  _post_form: function (url, data, success, fail) {
+  _post_form: function (url, data, success, fail, complete) {
     wx.showNavigationBarLoading();
     let App = this;
     data.wxapp_id = App.siteInfo.uniacid;
@@ -211,7 +230,7 @@ App({
         }
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
-          App.wxLogin(function () {
+          App.doLogin(function () {
             App._post_form(url, data, success, fail);
           });
         } else {
@@ -226,6 +245,7 @@ App({
       },
       complete: function (res) {
         wx.hideNavigationBarLoading();
+        complete && complete(res);
       }
     });
   },

@@ -1,64 +1,69 @@
-var api = require("../../api.js"), app = getApp();
+let App = getApp();
 
 Page({
-    data: {},
-    onLoad: function(e) {
-        app.pageOnLoad(this);
-    },
-    onReady: function() {
-        app.pageOnReady(this);
-    },
-    onShow: function() {
-        app.pageOnShow(this);
-    },
-    onHide: function() {
-        app.pageOnHide(this);
-    },
-    onUnload: function() {
-        app.pageOnUnload(this);
-    },
-    getUserInfo: function(o) {
-        console.log("getUserInfo----------\x3e", o), "getUserInfo:ok" == o.detail.errMsg && (wx.showLoading({
-            title: "正在登录",
-            mask: !0
-        }), wx.login({
-            success: function(e) {
-                var t = e.code;
-                getApp().request({
-                    url: api.passport.login,
-                    method: "POST",
-                    data: {
-                        code: t,
-                        user_info: o.detail.rawData,
-                        encrypted_data: o.detail.encryptedData,
-                        iv: o.detail.iv,
-                        signature: o.detail.signature
-                    },
-                    success: function(e) {
-                        if (0 == e.code) {
-                            wx.setStorageSync("access_token", e.data.access_token), wx.setStorageSync("user_info", e.data);
-                            var t = wx.getStorageSync("login_pre_page");
-                            t && t.route || wx.redirectTo({
-                                url: "/pages/index/index"
-                            });
-                            var o = 0;
-                            (o = t.options && t.options.user_id ? t.options.user_id : t.options && t.options.scene ? t.options.scene : wx.getStorageSync("parent_id")) && 0 != o && getApp().bindParent({
-                                parent_id: o
-                            }), wx.redirectTo({
-                                url: "/" + t.route + "?" + getApp().utils.objectToUrlParams(t.options)
-                            });
-                        } else wx.showModal({
-                            title: "提示",
-                            content: e.msg,
-                            showCancel: !1
-                        });
-                    },
-                    complete: function() {
-                        wx.hideLoading();
-                    }
-                });
-            },
-            fail: function(e) {}
-        }));
-    }
-});
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 授权登录
+   */
+  authorLogin: function (e) {
+    let _this = this;
+    wx.showLoading({ title: "正在登录", mask: true });
+
+    // 执行微信登录
+    wx.login({
+      success: function (res) {
+        // 发送用户信息
+        App._post_form('user/login'
+          , {
+            code: res.code,
+            user_info: e.detail.rawData,
+            encrypted_data: e.detail.encryptedData,
+            iv: e.detail.iv,
+            signature: e.detail.signature
+          }
+          , function (result) {
+            if (result.code === 1) {
+              // 记录token user_id
+              wx.setStorageSync('token', result.data.token);
+              wx.setStorageSync('user_id', result.data.user_id);
+              // 跳转回原页面
+              _this.navigateBack();
+            }
+            else {
+              App.showError(result.msg);
+            }
+          }
+          , false
+          , function () {
+            wx.hideLoading();
+          });
+      }
+    });
+  },
+
+  /**
+   * 授权成功 跳转回原页面
+   */
+  navigateBack: function () {
+    let currentPage = wx.getStorageSync('currentPage');
+    wx.redirectTo({
+      url: "/" + currentPage.route + "?" + App.urlEncode(currentPage.options)
+    });
+  },
+
+
+})
