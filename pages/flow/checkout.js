@@ -14,6 +14,8 @@ Page({
     goods: {},            // 商品信息
 
     disabled: false,
+
+    hasError: false,
     error: '',
   },
 
@@ -49,7 +51,7 @@ Page({
 
       // 收货地址不在配送范围内
       if (result.data.address !== null && !result.data.intra_region) {
-        _this.data.disabled = true;
+        _this.data.hasError = true;
         _this.data.error = result.data.intra_region_error;
         App.showError(_this.data.error);
       }
@@ -92,14 +94,44 @@ Page({
       , options = _this.data.options;
 
     if (_this.data.disabled) {
+      return false;
+    }
+
+    if (_this.data.hasError) {
       App.showError(_this.data.error);
       return false;
     }
 
+    // 订单创建成功后回调--微信支付
     let callback = function (result) {
-      console.log(result  );
+      // 解除按钮禁用
+      _this.data.disabled = false;
+      // 关闭loading
+      wx.hideLoading();
+      // 发起微信支付
+      wx.requestPayment({
+        timeStamp: result.data.timeStamp,
+        nonceStr: result.data.nonceStr,
+        package: 'prepay_id=' + result.data.prepay_id,
+        signType: 'MD5',
+        paySign: result.data.paySign,
+        success: function (res) {
+          // todo: 跳转到已付款订单
+          
+        },
+        fail: function() {
+          App.showError('订单未支付', function() {
+            // todo: 跳转到未付款订单
+          });
+        },
+      });
     };
 
+    // 按钮禁用, 防止二次提交
+    _this.data.disabled = true;
+
+    // 显示loading
+    wx.showLoading({ title: '正在处理...', });
 
     // 创建订单-立即购买
     if (options.order_type === 'buyNow') {
@@ -117,7 +149,6 @@ Page({
         callback(result);
       });
     }
-
 
   },
 

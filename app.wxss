@@ -3109,6 +3109,8 @@ button.submit_btn {
   animation-duration: 18s;
   animation-iteration-count: infinite;
   filter: blur(5px);
+  overflow: hidden;
+  display: block;
 }
 
 @-webkit-keyframes shop {
@@ -3148,12 +3150,6 @@ button.submit_btn {
   overflow: hidden;
   box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
   margin-top: -115rpx;
-}
-
-.header-img-box image {
-  width: 100%;
-  height: 100%;
-  margin: 0;
 }
 
 .user-set-box {
@@ -3479,7 +3475,7 @@ button.submit_btn {
 
 .profile-btn button[disabled] {
   background: #f16474;
-   color: white;
+  color: white;
 }
 
 .product_screen_header {

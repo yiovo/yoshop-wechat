@@ -88,7 +88,7 @@
       <view class=" chackout-left pl-12 ">实付款：
         <text class="col-m">￥{{order_pay_price}}</text>
       </view>
-      <view bindtap="submitOrder" class=" chackout-right">
+      <view bindtap="submitOrder" class="chackout-right">
         <text class="flow-btn">提交订单</text>
       </view>
     </view>

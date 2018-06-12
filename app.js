@@ -38,7 +38,7 @@ App({
   setApiRoot: function () {
     let siteroot = this.siteInfo.siteroot.replace('app/index.php', '');
     // this.api_root = siteroot + 'addons/active_lite/source/web/index.php?s=/api/';
-    this.api_root = siteroot + 'index.php?s=/api/';
+    this.api_root = siteroot + 'web/index.php?s=/api/';
   },
 
   /**
@@ -159,20 +159,30 @@ App({
         },
         data: data,
         success: function (res) {
-          wx.hideNavigationBarLoading();
+          console.log(res);
+          if (res.statusCode !== 200 || typeof res.data !== 'object') {
+            console.log(res);
+            App.showError('网络请求出错');
+            return false;
+          }
           if (res.data.code === -1) {
             // 登录态失效, 重新登录
             App.wxLogin(function () {
               App._get(url, data, success, fail, false);
             });
           } else {
-            if (success) success(res.data);
+            success && success(res.data);
           }
         },
         fail: function (res) {
+          console.log(res);
+          App.showError('网络请求出错', function () {
+            fail && fail(res);
+          });
+        },
+        complete: function (res) {
           wx.hideNavigationBarLoading();
-          if (fail) fail(res);
-        }
+        },
       });
     };
     // 判断是否需要验证登录
@@ -183,6 +193,7 @@ App({
    * post提交
    */
   _post_form: function (url, data, success, fail) {
+    wx.showNavigationBarLoading();
     let App = this;
     data.wxapp_id = App.siteInfo.uniacid;
     data.token = wx.getStorageSync('token');
@@ -194,17 +205,27 @@ App({
       method: 'POST',
       data: data,
       success: function (res) {
+        if (res.statusCode !== 200 || typeof res.data !== 'object') {
+          App.showError('网络请求出错');
+          return false;
+        }
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
           App.wxLogin(function () {
             App._post_form(url, data, success, fail);
           });
         } else {
-          if (success) success(res.data);
+          success && success(res.data);
         }
       },
       fail: function (res) {
-        if (fail) fail(res);
+        console.log(res);
+        App.showError('网络请求出错', function () {
+          fail && fail(res);
+        });
+      },
+      complete: function (res) {
+        wx.hideNavigationBarLoading();
       }
     });
   },
@@ -247,155 +268,5 @@ App({
       App.getWxappBase(function () { App.setTitle(); });
     }
   },
-
-
-
-
-
-
-  //////////////////////////////////////////////////////////////////////
-  ////
-  //////
-
-  /**
-   * 获取用户信息
-   */
-  getUserInfo: function (callback) {
-    var _this = this;
-    _this.globalData.userInfo ? ("function" == typeof callback) && callback(_this.globalData.userInfo) : wx.login({
-      success: function (o) {
-        var n = o.code;
-        wx.getUserInfo({
-          withCredentials: !0,
-          lang: "zh_CN",
-          success: function (o) {
-            o.userInfo.code = n, _this.doLogin(n, o), _this.globalData.userInfo = o.userInfo, "function" == typeof callback && callback(_this.globalData.userInfo);
-          },
-          fail: function () {
-            wx.showModal({
-              title: "温馨提示",
-              content: "拒绝授权，将会影响购物流程和用户登录,请确定重新授权！",
-              success: function (o) {
-                o.confirm ? wx.getSetting({
-                  success: function (o) {
-                    o.authSetting["scope.userInfo"] || wx.authorize({
-                      scope: "scope.userInfo",
-                      fail: function () {
-                        wx.openSetting({
-                          success: function (o) {
-                            o.authSetting["scope.userInfo"] ? wx.getUserInfo({
-                              withCredentials: !0,
-                              success: function (o) {
-                                o.userInfo.code = n, _this.doLogin(n, o), _this.globalData.userInfo = o.userInfo, "function" == typeof callback && callback(_this.globalData.userInfo);
-                              }
-                            }) : _this.getUserInfo();
-                          }
-                        });
-                      }
-                    });
-                  }
-                }) : o.cancel && _this.getUserInfo();
-              }
-            });
-          }
-        });
-      }
-    });
-  },
-
-  /**
-   * 执行登录 (废弃)
-   */
-  doLogin_bak: function (e, t) {
-    var o = this;
-    e && wx.request({
-      url: o.apiUrl("ecapi.auth.weixin.mplogin"),
-      method: "POST",
-      data: {
-        userinfo: t
-      },
-      success: function (e) {
-        void 0 != e.data.token ? (wx.setStorage({
-          key: "token",
-          data: e.data.token
-        }), wx.setStorage({
-          key: "openid",
-          data: e.data.openid
-        })) : (wx.setStorage({
-          key: "token",
-          data: JSON.parse(e.data.split("\n")[1]).token
-        }), wx.setStorage({
-          key: "openid",
-          data: JSON.parse(e.data.split("\n")[1]).openid
-        }));
-      }
-    });
-  },
-
-  /**
-   * 生成api url
-   */
-  apiUrl: function (e) {
-    return "https://shop.ectouch.cn/ectouch/weapp/public/" + e;
-  },
-
-  /**
-   * 显示消息框
-   */
-  showMessage: function (title) {
-    let duration = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 1e3;
-    let icon = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : "warn";
-    wx.showToast({
-      title: title,
-      icon: icon,
-      duration: duration
-    });
-  },
-
-  /**
-   * 页面跳转(即将废弃)
-   */
-  redirectTo: function (e) {
-    wx.navigateTo({ url: e });
-  },
-
-  /**
-   * 订单支付
-   */
-  payOrder: function (order_id, openid, token) {
-    let _this = this;
-    wx.request({
-      url: _this.apiUrl("ecapi.payment.pay"),
-      data: {
-        order: order_id,
-        openid: openid,
-        code: "wxpay.web"
-      },
-      header: {
-        "Content-Type": "application/json",
-        "X-ECTouch-Authorization": o
-      },
-      method: "POST",
-      success: function (result) {
-        let wxpay = result.data.wxpay;
-        wxpay != "" && wx.requestPayment({
-          timeStamp: wxpay.timestamp,
-          nonceStr: wxpay.nonce_str,
-          package: wxpay.packages,
-          signType: "MD5",
-          paySign: wxpay.sign,
-          success: function (res) {
-            if (res.errMsg === "requestPayment:ok") {
-              _this.redirectTo("../order/detail?objectId=" + e);
-            }
-          },
-          fail: function (res) {
-            _this.redirectTo("../order/detail?objectId=" + e);
-          }
-        });
-      }
-    });
-  },
-
 
 });
