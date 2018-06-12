@@ -26,7 +26,7 @@
               <view class="flex-three" data-list="{{index}}" wx:for="{{list[curIndex].child}}" wx:key="cit">
                 <navigator hover-class="none" url="../category/list?id={{item.category_id}}">
                   <view class="cate-img" id="{{item.file_id}}">
-                    <image src="{{item.image.file_name.file_path}}"></image>
+                    <image src="{{item.image.file_path}}"></image>
                   </view>
                   <text>{{item.name}}</text>
                 </navigator>
