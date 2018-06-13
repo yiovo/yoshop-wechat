@@ -1,134 +1,119 @@
-let t, o, e = getApp();
+let App = getApp();
 
 Page({
-    data: {
-        index: 0,
-        orderJtou: "../../res/images/icon-arrowdown.png",
-        distributionJtou: "../../res/images/icon-arrowdown.png",
-        checkList: []
-    },
-    onLoad: function(t) {
-        o = t.objectId, this.loadOrderDetail(o), this.loadingChange();
-    },
-    onShow: function() {
-        t = wx.getStorageSync("token"), this.loadOrderDetail(o);
-    },
-    loadOrderDetail: function(o) {
-        let r = this;
-        wx.request({
-            url: e.apiUrl("ecapi.order.get"),
-            data: {
-                order: o
-            },
-            method: "post",
-            header: {
-                "Content-Type": "application/json",
-                "X-ECTouch-Authorization": t
-            },
-            success: function(t) {
-                let o, e = "";
-                for (let a in t.data.order.goods) {
-                    o = t.data.order.goods[a].goods_attr.split("\n");
-                    for (let n in o) "" != o[n] && (e += o[n] + ",");
-                    t.data.order.goods[a].goods_attr = e.substring(0, e.length - 1);
-                }
-                r.setData({
-                    goodsList: t.data.order.goods,
-                    orders: t.data.order
-                });
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    order_id: null,
+    order: {},
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.data.order_id = options.order_id;
+    this.getOrderDetail(options.order_id);
+  },
+
+  /**
+   * 获取订单详情
+   */
+  getOrderDetail: function (order_id) {
+    let _this = this;
+    App._get('user.order/detail', { order_id }, function (result) {
+      if (result.code === 1) {
+        _this.setData(result.data);
+      } else {
+        App.showError(result.msg);
+      }
+    });
+  },
+
+  /**
+   * 跳转到商品详情
+   */
+  goodsDetail: function (e) {
+    let goods_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../goods/index?goods_id=' + goods_id
+    });
+  },
+
+  /**
+   * 取消订单
+   */
+  cancelOrder: function (e) {
+    let _this = this;
+    let order_id = _this.data.order_id;
+    wx.showModal({
+      title: "提示",
+      content: "确认取消订单？",
+      success: function (o) {
+        if (o.confirm) {
+          App._post_form('user.order/cancel', { order_id }, function (result) {
+            if (result.code === 1) {
+              wx.navigateBack();
+            } else {
+              App.showError(result.msg);
             }
-        });
-    },
-    confirm_order: function(o) {
-        wx.showModal({
-            title: "提示",
-            content: "确认收到商品？",
-            success: function(r) {
-                r.confirm && wx.request({
-                    url: e.apiUrl("ecapi.order.confirm"),
-                    data: {
-                        order: o.currentTarget.dataset.id
-                    },
-                    header: {
-                        "Content-Type": "application/json",
-                        "X-ECTouch-Authorization": t
-                    },
-                    method: "POST",
-                    success: function(t) {
-                        t.data.error_code > 0 ? error_msg = "确认失败" : 0 == t.data.error_code && (error_msg = "确认成功",
-                        that.orderStatus(that, that.data.current)), wx.showToast({
-                            title: error_msg,
-                            icon: "warn",
-                            duration: 500
-                        });
-                    }
-                });
+          });
+        }
+      }
+    });
+  },
+
+  /**
+   * 发起付款
+   */
+  payOrder: function (e) {
+    let _this = this;
+    let order_id = _this.data.order_id;
+
+    // 显示loading
+    wx.showLoading({ title: '正在处理...', });
+    App._post_form('user.order/pay', { order_id }, function (result) {
+      // 发起微信支付
+      wx.requestPayment({
+        timeStamp: result.data.timeStamp,
+        nonceStr: result.data.nonceStr,
+        package: 'prepay_id=' + result.data.prepay_id,
+        signType: 'MD5',
+        paySign: result.data.paySign,
+        success: function (res) {
+          _this.getOrderDetail(order_id);
+        },
+        fail: function () {
+          App.showError('订单未支付');
+        },
+      });
+    });
+  },
+
+  /**
+   * 确认收货
+   */
+  receipt: function (e) {
+    let _this = this;
+    let order_id = _this.data.order_id;
+    wx.showModal({
+      title: "提示",
+      content: "确认收到商品？",
+      success: function (o) {
+        if (o.confirm) {
+          App._post_form('user.order/receipt', { order_id }, function (result) {
+            if (result.code === 1) {
+              _this.getOrderDetail(order_id);
+            } else {
+              App.showError(result.msg);
             }
-        });
-    },
-    loadingChange: function() {
-        let t = this;
-        setTimeout(function() {
-            t.setData({
-                hidden: !0
-            });
-        }, 2e3);
-    },
-    siteDetail: function(t) {
-        let o = this, e = t.currentTarget.dataset.index;
-        console.log(e);
-        let r = o.data.goodsList[e].goods_id;
-        wx.navigateTo({
-            url: "../goods/goods?objectId=" + r
-        });
-    },
-    cancel_order: function(r) {
-        let a = this;
-        wx.showModal({
-            title: "提示",
-            content: "确认取消订单？",
-            success: function(r) {
-                r.confirm && wx.request({
-                    url: e.apiUrl("ecapi.order.cancel"),
-                    data: {
-                        order: o
-                    },
-                    header: {
-                        "Content-Type": "application/json",
-                        "X-ECTouch-Authorization": t
-                    },
-                    method: "POST",
-                    success: function(t) {
-                        t.data.error_code > 0 ? e.showMessage("取消失败", 1e3, "clear") : 0 == t.data.error_code && (e.showMessage("取消成功", 1e3, "warn"),
-                        a.orderStatus(a, a.data.current));
-                    }
-                });
-            }
-        });
-    },
-    onPullDownRefresh: function() {
-        wx.stopPullDownRefresh();
-    },
-    pay_order: function(o) {
-        let r = o.currentTarget.dataset.id, a = wx.getStorageSync("openid");
-        e.payOrder(r, a, t);
-    },
-    commonNav: function() {
-        let t = this;
-        t.setData({
-            nav_select: !t.data.nav_select
-        });
-    },
-    nav: function(t) {
-        let o = t.currentTarget.dataset.index;
-        "home" == o ? wx.switchTab({
-            url: "../index/index"
-        }) : "fenlei" == o ? wx.switchTab({
-            url: "../category/index"
-        }) : "cart" == o ? wx.switchTab({
-            url: "../flow/index"
-        }) : "profile" == o && wx.switchTab({
-            url: "../user/index"
-        });
-    }
+          });
+        }
+      }
+    });
+  },
+
+
 });

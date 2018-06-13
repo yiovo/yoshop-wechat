@@ -14,20 +14,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 订单数据类型
-    let dataType = options.type || 'all';
-    this.setData({ dataType });
-    // 获取订单列表
-    this.getOrderList(dataType);
+    this.data.dataType = options.type || 'all';
+    this.setData({ dataType: this.data.dataType });
   },
 
   /**
-   * 切换标签
+   * 生命周期函数--监听页面显示
    */
-  bindHeaderTap: function (e) {
-    this.setData({ dataType: e.target.dataset.type });
+  onShow: function () {
     // 获取订单列表
-    this.getOrderList(e.target.dataset.type);
+    this.getOrderList(this.data.dataType);
   },
 
   /**
@@ -42,6 +38,15 @@ Page({
         App.showError(result.msg);
       }
     });
+  },
+
+  /**
+   * 切换标签
+   */
+  bindHeaderTap: function (e) {
+    this.setData({ dataType: e.target.dataset.type });
+    // 获取订单列表
+    this.getOrderList(e.target.dataset.type);
   },
 
   /**
@@ -78,7 +83,7 @@ Page({
       content: "确认收到商品？",
       success: function (o) {
         if (o.confirm) {
-          App._post_form('user.order/Receipt', { order_id }, function (result) {
+          App._post_form('user.order/receipt', { order_id }, function (result) {
             if (result.code === 1) {
               _this.getOrderList(_this.data.dataType);
             } else {
@@ -114,6 +119,16 @@ Page({
           App.showError('订单未支付');
         },
       });
+    });
+  },
+
+  /**
+   * 跳转订单详情页
+   */
+  detail: function (e) {
+    let order_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../order/detail?order_id=' + order_id
     });
   },
 

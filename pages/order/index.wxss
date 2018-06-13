@@ -29,7 +29,7 @@
 
 .order-header {
   /* border-bottom: 1rpx solid #e4e4e4; */
-  padding: 15rpx 0;
+  padding-top: 10rpx;
 }
 
 .order-header .title {
@@ -38,9 +38,8 @@
 }
 
 .order-header .cont {
-  text-align: right;
-  display: block;
-  font-size: 28rpx;
+  /* display: block; */
+  font-size: 30rpx;
   color: #fd4a5f;
 }
 
@@ -138,9 +137,9 @@
 }
 
 .order-img_list {
-  background: rgba(255, 255, 255, 0.2);
-  border-top: 1rpx solid #e4e4e4;
-  border-bottom: 1rpx solid #e4e4e4;
+  background: #fff;
+  border-top: 1rpx solid #f1f1f1;
+  border-bottom: 1rpx solid #f1f1f1;
 }
 
 .order-right-name {

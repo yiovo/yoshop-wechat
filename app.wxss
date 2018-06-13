@@ -2492,10 +2492,6 @@ buy_number {
   margin-top: 6rpx;
 }
 
-.flow-checkout-header .flow-checkout-admin text {
-  /* padding: 0 10rpx; */
-}
-
 .flow-checkout-header .flow-checkout-address {
   font-size: 26rpx;
   color: #777;
@@ -2504,7 +2500,6 @@ buy_number {
 
 .flow-shopList {
   padding: 20rpx 0;
-  border-bottom: 1rpx solid #eee;
 }
 
 .flow-shopList .flow-list-left {
@@ -2607,8 +2602,9 @@ buy_number {
 .flow-num-box {
   font-size: 30rpx;
   color: #777;
-  padding: 10rpx 15px 25rpx 15px;
+  padding: 15rpx 0;
   text-align: right;
+  border-top: 1rpx solid #f1f1f1;
 }
 
 .flow-all-money {
@@ -2618,7 +2614,7 @@ buy_number {
 .flow-all-money .flow-all-list {
   font-size: 30rpx;
   padding: 20rpx 0;
-  border-bottom: 1rpx solid #eee;
+  border-bottom: 1rpx solid #f1f1f1;
 }
 
 .flow-all-money .flow-all-list:last-child {
@@ -2628,7 +2624,7 @@ buy_number {
 .flow-all-money .flow-all-list-cont {
   font-size: 28rpx;
   padding: 16rpx 0;
-  border-bottom: 1rpx solid #eee;
+  /* border-bottom: 1rpx solid #eee; */
 }
 
 .flow-fixed-footer .chackout-left {
