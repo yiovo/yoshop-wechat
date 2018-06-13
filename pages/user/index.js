@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user_info: {},
+    userInfo: {},
+    orderCount: {},
   },
 
   /**
@@ -29,7 +30,7 @@ Page({
    */
   getUserDetail: function () {
     let _this = this;
-    App._get('user/detail', {}, function (result) {
+    App._get('user.index/detail', {}, function (result) {
       if (result.code === 1) {
         _this.setData(result.data);
       } else {

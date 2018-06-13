@@ -1,25 +1,23 @@
 <view class="container m-b5">
   <view class="user-header p-r">
     <view class="user-bg-box">
-      <image class="header-bg" src="{{user_info.avatarUrl}}"></image>
-      <!-- <open-data class="header-bg" type="userAvatarUrl"></open-data>   -->
+      <image class="header-bg" src="{{userInfo.avatarUrl}}"></image>
     </view>
   </view>
   <view>
     <view class="user-order">
       <view class="user-order-cont dis-flex">
         <view class="flex-box p-r">
-          <navigator hover-class="navigator-hover" url="../order/index?id=0">
+          <navigator hover-class="navigator-hover" url="../order/index?type=all">
             <text class="iconfont icon-form orderListIcon "></text>
             <text class="listCont">全部订单</text>
-            <text class="user-tag p-a" wx:if="{{orderNum.all_num>0}}">{{orderNum.all_num}}</text>
           </navigator>
         </view>
         <view class="flex-box p-r">
-          <navigator hover-class="navigator-hover" url="../order/index?id=1">
+          <navigator hover-class="navigator-hover" url="../order/index?type=payment">
             <text class="iconfont icon-daifukuan orderListIcon "></text>
             <text class="listCont">待付款</text>
-            <text class="user-tag p-a" wx:if="{{orderNum.no_paid_num>0}}">{{orderNum.no_paid_num}}</text>
+            <text class="user-tag p-a" wx:if="{{orderCount.payment > 0}}">{{orderCount.payment}}</text>
           </navigator>
         </view>
         <view class="p-r" style=" flex:1.4;">
@@ -30,16 +28,16 @@
           <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text>
         </view>
         <view class="flex-box p-r">
-          <navigator hover-class="navigator-hover" url="../order/index?id=2">
-            <text class="iconfont icon-daishouhuo orderListIcon "></text>
+          <navigator hover-class="navigator-hover" url="../order/index?type=received">
+            <text class="iconfont icon-daishouhuo orderListIcon"></text>
             <text class="listCont">待收货</text>
-            <text class="user-tag p-a" wx:if="{{orderNum.no_received_num>0}}">{{orderNum.no_received_num}}</text>
+            <text class="user-tag p-a" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
           </navigator>
         </view>
         <view class="flex-box p-r">
           <text class="iconfont icon-daipingjia orderListIcon "></text>
           <text class="listCont">待评价</text>
-          <text class="user-tag p-a" wx:if="{{orderNum.no_evaluation_num>0}}">{{orderNum.no_evaluation_num}}</text>
+          <text class="user-tag p-a" wx:if="{{false}}"></text>
         </view>
       </view>
     </view>
@@ -72,28 +70,5 @@
       </view>
     </navigator>
   </view>
-
-
-  <!-- <view class="title-hrbg">
-    <text class="cont">
-            <text class="iconfont icon-huo col-m"></text>实时推荐最新</text>
-    <view class="hr"></view>
-  </view>
-  <view class="category-list">
-    <navigator class="list b-f" hover-class="none" url="../goods/index?objectId={{item.goods_id}}" wx:for="{{recommend.goodsList.best}}" wx:key="list">
-      <view class="left">
-        <view class="img">
-          <image class="goodsImg" mode="aspectFit" src="{{item.goods_thumb}}"></image>
-        </view>
-      </view>
-      <view class="right">
-        <view class="cont">
-          <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
-          <text class="price f-34 col-m f-w">￥{{item.shop_price}}</text>
-        </view>
-      </view>
-    </navigator>
-  </view> -->
-
 
 </view>
