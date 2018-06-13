@@ -28,12 +28,12 @@
 }
 
 .order-header {
-  border-bottom: 1rpx solid #e4e4e4;
-  padding: 20rpx 0;
+  /* border-bottom: 1rpx solid #e4e4e4; */
+  padding: 15rpx 0;
 }
 
 .order-header .title {
-  font-size: 32rpx;
+  font-size: 30rpx;
   color: #333;
 }
 

@@ -182,12 +182,16 @@ App({
             App.showError('网络请求出错');
             return false;
           }
-           
           if (res.data.code === -1) {
             // 登录态失效, 重新登录
             wx.hideNavigationBarLoading();
             App.doLogin();
-          } else {
+          }
+          else if (res.data.code === 0) {
+            App.showError(res.data.msg);
+            return false;
+          }
+          else {
             success && success(res.data);
           }
         },
@@ -238,7 +242,7 @@ App({
           App.showError(res.data.msg);
           return false;
         }
-         else {
+        else {
           success && success(res.data);
         }
       },
