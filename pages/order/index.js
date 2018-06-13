@@ -7,7 +7,7 @@ Page({
    */
   data: {
     dataType: 'all',
-    list: []
+    list: [],
   },
 
   /**
@@ -34,6 +34,9 @@ Page({
     App._get('user.order/lists', { dataType }, function (result) {
       if (result.code === 1) {
         _this.setData(result.data);
+        result.data.list.length && wx.pageScrollTo({
+          scrollTop: 0
+        });
       } else {
         App.showError(result.msg);
       }
@@ -131,6 +134,10 @@ Page({
       url: '../order/detail?order_id=' + order_id
     });
   },
+
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+  }
 
 
 });

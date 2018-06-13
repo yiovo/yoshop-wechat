@@ -5,7 +5,7 @@
       <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">待付款</view>
       <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">待收货</view>
     </view>
-    <scroll-view bindscrolltolower="bindDownLoad" scroll-y="true" style="height:{{scrollHeight}}px;">
+    <scroll-view scroll-y="{{true}}">
       <view class="wrapper">
         <view wx:if="{{list.length}}">
           <view class="m-top20 " wx:for="{{list}}" wx:key="this">
