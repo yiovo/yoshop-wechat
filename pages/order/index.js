@@ -70,7 +70,7 @@ Page({
   /**
    * 确认收货
    */
-  confirmReceipt: function (e) {
+  receipt: function (e) {
     let _this = this;
     let order_id = e.currentTarget.dataset.id;
     wx.showModal({
@@ -78,7 +78,7 @@ Page({
       content: "确认收到商品？",
       success: function (o) {
         if (o.confirm) {
-          App._post_form('user.order/receipt', { order_id }, function (result) {
+          App._post_form('user.order/Receipt', { order_id }, function (result) {
             if (result.code === 1) {
               _this.getOrderList(_this.data.dataType);
             } else {
@@ -90,5 +90,32 @@ Page({
     });
   },
 
+  /**
+   * 发起付款
+   */
+  payOrder: function (e) {
+    let _this = this;
+    let order_id = e.currentTarget.dataset.id;
 
-})
+    // 显示loading
+    wx.showLoading({ title: '正在处理...', });
+    App._post_form('user.order/pay', { order_id }, function (result) {
+      // 发起微信支付
+      wx.requestPayment({
+        timeStamp: result.data.timeStamp,
+        nonceStr: result.data.nonceStr,
+        package: 'prepay_id=' + result.data.prepay_id,
+        signType: 'MD5',
+        paySign: result.data.paySign,
+        success: function (res) {
+          // todo: 跳转到已付款订单
+        },
+        fail: function () {
+          App.showError('订单未支付');
+        },
+      });
+    });
+  },
+
+
+});

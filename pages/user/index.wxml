@@ -1,8 +1,8 @@
 <view class="container m-b5">
   <view class="user-header p-r">
     <view class="user-bg-box">
-         <!-- <image class="header-bg" src="//cdn.w7.cc/images/2018/03/31/A8F67UWg6GT76bZ15abf39f0e5382.jpg?imageView2/5/w/83/format/png"></image>    -->
-        <open-data class="header-bg" type="userAvatarUrl"></open-data>  
+      <image class="header-bg" src="{{user_info.avatarUrl}}"></image>
+      <!-- <open-data class="header-bg" type="userAvatarUrl"></open-data>   -->
     </view>
   </view>
   <view>
@@ -25,7 +25,7 @@
         <view class="p-r" style=" flex:1.4;">
           <view class="header-img-box">
             <!-- <image src="{{userInfo.avatarUrl}}"></image> -->
-             <open-data type="userAvatarUrl"></open-data> 
+            <open-data type="userAvatarUrl"></open-data>
           </view>
           <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text>
         </view>

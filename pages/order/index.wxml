@@ -66,7 +66,7 @@
                       <view bindtap="payOrder" class="btn-main" data-id="{{item.order_id}}">付款</view>
                     </view>
                     <view class="flex-box" wx:if="{{item.delivery_status.value===20 && item.receipt_status.value === 10}}">
-                      <view bindtap="confirmReceipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
+                      <view bindtap="receipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
                     </view>
                   </view>
                 </view>

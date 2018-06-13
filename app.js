@@ -232,7 +232,13 @@ App({
           App.doLogin(function () {
             App._post_form(url, data, success, fail);
           });
-        } else {
+          return false;
+        }
+        else if (res.data.code === 0) {
+          App.showError(res.data.msg);
+          return false;
+        }
+         else {
           success && success(res.data);
         }
       },
@@ -243,6 +249,7 @@ App({
         });
       },
       complete: function (res) {
+        wx.hideLoading();
         wx.hideNavigationBarLoading();
         complete && complete(res);
       }
