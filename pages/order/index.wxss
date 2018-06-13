@@ -1,159 +1,155 @@
 .header {
-    width: 100%;
-    height: 44px;
-    border-bottom: 1rpx solid #e4e4e4;
-    display: flex;
-    background: #fff;
-    line-height: 44px;
-    position: fixed;
-    top: 0;
-    z-index: 100;
+  width: 100%;
+  height: 44px;
+  border-bottom: 1rpx solid #e4e4e4;
+  display: flex;
+  background: #fff;
+  line-height: 44px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
 }
 
 .header view {
-    flex: 1;
-    text-align: center;
+  flex: 1;
+  text-align: center;
 }
 
 .header .active {
-    color: #fd4a5f;
+  color: #fd4a5f;
 }
 
 .wrapper {
-    margin-top: 54px;
+  margin-top: 54px;
 }
 
 .order-box {
-    padding: 0 15px;
+  padding: 0 15px;
 }
 
 .order-header {
-    border-bottom: 1rpx solid #e4e4e4;
-    padding: 20rpx 0;
+  border-bottom: 1rpx solid #e4e4e4;
+  padding: 20rpx 0;
 }
 
 .order-header .title {
-    font-size: 32rpx;
-    color: #333;
+  font-size: 32rpx;
+  color: #333;
 }
 
 .order-header .cont {
-    text-align: right;
-    display: block;
-    font-size: 28rpx;
-    color: #fd4a5f;
+  text-align: right;
+  display: block;
+  font-size: 28rpx;
+  color: #fd4a5f;
 }
 
 .order-cont {
-    font-size: 28rpx;
-    padding: 15rpx 0;
+  padding: 15rpx 0;
+  justify-content: space-between;
 }
 
-.order-cont .order-num text,.order-cont .time {
-    color: #777;
-}
-
-.order-cont .time {
-    padding: 6rpx;
-    font-size: 26rpx;
+.order-cont .order-num text, .order-cont .order-time text {
+  color: #777;
+  font-size: 26rpx;
 }
 
 .order-shop {
-    padding: 16rpx 0 16rpx 0;
+  padding: 16rpx 0 16rpx 0;
 }
 
-.order-shop-left,.order-shop-left image {
-    width: 160rpx;
-    height: 160rpx;
-    border: 1rpx solid #e4e4e4;
-    margin-right: 15rpx;
-    display: inline-block;
-    background: #fff;
+.order-shop-left, .order-shop-left image {
+  width: 160rpx;
+  height: 160rpx;
+  border: 1rpx solid #e4e4e4;
+  margin-right: 15rpx;
+  display: inline-block;
+  background: #fff;
 }
 
 .order-shop .num {
-    float: right;
+  float: right;
 }
 
 .order-btn {
-    padding: 18rpx 0 18rpx 0;
+  padding: 18rpx 0 18rpx 0;
 }
 
 .order-btn .order-left {
-    flex: 3;
+  flex: 3;
 }
 
-.order-btn .order-left text,.order-btn .order-left .text {
-    font-size: 30rpx;
+.order-btn .order-left text, .order-btn .order-left .text {
+  font-size: 30rpx;
 }
 
 .order-btn .order-left .text {
-    color: #777;
+  color: #777;
 }
 
 .order-btn .order-right {
-    flex: 3;
+  flex: 3;
 }
 
 .order-list-box .left {
-    flex: 4;
-    overflow: hidden;
-    position: relative;
+  flex: 4;
+  overflow: hidden;
+  position: relative;
 }
 
 .order-list-box .right {
-    flex: 1;
+  flex: 1;
 }
 
 .goods-number {
-    position: absolute;
-    right: 12px;
-    top: 35%;
-    font-size: 28rpx;
-    color: #777;
+  position: absolute;
+  right: 12px;
+  top: 35%;
+  font-size: 28rpx;
+  color: #777;
 }
 
 .btn-default {
-    border-radius: 4px;
-    border: 1rpx solid #ccc;
-    padding: 6rpx 20rpx;
-    font-size: 28rpx;
-    color: #555;
-    float: right;
+  border-radius: 4px;
+  border: 1rpx solid #ccc;
+  padding: 6rpx 20rpx;
+  font-size: 28rpx;
+  color: #555;
+  float: right;
 }
 
 .btn-main {
-    border-radius: 4px;
-    border: 1rpx solid #fd4a5f;
-    padding: 6rpx 20rpx;
-    font-size: 28rpx;
-    color: #fd4a5f;
-    margin-left: 10rpx;
-    float: right;
+  border-radius: 4px;
+  border: 1rpx solid #fd4a5f;
+  padding: 6rpx 20rpx;
+  font-size: 28rpx;
+  color: #fd4a5f;
+  margin-left: 10rpx;
+  float: right;
 }
 
 .user-orderJtou {
-    font-size: 24rpx;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: -20rpx;
-    color: #888;
+  font-size: 24rpx;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -20rpx;
+  color: #888;
 }
 
 .order-img_list {
-    background: rgba(255,255,255,0.2);
-    border-top: 1rpx solid #e4e4e4;
-    border-bottom: 1rpx solid #e4e4e4;
+  background: rgba(255, 255, 255, 0.2);
+  border-top: 1rpx solid #e4e4e4;
+  border-bottom: 1rpx solid #e4e4e4;
 }
 
 .order-right-name {
-    position: absolute;
-    top: 50%;
-    left: 180rpx;
-    font-size: 30rpx;
-    color: #555;
-    width: 100%;
-    margin-top: -46rpx;
-    line-height: 1.6;
+  position: absolute;
+  top: 50%;
+  left: 180rpx;
+  font-size: 30rpx;
+  color: #555;
+  width: 100%;
+  margin-top: -46rpx;
+  line-height: 1.6;
 }

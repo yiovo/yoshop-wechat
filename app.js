@@ -288,4 +288,11 @@ App({
     }
   },
 
+  /**
+   * 生成api url
+   */
+  apiUrl: function (e) {
+    return "https://shop.ectouch.cn/ectouch/weapp/public/" + e;
+  },
+
 });

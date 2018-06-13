@@ -1,82 +1,86 @@
 <view class="container m-b5">
-    <view class=" goods-detail-box">
-        <view class="header f-28 col-3">
-            <view catchtap="bindHeaderTap" class="{{current==0?'active':''}}" data-index="0">全部订单</view>
-            <view bindtap="bindHeaderTap" class="{{current==1?'active':''}}" data-index="1">待付款</view>
-            <view bindtap="bindHeaderTap" class="{{current==2?'active':''}}" data-index="2">待收货</view>
-        </view>
-        <scroll-view bindscrolltolower="bindDownLoad" scroll-y="true" style="height:{{scrollHeight}}px;">
-            <view class="wrapper">
-                <view wx:if="{{orders!=''}}">
-                    <view class="m-top20 " wx:for="{{orders}}" wx:key="orders">
-                        <view class="order-box b-f">
-                            <view class="order-header dis-flex">
-                                <view class="flex-box">
-                                    <text class="title">商品列表</text>
-                                </view>
-                                <view class="flex-box">
-                                    <text class="cont">{{item.pay_status}} {{item.shipping_status}} {{item.order_status}}</text>
-                                </view>
-                            </view>
-                        </view>
-                        <view class="order-box b-f">
-                            <view class="order-cont">
-                                <view class="order-num">
-                                    <text>订单号：</text>{{item.order_sn}}</view>
-                                <view class="time">
-                                    <text>{{item.add_time}}</text>
-                                </view>
-                            </view>
-                        </view>
-                        <view class="order-box order-img_list">
-                            <view class="order-shop dis-flex">
-                                <view bindtap="siteDetail" class="order-list-box dis-flex" data-index="{{index}}">
-                                    <view class="left">
-                                        <view class="dis-flex">
-                                            <view class="order-shop-left" wx:for="{{item.goods}}" wx:key="goods">
-                                                <image src="{{item.goods_thumb}}"></image>
-                                            </view>
-                                        </view>
-                                    </view>
-                                    <view class="right p-r">
-                                        <text class="goods-number">共{{item.total_number}}件</text>
-                                        <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
-                                    </view>
-                                </view>
-                            </view>
-                        </view>
-                        <view class="order-box b-f">
-                            <view class="order-btn dis-flex">
-                                <view class="order-left">
-                                    <view class="text">合计：
-                    <text class="col-m">{{item.total_amount}}</text>
-                                    </view>
-                                </view>
-                                <view class="order-right">
-                                    <view class="dis-flex">
-                                        <view class="flex-box" wx:if="{{item.pay_status=='未付款'}}">
-                                            <view bindtap="cancel_order" class="btn-default" data-id="{{item.order_id}}">取消</view>
-                                        </view>
-                                        <view class="" wx:if="{{item.pay_status=='未付款'}}">
-                                            <view bindtap="pay_order" class="btn-main" data-id="{{item.order_id}}">付款</view>
-                                        </view>
-                                        <view class="flex-box" wx:if="{{item.shipping_status=='已发货'}}">
-                                            <view bindtap="confirm_order" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
-                                        </view>
-                                    </view>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-                <view wx:else>
-                    <view class="ectouch-notcont">
-                        <text class="iconfont icon-meiyougengduo"></text>
-                        <text class="cont">亲，您还没有订单信息哦！</text>
-                    </view>
-                </view>
-            </view>
-        </scroll-view>
+  <view class=" goods-detail-box">
+    <view class="header f-28 col-3">
+      <view catchtap="bindHeaderTap" class="{{type==='all'?'active':''}}" data-type="all">全部订单</view>
+      <view bindtap="bindHeaderTap" class="{{type==='payment'?'active':''}}" data-type="payment">待付款</view>
+      <view bindtap="bindHeaderTap" class="{{type==='received'?'active':''}}" data-type="received">待收货</view>
     </view>
+    <scroll-view bindscrolltolower="bindDownLoad" scroll-y="true" style="height:{{scrollHeight}}px;">
+      <view class="wrapper">
+        <view wx:if="{{list.length}}">
+          <view class="m-top20 " wx:for="{{list}}" wx:key="this">
+            <view class="order-box b-f">
+              <view class="order-header dis-flex">
+                <view class="flex-box">
+                  <text class="title">商品列表</text>
+                </view>
+                <view class="flex-box">
+                  <text class="cont" wx:if="{{item.pay_status.value===10}}">{{item.pay_status.text}}</text>
+                  <text class="cont" wx:if="{{item.pay_status.value===20 && item.delivery_status.value===10}}">{{item.delivery_status.text}}</text>
+                  <text class="cont" wx:if="{{item.pay_status.value===20 && item.delivery_status.value===20 && item.receipt_status.value===10}}">{{item.receipt_status.text}}</text>
+                  <text class="cont" wx:if="{{item.order_status.value===30}}">{{item.order_status.text}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="order-box b-f">
+              <view class="order-cont dis-flex">
+                <view class="order-num">
+                  <text>订单号：{{item.order_no}}</text>
+                </view>
+                <view class="order-time">
+                  <text>{{item.create_time}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="order-box order-img_list">
+              <view class="order-shop dis-flex">
+                <view bindtap="siteDetail" class="order-list-box dis-flex" data-index="{{index}}">
+                  <view class="left">
+                    <view class="dis-flex">
+                      <view class="order-shop-left" wx:for="{{item.goods}}" wx:key="goods">
+                        <image src="{{item.image.file_path}}"></image>
+                      </view>
+                    </view>
+                  </view>
+                  <view class="right p-r">
+                    <text class="goods-number">共{{item.goods.length}}件</text>
+                    <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="order-box b-f">
+              <view class="order-btn dis-flex">
+                <view class="order-left">
+                  <view class="text">
+                    <text>合计：</text>
+                    <text class="col-m">￥{{item.pay_price}}</text>
+                  </view>
+                </view>
+                <view class="order-right">
+                  <view class="dis-flex">
+                    <view class="flex-box" wx:if="{{item.pay_status.value===10}}">
+                      <view bindtap="cancel_order" class="btn-default" data-id="{{item.order_id}}">取消</view>
+                    </view>
+                    <view class="" wx:if="{{item.pay_status.value===10}}">
+                      <view bindtap="pay_order" class="btn-main" data-id="{{item.order_id}}">付款</view>
+                    </view>
+                    <view class="flex-box" wx:if="{{item.delivery_status.value===20}}">
+                      <view bindtap="confirm_order" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:else>
+          <view class="ectouch-notcont">
+            <text class="iconfont icon-meiyougengduo"></text>
+            <text class="cont">亲，您还没有订单信息哦！</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 </view>
-<loading hidden="{{hidden}}">加载中…</loading>
