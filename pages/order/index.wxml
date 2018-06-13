@@ -1,9 +1,9 @@
 <view class="container m-b5">
   <view class=" goods-detail-box">
     <view class="header f-28 col-3">
-      <view catchtap="bindHeaderTap" class="{{type==='all'?'active':''}}" data-type="all">全部订单</view>
-      <view bindtap="bindHeaderTap" class="{{type==='payment'?'active':''}}" data-type="payment">待付款</view>
-      <view bindtap="bindHeaderTap" class="{{type==='received'?'active':''}}" data-type="received">待收货</view>
+      <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">全部订单</view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">待付款</view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">待收货</view>
     </view>
     <scroll-view bindscrolltolower="bindDownLoad" scroll-y="true" style="height:{{scrollHeight}}px;">
       <view class="wrapper">
@@ -60,10 +60,10 @@
                 <view class="order-right">
                   <view class="dis-flex">
                     <view class="flex-box" wx:if="{{item.pay_status.value===10}}">
-                      <view bindtap="cancel_order" class="btn-default" data-id="{{item.order_id}}">取消</view>
+                      <view bindtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">取消</view>
                     </view>
                     <view class="" wx:if="{{item.pay_status.value===10}}">
-                      <view bindtap="pay_order" class="btn-main" data-id="{{item.order_id}}">付款</view>
+                      <view bindtap="payOrder" class="btn-main" data-id="{{item.order_id}}">付款</view>
                     </view>
                     <view class="flex-box" wx:if="{{item.delivery_status.value===20}}">
                       <view bindtap="confirm_order" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
