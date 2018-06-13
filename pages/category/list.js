@@ -13,16 +13,17 @@ Page({
     sortType: 'all',    // 排序类型
     sortPrice: false,   // 价格从低到高
 
+    category_id: null,
     list: {},
     noList: true,
-    page: 1,
     no_more: false,
+    page: 1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (option) {
     let _this = this;
 
     // 设置商品列表高度
@@ -32,7 +33,10 @@ Page({
           scrollHeight: res.windowHeight - 90,
         });
       }
-    })
+    });
+
+    // 分类id
+    this.data.category_id = option.category_id;
 
     // 获取商品列表
     this.getGoodsList();
@@ -41,12 +45,13 @@ Page({
   /**
    * 获取商品列表
    */
-  getGoodsList: function (page) {
+  getGoodsList: function (page, category_id) {
     let _this = this;
     App._get('goods/lists', {
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice,
+      category_id: this.data.category_id,
     }, function (result) {
       if (result.code === 1) {
         let resultList = result.data.list

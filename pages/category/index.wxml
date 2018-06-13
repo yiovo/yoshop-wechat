@@ -16,7 +16,6 @@
       <text bindtap="selectNav" class="type-nav {{curNav==item.category_id?'selected':''}}" data-id="{{item.category_id}}" data-index="{{index}}" wx:for="{{list}}" wx:key="cateLeft">{{item.name}}</text>
     </scroll-view>
 
-
     <!-- 右侧 二级分类 -->
     <scroll-view class="cate-right b-f" scroll-top="{{scrollTop}}" scroll-y="true">
       <view wx:if="{{list[curIndex]}}">
@@ -24,7 +23,7 @@
           <view class="cate-two-box">
             <view class=" cate-cont-box dis-flex">
               <view class="flex-three" data-list="{{index}}" wx:for="{{list[curIndex].child}}" wx:key="cit">
-                <navigator hover-class="none" url="../category/list?id={{item.category_id}}">
+                <navigator hover-class="none" url="../category/list?category_id={{item.category_id}}">
                   <view class="cate-img" id="{{item.file_id}}">
                     <image src="{{item.image.file_path}}"></image>
                   </view>

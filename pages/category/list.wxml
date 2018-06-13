@@ -55,7 +55,7 @@
           </navigator>
         </view>
       </view>
-      <view hidden="{{!no_more}}" class="no-more f-32">亲, 没有更多了</view>
+      <view hidden="{{!no_more}}" class="no-more f-30">亲, 没有更多了</view>
     </scroll-view>
   </view>
 
