@@ -1,28 +1,29 @@
 <view class="container">
-    <view class="cont-box">
-        <view class="dis-box search-input-box">
-            <view class="search-input">
-                <view class="dis-box search-box">
-                    <view class="left">
-                        <icon color="{{searchColor}}" size="{{searchSize}}" type="search"></icon>
-                    </view>
-                    <view class="right">
-                        <input bindinput="getSearchContent" class="input" focus="true" placeholder="请输入您搜索的商品" placeholderStyle="color:#aba9a9" type="text"></input>
-                    </view>
-                </view>
-            </view>
-            <view class="serch-button">
-                <button bindtap="search" type="warn"> 搜索 </button>
-            </view>
+  <view class="cont-box">
+    <view class="dis-box search-input-box">
+      <view class="search-input">
+        <view class="dis-box search-box">
+          <view class="left">
+            <icon color="rgba(180,180,180,1)" size="15" type="search"></icon>
+          </view>
+          <view class="right">
+            <input bindinput="getSearchContent" class="input" focus="true" placeholder="请输入您搜索的商品" placeholderStyle="color:#aba9a9" type="text"></input>
+          </view>
         </view>
-        <view class="search-cont-box" wx:if="{{hotrecent!=''}}">
-            <view class="title-box">最近搜索<text bindtap="clearSearch" class="iconfont icon-lajixiang col-7"></text>
-            </view>
-            <view class="sale-button-box">
-                <view class="seconds-kill-li" wx:for="{{hotrecent}}" wx:for-index="idx" wx:for-item="recent" wx:key="hotrecent">
-                    <view bindtap="gosearch" class="recent-button" data-text="{{recent}}">{{recent}}</view>
-                </view>
-            </view>
-        </view>
+      </view>
+      <view class="serch-button">
+        <button bindtap="search" type="warn"> 搜索 </button>
+      </view>
     </view>
+    <view class="search-cont-box" wx:if="{{recentSearch.length}}">
+      <view class="title-box">最近搜索
+        <text bindtap="clearSearch" class="iconfont icon-lajixiang col-7"></text>
+      </view>
+      <view class="sale-button-box">
+        <view class="seconds-kill-li" wx:for="{{recentSearch}}" wx:for-index="idx" wx:for-item="recent" wx:key="hotrecent">
+          <view bindtap="goSearch" class="recent-button" data-text="{{recent}}">{{recent}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

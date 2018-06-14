@@ -13,10 +13,12 @@ Page({
     sortType: 'all',    // 排序类型
     sortPrice: false,   // 价格从低到高
 
-    category_id: null,
+    option: {},
     list: {},
+
     noList: true,
     no_more: false,
+
     page: 1,
   },
 
@@ -27,31 +29,27 @@ Page({
     let _this = this;
 
     // 设置商品列表高度
-    wx.getSystemInfo({
-      success: function (res) {
-        _this.setData({
-          scrollHeight: res.windowHeight - 90,
-        });
-      }
+    _this.setListHeight();
+
+    // 记录option
+    _this.setData({ option}, function () {
+      // 获取商品列表
+      _this.getGoodsList();
     });
 
-    // 分类id
-    this.data.category_id = option.category_id;
-
-    // 获取商品列表
-    this.getGoodsList();
   },
 
   /**
-   * 获取商品列表
+   * 获取商品列表洗面奶
    */
-  getGoodsList: function (page, category_id) {
+  getGoodsList: function (page) {
     let _this = this;
     App._get('goods/lists', {
       page: page || 1,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice,
-      category_id: this.data.category_id,
+      category_id: this.data.option.category_id || 0,
+      search: this.data.option.search || '',
     }, function (result) {
       if (result.code === 1) {
         let resultList = result.data.list
@@ -68,19 +66,33 @@ Page({
   },
 
   /**
+   * 设置商品列表高度
+   */
+  setListHeight: function () {
+    let _this = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          scrollHeight: res.windowHeight - 90,
+        });
+      }
+    });
+  },
+
+  /**
    * 切换排序方式
    */
   switchSortType: function (e) {
     let _this = this
-    , newSortType = e.currentTarget.dataset.type
-    , newSortPrice = newSortType === 'price' ? !this.data.sortPrice : true;
+      , newSortType = e.currentTarget.dataset.type
+      , newSortPrice = newSortType === 'price' ? !this.data.sortPrice : true;
 
     this.setData({
       list: {},
       page: 1,
       sortType: newSortType,
       sortPrice: newSortPrice
-    },function() {
+    }, function () {
       // 获取商品列表
       _this.getGoodsList();
     });

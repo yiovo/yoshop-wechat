@@ -1,45 +1,76 @@
-let e, t = getApp(), n = "";
+let App = getApp();
 
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    searchSize: "15",
-    searchColor: "rgba(180,180,180,1)",
-    hotrecent: [{
-      title: "男装",
-      icon_url: ""
-    }]
+    recentSearch: [],
+    searchValue: '',
   },
-  onLoad: function (t) {
-    e = t.objectId ? t.objectId : "";
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
   onShow: function () {
+    // 获取历史搜索
     this.getRecentSearch();
   },
+
+  /**
+   * 获取历史搜索
+   */
   getRecentSearch: function () {
-    for (var e, t = wx.getStorageSync("recentKeyword").split(","), n = [], r = 0; r < t.length; r++) if ("" != t[r]) {
-      e = !1;
-      for (var c = 0; c < n.length; c++) t[r] == n[c] && (e = !0);
-      0 == e && n.push(t[r]);
-    }
-    wx.setStorageSync("recentKeyword", n.join(","));
-    this.setData({
-      hotrecent: n
-    });
+    let recentSearch = wx.getStorageSync('recentSearch');
+    this.setData({ recentSearch });
   },
-  onPullDownRefresh: function () {
-    wx.stopPullDownRefresh();
-  },
+
+  /**
+   * 绑定输入值
+   */
   getSearchContent: function (e) {
-    n = e.detail.value;
+    this.data.searchValue = e.detail.value;
   },
+
+  /**
+   * 搜索提交
+   */
   search: function () {
-    let r = wx.getStorageSync("recentKeyword");
-    r = "" == r ? n : r + "," + n, wx.setStorageSync("recentKeyword", r), t.redirectTo("../category/list?content=" + n + "&id=" + e);
+    if (this.data.searchValue) {
+      // 记录最近搜索
+      let recentSearch = wx.getStorageSync('recentSearch') || [];
+      recentSearch.unshift(this.data.searchValue);
+      wx.setStorageSync('recentSearch', recentSearch)
+      // 跳转到商品列表页
+      wx.navigateTo({
+        url: '../category/list?search=' + this.data.searchValue,
+      })
+    }
   },
-  gosearch: function (n) {
-    t.redirectTo("../category/list?content=" + n.target.dataset.text + "&id=" + e);
-  },
+
+  /**
+   * 清空最近搜索记录
+   */
   clearSearch: function () {
-    wx.clearStorageSync(), this.getRecentSearch();
-  }
-});
+    wx.removeStorageSync('recentSearch');
+    this.getRecentSearch();
+  },
+
+  /**
+   * 跳转到最近搜索
+   */
+  goSearch: function (e) {
+    wx.navigateTo({
+      url: '../category/list?search=' + e.target.dataset.text,
+    })
+  },
+
+})
