@@ -1,24 +1,41 @@
+let App = getApp();
+
 Page({
-    data: {},
-    onLoad: function() {
-        this.loadingChange();
-    },
-    loadingChange: function() {
-        let e = this;
-        setTimeout(function() {
-            e.setData({
-                hidden: !0
-            });
-        }, 2e3);
-    },
-    onPullDownRefresh: function() {
-        wx.stopPullDownRefresh();
-    },
-    onShareAppMessage: function() {
-        return {
-            title: "我的帮助",
-            desc: "小程序本身无需下载，无需注册，不占用手机内存，可以跨平台使用，响应迅速，体验接近原生App",
-            path: "/pages/help/help"
-        };
-    }
-});
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    list: [],
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    // 获取帮助列表
+    this.getHelpList();
+  },
+
+  /**
+   * 获取帮助列表
+   */
+  getHelpList: function () {
+    let _this = this;
+    App._get('wxapp/help', {}, function (result) {
+      if (result.code === 1) {
+        _this.setData(result.data);
+      } else {
+        App.showError(result.msg);
+      }
+    });
+  },
+
+})
