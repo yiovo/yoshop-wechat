@@ -26,7 +26,8 @@
              <!-- <image src="{{userInfo.avatarUrl}}"></image>  -->
              <open-data type="userAvatarUrl"></open-data> 
           </view>
-          <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text>
+          <!-- <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text> -->
+           <open-data class="user-admin onelist-hidden" type="userNickName"></open-data>  
         </view>
         <view class="flex-box p-r">
           <navigator hover-class="navigator-hover" url="../order/index?type=received">
