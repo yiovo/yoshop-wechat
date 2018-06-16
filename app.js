@@ -56,49 +56,6 @@ App({
     }, false, false);
   },
 
-  // /**
-  //  * 执行用户登录
-  //  * 自动检测当前登录态并实现微信登录
-  //  */
-  // doLogin: function (callback) {
-  //   let App = this;
-  //   if (wx.getStorageSync('token').length !== 32) {
-  //     return App.wxLogin(callback);
-  //   }
-  //   // 自动检测登录
-  //   wx.checkSession({
-  //     success: function () {
-  //       callback && callback();
-  //     },
-  //     fail: function () {
-  //       // session_key 已经失效，需要重新执行登录流程
-  //       App.wxLogin(callback);
-  //     }
-  //   });
-  // },
-
-  // /**
-  //  * 微信登录接口
-  //  */
-  // wxLogin: function (callback) {
-  //   let App = this;
-  //   wx.login({
-  //     success: function (res) {
-  //       App._post_form('user/login', { code: res.code }, function (result) {
-  //         if (result.code === 1) {
-  //           console.log(result.data);
-  //           wx.setStorageSync('token', result.data.token);
-  //           wx.setStorageSync('user_id', result.data.user_id);
-  //           callback && callback();
-  //         } else {
-  //           App.showError(result.msg);
-  //         }
-  //       });
-  //     }
-  //   });
-  // },
-
-
   /**
    * 执行用户登录
    */
@@ -297,13 +254,6 @@ App({
     } else {
       App.getWxappBase(function () { App.setTitle(); });
     }
-  },
-
-  /**
-   * 生成api url
-   */
-  apiUrl: function (e) {
-    return "https://shop.ectouch.cn/ectouch/weapp/public/" + e;
   },
 
 });
