@@ -1,7 +1,8 @@
 <view class="container m-b5">
   <view class="user-header p-r">
     <view class="user-bg-box">
-      <image class="header-bg" src="{{userInfo.avatarUrl}}"></image>
+      <!-- <image class="header-bg" src="{{userInfo.avatarUrl}}"></image> -->
+       <open-data class="header-bg" type="userAvatarUrl"></open-data>
     </view>
   </view>
   <view>
@@ -22,8 +23,8 @@
         </view>
         <view class="p-r" style=" flex:1.4;">
           <view class="header-img-box">
-            <!-- <image src="{{userInfo.avatarUrl}}"></image> -->
-            <open-data type="userAvatarUrl"></open-data>
+             <!-- <image src="{{userInfo.avatarUrl}}"></image>  -->
+             <open-data type="userAvatarUrl"></open-data> 
           </view>
           <text class="user-admin onelist-hidden">{{userInfo.nickName}}</text>
         </view>
