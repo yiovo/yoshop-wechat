@@ -54,7 +54,7 @@
         </view>
       </navigator>
     </view>
-    <view class="flow-num-box b-f">
+    <view class="flow-num-box b-f padding-box">
       <text>共{{order_total_num}}件商品，合计：</text>
       <text class="flow-money col-m">￥{{order_total_price}}</text>
     </view>

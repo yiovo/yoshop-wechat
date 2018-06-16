@@ -110,18 +110,23 @@ Page({
       wx.hideLoading();
       // 发起微信支付
       wx.requestPayment({
-        timeStamp: result.data.timeStamp,
-        nonceStr: result.data.nonceStr,
-        package: 'prepay_id=' + result.data.prepay_id,
+        timeStamp: result.data.payment.timeStamp,
+        nonceStr: result.data.payment.nonceStr,
+        package: 'prepay_id=' + result.data.payment.prepay_id,
         signType: 'MD5',
-        paySign: result.data.paySign,
+        paySign: result.data.payment.paySign,
         success: function (res) {
-          // todo: 跳转到已付款订单
-          
+          // 跳转到已付款订单
+          wx.navigateTo({
+            url: '../order/detail?order_id=' + result.data.order_id,
+          });
         },
         fail: function() {
           App.showError('订单未支付', function() {
-            // todo: 跳转到未付款订单
+            // 跳转到已付款订单
+            wx.navigateTo({
+              url: '../order/detail?order_id=' + result.data.order_id,
+            });
           });
         },
       });

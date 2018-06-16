@@ -2602,7 +2602,7 @@ buy_number {
 .flow-num-box {
   font-size: 30rpx;
   color: #777;
-  padding: 15rpx 0;
+  padding: 15rpx 12px;
   text-align: right;
   border-top: 1rpx solid #f1f1f1;
 }

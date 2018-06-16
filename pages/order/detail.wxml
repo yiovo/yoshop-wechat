@@ -53,7 +53,7 @@
       </view>
     </view>
 
-    <view class="select b-f padding-box">
+    <view class="select b-f">
       <view class="flow-num-box b-f">共{{order.goods.length}}件商品，合计：
         <text class="flow-money">{{order.total_price}}</text>
       </view>

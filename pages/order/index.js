@@ -116,7 +116,10 @@ Page({
         signType: 'MD5',
         paySign: result.data.paySign,
         success: function (res) {
-          // todo: 跳转到已付款订单
+          // 跳转到已付款订单
+          wx.navigateTo({
+            url: '../order/detail?order_id=' + order_id
+          });
         },
         fail: function () {
           App.showError('订单未支付');
