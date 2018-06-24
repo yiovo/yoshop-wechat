@@ -60,7 +60,7 @@
 .order-shop-left, .order-shop-left image {
   width: 160rpx;
   height: 160rpx;
-  border: 1rpx solid #e4e4e4;
+  /* border: 1rpx solid #e4e4e4; */
   margin-right: 15rpx;
   display: inline-block;
   background: #fff;

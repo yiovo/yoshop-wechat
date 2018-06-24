@@ -15,8 +15,8 @@
       </view>
     </view>
 
-    <!-- 订单金额 -->
-    <view class="flow-all-money b-f padding-box m-top20">
+    <!-- 物流信息 -->
+    <view class="flow-all-money b-f padding-box m-top20" wx:if="{{order.delivery_status.value === 20}}">
       <view class="dis-flex flow-all-list-cont">
         <text class="col-7">快递公司: {{order.express_company}}</text>
       </view>
