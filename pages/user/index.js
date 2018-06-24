@@ -22,7 +22,7 @@ Page({
    */
   onShow: function () {
     // 获取当前用户信息
-    this.getUserDetail();
+    // this.getUserDetail();
   },
 
   /**
