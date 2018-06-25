@@ -101,7 +101,7 @@
       <view bindtap="cancelOrder" class="flex-box chackout-left-detail t-c">
         取消订单
       </view>
-      <view bindtap="submitOrder" class="flex-box chackout-right-detail">
+      <view class="flex-box chackout-right-detail">
         <text bindtap="payOrder" class="flow-btn" wx:if="{{order.pay_status.value===10}}">去付款</text>
       </view>
     </view>

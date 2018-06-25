@@ -37,7 +37,7 @@ App({
    */
   setApiRoot: function () {
     let siteroot = this.siteInfo.siteroot.replace('app/index.php', '');
-    this.api_root = siteroot + 'web/index.php?s=/api/';
+    this.api_root = siteroot + 'addons/yoshop/web/index.php?s=/api/';
   },
 
   /**
@@ -194,14 +194,11 @@ App({
             App._post_form(url, data, success, fail);
           });
           return false;
-        }
-        else if (res.data.code === 0) {
+        } else if (res.data.code === 0) {
           App.showError(res.data.msg);
           return false;
         }
-        else {
-          success && success(res.data);
-        }
+        success && success(res.data);
       },
       fail: function (res) {
         console.log(res);
