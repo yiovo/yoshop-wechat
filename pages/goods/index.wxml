@@ -22,7 +22,7 @@
       </view>
       <view class="goods-sales-box f-28 dis-flex">
         <text class="flex-box num">销量：{{detail.goods_sales}}</text>
-        <text class="flex-box stock">库存：{{detail.spec[0].line_price}}</text>
+        <text class="flex-box stock">库存：{{detail.spec[0].stock_num}}</text>
       </view>
     </view>
     <view bindtap="onChangeShowState" class="cont-box b-f goods-property-box m-top20">
