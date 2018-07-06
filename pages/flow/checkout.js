@@ -25,6 +25,7 @@ Page({
   onLoad: function(options) {
     // 当前页面参数
     this.data.options = options;
+    console.log(options);
   },
 
   /**
@@ -62,7 +63,8 @@ Page({
     if (options.order_type === 'buyNow') {
       App._get('order/buyNow', {
         goods_id: options.goods_id,
-        goods_num: options.goods_num
+        goods_num: options.goods_num,
+        goods_spec_id: options.goods_spec_id,
       }, function(result) {
         callback(result);
       });
@@ -142,7 +144,8 @@ Page({
     if (options.order_type === 'buyNow') {
       App._post_form('order/buyNow', {
         goods_id: options.goods_id,
-        goods_num: options.goods_num
+        goods_num: options.goods_num,
+        goods_spec_id: options.goods_spec_id,
       }, function(result) {
         console.log(result);
         callback(result);

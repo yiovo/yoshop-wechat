@@ -38,14 +38,14 @@
   <!-- 商品列表 -->
   <view class="m-top20">
     <view class="checkout_list " wx:for="{{goods_list}}" wx:key="this">
-      <navigator url="../goods/index?objectId={{item.goods_id}}">
+      <navigator url="../goods/index?goods_id={{item.goods_id}}">
         <view class="dis-flex flow-shopList" data-index="{{index}}">
           <view class="flow-list-left">
             <image mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
           </view>
           <view class="flow-list-right box-flex">
             <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
-            <text class="f-26 col-7">{{item.goods_attr}}</text>
+            <text class="f-26 col-7">{{item.goods_sku.goods_attr}}</text>
             <view class="flow-list-cont">
               <text class="flow-cont">{{item.goods_price}}</text>
               <text class="small">×{{item.total_num}}</text>

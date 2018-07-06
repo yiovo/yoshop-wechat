@@ -15,18 +15,18 @@
                   <text bindtap="flowDetail" class=" {{item.spec_type===20?'onelist-hidden':'twolist-hidden'}} f-30 col-3">{{item.goods_name}}</text>
                 </view>
                 <view class="goods-attr">
-                  <text class="col-7 f-24">{{item.goods_attr}}</text>
+                  <text class="col-7 f-24">{{item.goods_sku.goods_attr}}</text>
                 </view>
                 <view class="wx-goods_price">
                   <text class="dish-item-money">￥{{item.goods_price}} </text>
                 </view>
               </navigator>
               <view class="selectNumber">
-                <button bindtap="minusCount" class="default {{item.total_num>1?'':' default-active'}}" data-index="{{index}}" type="default">-</button>
+                <button bindtap="minusCount" class="default {{item.total_num>1?'':' default-active'}}" data-index="{{index}}" data-spec-id="{{item.goods_spec_id}}" type="default">-</button>
                 <input bindinput="import" disabled="{{true}}" type="number" value="{{item.total_num}}"></input>
-                <button bindtap="addCount" class="default" data-index="{{index}}" data-id="{{item.goods_id}}" type="default">+</button>
+                <button bindtap="addCount" class="default" data-index="{{index}}" data-spec-id="{{item.goods_spec_id}}" type="default">+</button>
               </view>
-              <view catchtap="del" class="flow-dete" data-id="{{item.goods_id}}" data-index="{{index}}">
+              <view catchtap="del" class="flow-dete" data-goods-id="{{item.goods_id}}" data-spec-id="{{item.goods_spec_id}}">
                 <text class="iconfont icon-lajixiang"></text>
               </view>
             </view>

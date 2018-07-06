@@ -17,12 +17,12 @@
         <text class="title f-32 twolist-hidden">{{detail.goods_name}}</text>
       </view>
       <view class="money-box">
-        <text class="num">￥{{detail.spec[0].goods_price}}</text>
-        <text class="del">￥{{detail.spec[0].line_price}}</text>
+        <text class="num">￥{{goods_price}}</text>
+        <text class="del">￥{{line_price}}</text>
       </view>
       <view class="goods-sales-box f-28 dis-flex">
         <text class="flex-box num">销量：{{detail.goods_sales}}</text>
-        <text class="flex-box stock">库存：{{detail.spec[0].stock_num}}</text>
+        <text class="flex-box stock">库存：{{stock_num}}</text>
       </view>
     </view>
     <view bindtap="onChangeShowState" class="cont-box b-f goods-property-box m-top20">
@@ -35,14 +35,14 @@
     <view class="cart bright789_view_hide {{showView?'bright789_view_show':''}}">
       <view class="modal_cont_box">
         <scroll-view class="goods-list-box" scroll-y="true">
-          <view class="cf tmall-types " wx:for="{{carModels}}" wx:for-index="attr_id" wx:key="carModels">
-            <view class="tipstxt" id="{{attr_id}}">{{item.name}}</view>
-            <view class="cf cartypelist" wx:for="{{item.values}}" wx:for-index="attr_id_child" wx:key="carModelChild">
+          <view class="cf tmall-types" wx:for="{{specData.spec_attr}}" wx:for-item="attr" wx:for-index="attr_idx" wx:key="key">
+            <view class="tipstxt" data-id="{{attr.group_id}}">{{attr.group_name}}</view>
+            <view class="cf cartypelist" wx:for="{{attr.spec_items}}" wx:for-index="item_idx" wx:key="ikey">
               <view wx:if="{{item.checked}}">
-                <view bindtap="modelTap" class="cartypeitem cur" id="{{item.id}}">{{item.label}}</view>
+                <view bindtap="modelTap" class="cartypeitem cur" data-attr-idx="{{attr_idx}}" data-item-idx="{{item_idx}}">{{item.spec_value}}</view>
               </view>
               <view wx:else>
-                <view bindtap="modelTap" class="cartypeitem" id="{{item.id}}">{{item.label}}</view>
+                <view bindtap="modelTap" class="cartypeitem" data-attr-idx="{{attr_idx}}" data-item-idx="{{item_idx}}">{{item.spec_value}}</view>
               </view>
             </view>
           </view>
