@@ -37,7 +37,7 @@ App({
    */
   setApiRoot: function () {
     let siteroot = this.siteInfo.siteroot.replace('app/index.php', '');
-    this.api_root = siteroot + 'addons/yiovo_shop/web/index.php?s=/api/';
+    this.api_root = siteroot + 'index.php?s=/api/';
   },
 
   /**
