@@ -36,8 +36,7 @@ App({
    * 设置api地址
    */
   setApiRoot: function () {
-    let siteroot = this.siteInfo.siteroot.replace('app/index.php', '');
-    this.api_root = siteroot + 'index.php?s=/api/';
+    this.api_root = this.siteInfo.siteroot + 'index.php?s=/api/';
   },
 
   /**
