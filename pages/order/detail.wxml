@@ -106,7 +106,7 @@
       </view>
     </view>
     <view class="flow-btn h3" wx:if="{{order.delivery_status.value===20 && order.receipt_status.value===10}}">
-      <view bindtap="confirm_order">确认收货</view>
+      <view bindtap="receipt">确认收货</view>
     </view>
   </view>
 
