@@ -13,16 +13,16 @@ function r(e) {
     e = e.replace(/\[([^\[\]]+)\]/g, ":$1:");
     for (var r = new RegExp("[:]"), s = e.split(r), i = 0; i < s.length; i++) {
         var l = s[i], d = {};
-        n[l] ? (d.node = "element", d.tag = "emoji", d.text = n[l], d.baseSrc = o) : (d.node = "text", 
+        n[l] ? (d.node = "element", d.tag = "emoji", d.text = n[l], d.baseSrc = o) : (d.node = "text",
         d.text = l), t.push(d);
     }
     return t;
 }
 
-var s = "https", a = "", o = "", n = {}, i = require("./wxDiscode.js"), l = require("./htmlparser.js"), d = (e("area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr"), 
+var s = "https", a = "", o = "", n = {}, i = require("./wxDiscode.js"), l = require("./htmlparser.js"), d = (e("area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr"),
 e("br,a,code,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video")), c = e("abbr,acronym,applet,b,basefont,bdo,big,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var"), u = e("colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr");
 
-e("checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected"), 
+e("checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected"),
 e("wxxxcode-style,script,style,view,scroll-view,block");
 
 module.exports = {
@@ -40,11 +40,11 @@ module.exports = {
                     node: "element",
                     tag: e
                 };
-                if (d[e] ? l.tagType = "block" : c[e] ? l.tagType = "inline" : u[e] && (l.tagType = "closeSelf"), 
+                if (d[e] ? l.tagType = "block" : c[e] ? l.tagType = "inline" : u[e] && (l.tagType = "closeSelf"),
                 0 !== t.length && (l.attr = t.reduce(function(e, t) {
                     var r = t.name, s = t.value;
-                    return "class" == r && (console.dir(s), l.classStr = s), "style" == r && (console.dir(s), 
-                    l.styleStr = s), s.match(/ /) && (s = s.split(" ")), e[r] ? Array.isArray(e[r]) ? e[r].push(s) : e[r] = [ e[r], s ] : e[r] = s, 
+                    return "class" == r && (console.log(s), l.classStr = s), "style" == r && (console.log(s),
+                    l.styleStr = s), s.match(/ /) && (s = s.split(" ")), e[r] ? Array.isArray(e[r]) ? e[r].push(s) : e[r] = [ e[r], s ] : e[r] = s,
                     e;
                 }, {})), "img" === l.tag) {
                     l.imgIndex = n.images.length;
@@ -70,7 +70,7 @@ module.exports = {
             },
             end: function(e) {
                 var t = o.shift();
-                if (t.tag !== e && console.error("invalid state: mismatch end tag"), "video" === t.tag && n.source && (t.attr.src = n.source, 
+                if (t.tag !== e && console.error("invalid state: mismatch end tag"), "video" === t.tag && n.source && (t.attr.src = n.source,
                 delete result.source), 0 === o.length) n.nodes.push(t); else {
                     var r = o[0];
                     void 0 === r.nodes && (r.nodes = []), r.nodes.push(t);
