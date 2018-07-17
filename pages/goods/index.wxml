@@ -18,7 +18,7 @@
       </view>
       <view class="money-box">
         <text class="num">￥{{goods_price}}</text>
-        <text class="del">￥{{line_price}}</text>
+        <text class="del" wx:if="{{line_price>0}}">￥{{line_price}}</text>
       </view>
       <view class="goods-sales-box f-28 dis-flex">
         <text class="flex-box num">销量：{{detail.goods_sales}}</text>
