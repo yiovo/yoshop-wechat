@@ -131,4 +131,13 @@ Page({
     return (Number(arg1) - Number(arg2)).toFixed(2);
   },
 
+  /**
+   * 去购物
+   */
+  goShopping: function() {
+    wx.switchTab({
+      url: '../index/index',
+    });
+  },
+
 })

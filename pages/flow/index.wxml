@@ -46,7 +46,7 @@
       <view class="ectouch-notcont">
         <text class="iconfont icon-meiyougengduo"></text>
         <text class="cont">亲，购物车还没有商品哦</text>
-        <view bindtap="flowcartBtn" class="flow-btn-min">去购物</view>
+        <view bindtap="goShopping" class="flow-btn-min">去购物</view>
       </view>
     </view>
   </view>
