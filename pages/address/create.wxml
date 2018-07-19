@@ -8,7 +8,7 @@
         <view class="left-name">
           <text class="f-30">收货人</text>
         </view>
-        <view class="right-cont box-flex">
+        <view class="right-cont dis-flex">
           <input name="name" placeholder="请输入收货人姓名"></input>
         </view>
       </view>
@@ -17,7 +17,7 @@
         <view class="left-name">
           <text class="f-30">手机号</text>
         </view>
-        <view class="right-cont box-flex">
+        <view class="right-cont dis-flex">
           <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number"></input>
         </view>
       </view>
