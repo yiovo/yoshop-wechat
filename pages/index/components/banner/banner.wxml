@@ -2,7 +2,7 @@
 <view class="index-banner">
 
   <swiper autoplay="{{autoplay}}" class="banner-box swiper-box dot-{{item.style.btnShape}}" duration="{{duration}}" circular="{{true}}" indicator-dots="{{indicatorDots}}" interval="{{interval}}" indicator-color="{{item.style.btnColor}}" indicator-active-color="#000" bindchange="bindChange" data-item-key="{{item_key}}" style="height:{{imgHeights[item_key][imgCurrent[item_key]]}}rpx">
-    <navigator hover-class="none" wx:for-item="banner" url="{{banner.link}}" wx:for="{{item.data}}" wx:key="this">
+    <navigator hover-class="none" wx:for-item="banner" url="/{{banner.linkUrl}}" wx:for="{{item.data}}" wx:key="this">
       <swiper-item item-id="{{index}}">
         <image class="slide-image" bindload="imagesHeight" src="{{banner.imgUrl}}" data-id="{{index}}" data-item-key="{{item_key}}"></image>
       </swiper-item>

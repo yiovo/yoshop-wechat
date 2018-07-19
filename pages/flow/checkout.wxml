@@ -47,7 +47,7 @@
             <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
             <text class="f-26 col-7">{{item.goods_sku.goods_attr}}</text>
             <view class="flow-list-cont">
-              <text class="flow-cont">{{item.goods_price}}</text>
+              <text class="flow-cont">￥{{item.goods_price}}</text>
               <text class="small">×{{item.total_num}}</text>
             </view>
           </view>
