@@ -61,5 +61,5 @@
 .no-more {
   text-align: center;
   color: #737373;
-  margin-top: 10px;
+  margin: 10px 0;
 }

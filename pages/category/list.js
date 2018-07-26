@@ -34,15 +34,15 @@ Page({
     // 记录option
     _this.setData({ option}, function () {
       // 获取商品列表
-      _this.getGoodsList();
+      _this.getGoodsList(true);
     });
 
   },
 
   /**
-   * 获取商品列表洗面奶
+   * 获取商品列表
    */
-  getGoodsList: function (page) {
+  getGoodsList: function (is_super, page) {
     let _this = this;
     App._get('goods/lists', {
       page: page || 1,
@@ -54,7 +54,8 @@ Page({
       if (result.code === 1) {
         let resultList = result.data.list
           , dataList = _this.data.list;
-        if (typeof dataList.data === 'undefined') {
+        if (is_super === true || typeof dataList.data === 'undefined') {
+          // typeof dataList.data === 'undefined'
           _this.setData({ list: resultList, noList: false });
         } else {
           _this.setData({ 'list.data': dataList.data.concat(resultList.data) });
@@ -94,7 +95,7 @@ Page({
       sortPrice: newSortPrice
     }, function () {
       // 获取商品列表
-      _this.getGoodsList();
+      _this.getGoodsList(true);
     });
   },
 
@@ -127,7 +128,7 @@ Page({
       this.setData({ no_more: true });
       return false;
     }
-    this.getGoodsList(++this.data.page);
+    this.getGoodsList(false, ++this.data.page);
   },
 
   /**
