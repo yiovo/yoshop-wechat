@@ -75,6 +75,10 @@ Page({
     // 显示loading
     wx.showLoading({ title: '正在处理...', });
     App._post_form('user.order/pay', { order_id }, function (result) {
+      if (result.code === -10) {
+        App.showError(result.msg);
+        return false;
+      }
       // 发起微信支付
       wx.requestPayment({
         timeStamp: result.data.timeStamp,

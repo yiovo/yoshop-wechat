@@ -106,8 +106,15 @@ Page({
 
     // 订单创建成功后回调--微信支付
     let callback = function(result) {
-      // 关闭loading
-      wx.hideLoading();
+      if (result.code === -10) {
+        App.showError(result.msg, function() {
+          // 跳转到未付款订单
+          wx.redirectTo({
+            url: '../order/index?type=payment',
+          });
+        });
+        return false;
+      }
       // 发起微信支付
       wx.requestPayment({
         timeStamp: result.data.payment.timeStamp,
@@ -116,16 +123,16 @@ Page({
         signType: 'MD5',
         paySign: result.data.payment.paySign,
         success: function(res) {
-          // 跳转到已付款订单
-          wx.navigateTo({
+          // 跳转到订单详情
+          wx.redirectTo({
             url: '../order/detail?order_id=' + result.data.order_id,
           });
         },
         fail: function() {
           App.showError('订单未支付', function() {
-            // 跳转到已付款订单
-            wx.navigateTo({
-              url: '../order/detail?order_id=' + result.data.order_id,
+            // 跳转到未付款订单
+            wx.redirectTo({
+              url: '../order/index?type=payment',
             });
           });
         },
@@ -137,7 +144,7 @@ Page({
 
     // 显示loading
     wx.showLoading({
-      title: '正在处理...',
+      title: '正在处理...'
     });
 
     // 创建订单-立即购买
@@ -147,9 +154,15 @@ Page({
         goods_num: options.goods_num,
         goods_spec_id: options.goods_spec_id,
       }, function(result) {
-        console.log(result);
+        // success
+        console.log('success');
         callback(result);
-      }, {}, function() {
+      }, function(result) {
+        // fail
+        console.log('fail');
+      }, function() {
+        // complete
+        console.log('complete');
         // 解除按钮禁用
         _this.data.disabled = false;
       });
@@ -158,8 +171,15 @@ Page({
     // 创建订单-购物车结算
     else if (options.order_type === 'cart') {
       App._post_form('order/cart', {}, function(result) {
+        // success
+        console.log('success');
         callback(result);
-      }, {}, function() {
+      }, function(result) {
+        // fail
+        console.log('fail');
+      }, function() {
+        // complete
+        console.log('complete');
         // 解除按钮禁用
         _this.data.disabled = false;
       });
