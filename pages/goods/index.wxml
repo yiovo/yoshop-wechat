@@ -123,7 +123,7 @@
           <text>{{cart_total_num}}</text>
         </view>
       </view>
-      <block wx:if="{{detail.spec[0].stock_num > 0}}">
+      <block wx:if="{{stock_num > 0}}">
         <view bindtap="submit" class="order-number" data-type="addCart">加入购物车</view>
         <view bindtap="submit" class="order-bt" data-type="bugNow"> 立即购买</view>
       </block>
