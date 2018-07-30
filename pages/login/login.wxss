@@ -14,9 +14,14 @@ page {
   text-align: center;
 }
 
-.wechatapp image {
-  width: 200rpx;
-  height: 200rpx;
+.wechatapp .header {
+  width: 190rpx;
+  height: 190rpx;
+  border: 2px solid #fff;
+  margin: 0rpx auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
 }
 
 .auth-title {
