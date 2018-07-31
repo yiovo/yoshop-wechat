@@ -231,17 +231,16 @@ page {
 .onelist-hidden {
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
 }
 
 .twolist-hidden {
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .b-r {
