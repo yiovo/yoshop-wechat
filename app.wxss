@@ -984,13 +984,13 @@ page {
 }
 
 .index-search-box {
-  padding: 18rpx 0 12rpx 0;
+  /* padding: 18rpx 0 12rpx 0;
   position: absolute;
   top: 0;
-  z-index: 4999;
   left: 0;
   right: 0;
-  box-sizing: border-box;
+  z-index: 4999;
+  box-sizing: border-box; */
 }
 
 .index-search {
@@ -3799,7 +3799,7 @@ button.submit_btn {
 .page__input .weui-cell:before {
   content: " ";
   position: absolute;
-  left: 0;
+  /* left: 0; */
   top: 0;
   right: 0;
   height: 1px;
@@ -3917,7 +3917,7 @@ button.submit_btn {
 .weui-panel__hd:after {
   content: " ";
   position: absolute;
-  left: 0;
+  /* left: 0; */
   bottom: 0;
   right: 0;
   height: 1px;
