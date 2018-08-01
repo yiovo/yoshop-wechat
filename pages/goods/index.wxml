@@ -125,7 +125,7 @@
       </view>
       <block wx:if="{{stock_num > 0}}">
         <view bindtap="submit" class="order-number" data-type="addCart">加入购物车</view>
-        <view bindtap="submit" class="order-bt" data-type="bugNow"> 立即购买</view>
+        <view bindtap="submit" class="order-bt" data-type="buyNow"> 立即购买</view>
       </block>
       <view class="default-btn" style="wdata-typeth:100%" wx:else>暂无现货</view>
     </view>

@@ -9,7 +9,7 @@ Page({
   data: {
     nav_select: false, // 快捷导航
 
-    indicatorDots: true, // 是否显示面板指示点	
+    indicatorDots: true, // 是否显示面板指示点
     autoplay: true, // 是否自动切换
     interval: 3000, // 自动切换时间间隔
     duration: 800, // 滑动动画时长
@@ -240,7 +240,7 @@ Page({
     let _this = this,
       submitType = e.currentTarget.dataset.type;
 
-    if (submitType === 'bugNow') {
+    if (submitType === 'buyNow') {
       // 立即购买
       wx.navigateTo({
         url: '../flow/checkout?' + App.urlEncode({
