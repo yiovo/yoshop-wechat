@@ -151,8 +151,8 @@ App({
           }
         },
         fail: function(res) {
-          console.log(res);
-          App.showError('网络请求出错', function() {
+          // console.log(res);
+          App.showError(res.errMsg, function() {
             fail && fail(res);
           });
         },
@@ -201,8 +201,8 @@ App({
         success && success(res.data);
       },
       fail: function(res) {
-        console.log(res);
-        App.showError('网络请求出错', function() {
+        // console.log(res);
+        App.showError(res.errMsg, function () {
           fail && fail(res);
         });
       },
