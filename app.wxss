@@ -2906,6 +2906,7 @@ button.submit_btn {
 
 .user-admin {
   display: block;
+  width: 190rpx;
   font-size: 32rpx;
   text-align: center;
   margin: 4rpx 0 0 0;
