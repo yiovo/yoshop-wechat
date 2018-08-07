@@ -2,7 +2,7 @@
 <scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
   <view class="container" wx:if="{{detail.goods_id}}">
     <view bindtap="imgPreview">
-      <swiper autoplay="{{autoplay}}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}" indicator-dots="{{indicatorDots}}" interval="{{interval}}">
+      <swiper autoplay="{{autoplay}}" bindchange="setCurrent" class="banner-box  swiper-box" duration="{{duration}}" indicator-dots="{{indicatorDots}}" interval="{{interval}}" circular="{{true}}">
         <swiper-item wx:for="{{detail.image}}" wx:key="this">
           <image class="slide-image" mode="aspectFill" src="{{item.file_path}}"></image>
         </swiper-item>
