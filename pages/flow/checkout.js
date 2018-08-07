@@ -49,11 +49,10 @@ Page({
         App.showError(result.msg);
         return false;
       }
-
-      // 收货地址不在配送范围内
-      if (result.data.address !== null && !result.data.intra_region) {
+      // 显示错误信息
+      if (result.data.has_error) {
         _this.data.hasError = true;
-        _this.data.error = result.data.intra_region_error;
+        _this.data.error = result.data.error_msg;
         App.showError(_this.data.error);
       }
       _this.setData(result.data);
@@ -64,7 +63,7 @@ Page({
       App._get('order/buyNow', {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
-        goods_spec_id: options.goods_spec_id,
+        goods_sku_id: options.goods_sku_id,
       }, function(result) {
         callback(result);
       });
@@ -152,7 +151,7 @@ Page({
       App._post_form('order/buyNow', {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
-        goods_spec_id: options.goods_spec_id,
+        goods_sku_id: options.goods_sku_id,
       }, function(result) {
         // success
         console.log('success');

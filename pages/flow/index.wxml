@@ -22,11 +22,11 @@
                 </view>
               </navigator>
               <view class="selectNumber">
-                <button bindtap="minusCount" class="default {{item.total_num>1?'':' default-active'}}" data-index="{{index}}" data-spec-id="{{item.goods_spec_id}}" type="default">-</button>
+                <button bindtap="minusCount" class="default {{item.total_num>1?'':' default-active'}}" data-index="{{index}}" data-sku-id="{{item.goods_sku_id}}" type="default">-</button>
                 <input bindinput="import" disabled="{{true}}" type="number" value="{{item.total_num}}"></input>
-                <button bindtap="addCount" class="default" data-index="{{index}}" data-spec-id="{{item.goods_spec_id}}" type="default">+</button>
+                <button bindtap="addCount" class="default" data-index="{{index}}" data-sku-id="{{item.goods_sku_id}}" type="default">+</button>
               </view>
-              <view catchtap="del" class="flow-dete" data-goods-id="{{item.goods_id}}" data-spec-id="{{item.goods_spec_id}}">
+              <view catchtap="del" class="flow-dete" data-goods-id="{{item.goods_id}}" data-sku-id="{{item.goods_sku_id}}">
                 <text class="iconfont icon-lajixiang"></text>
               </view>
             </view>
