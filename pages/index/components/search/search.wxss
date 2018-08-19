@@ -1,38 +1,50 @@
 
-/* 搜索框(非固定) */
+/* 搜索框 */
 
-.index-search-box {
+.diy-search-box {
   position: unset;
   background: #f1f1f2;
-  padding: 10px 24rpx ;
+  padding: 10px 24rpx;
 }
 
-.index-search-box .index-search {
+.diy-search-box .diy-search {
+  width: 90%;
+  border-bottom: 0;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  box-sizing: border-box;
+  margin: 0 auto;
   padding: 0 10px;
   line-height: 60rpx;
   border-radius: unset;
 }
 
-.index-search-box text {
+.diy-search-box .diy-search .cont .icon-sousuo {
+  margin-right: 10rpx;
+}
+
+.diy-search-box text {
   color: #999;
 }
 
 /* 输入框四角风格 */
 
-.index-search-box .index-search.angle-radius {
+.diy-search-box .diy-search.angle-radius {
   border-radius: 5px;
 }
 
-.index-search-box .index-search.angle-round {
+.diy-search-box .diy-search.angle-round {
   border-radius: 80rpx;
 }
 
 /* 文字对齐 */
 
-.index-search-box .index-search.text-center {
+.diy-search-box .diy-search.text-center {
   text-align: center;
 }
 
-.index-search-box .index-search.text-right {
+.diy-search-box .diy-search.text-right {
   text-align: right;
 }

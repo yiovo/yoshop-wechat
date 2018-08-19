@@ -983,68 +983,6 @@ page {
   position: relative;
 }
 
-.index-search-box {
-  /* padding: 18rpx 0 12rpx 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 4999;
-  box-sizing: border-box; */
-}
-
-.index-search {
-  width: 90%;
-  border-bottom: 0;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 80rpx;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  box-sizing: border-box;
-  margin: 0 auto;
-  line-height: 55rpx;
-}
-
-.index-search .cont .icon-sousuo {
-  margin-right: 10rpx;
-}
-
-.left-title {
-  margin-left: 12px;
-}
-
-.left-title, .right-title {
-  font-size: 30rpx;
-  align-items: center;
-  line-height: 45rpx;
-}
-
-.index-search-box .left-title {
-  position: relative;
-}
-
-.index-search-box .left-title .icon-dingwei1 {
-  top: 50%;
-  margin-top: -22rpx;
-}
-
-.index-search-box .left-title .cont {
-  padding: 0 2rpx;
-  max-width: 150rpx;
-  overflow: hidden;
-  margin-left: 32rpx;
-}
-
-.left-title image {
-  height: 40rpx;
-}
-
-.right-title .iconfont {
-  padding-right: 12px;
-  font-size: 35rpx;
-}
-
 .index-cont-img image {
   height: 35rpx;
 }

@@ -1,7 +1,7 @@
 <!-- 搜索框 -->
-<view class="index-search-box col-f ts-3">
+<view class="diy-search-box col-f ts-3">
   <view class="dis-flex">
-    <view class="index-search flex-box angle-{{item.style.searchStyle}} text-{{item.style.textAlign}}">
+    <view class="diy-search flex-box angle-{{item.style.searchStyle}} text-{{item.style.textAlign}}">
       <navigator class="cont" hover-class="none" openType="navigate" url="../search/index">
         <text class="iconfont icon-sousuo f-30"></text>
         <text class="f-28">{{item.params.placeholder}}</text>
