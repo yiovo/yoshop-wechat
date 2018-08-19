@@ -138,7 +138,7 @@ Page({
     // 更新商品价格、划线价、库存
     if (typeof skuItem === 'object') {
       this.setData({
-        goods_sku_id: skuItem.goods_sku_id,
+        goods_sku_id: skuItem.spec_sku_id,
         goods_price: skuItem.form.goods_price,
         line_price: skuItem.form.line_price,
         stock_num: skuItem.form.stock_num,
