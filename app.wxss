@@ -957,10 +957,6 @@ page {
   border-radius: 0 5px 5px 0;
 }
 
-.banner-box {
-  /* height: 335rpx; */
-}
-
 .slide-image {
   width: 100%;
   height: 100%;
@@ -968,36 +964,9 @@ page {
   display: block;
 }
 
-.linear {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3.4rem;
-  background: linear-gradient(#111, transparent);
-  opacity: 0.6;
-  z-index: 9;
-}
-
-.index-banner {
-  position: relative;
-}
-
-.index-cont-img image {
-  height: 35rpx;
-}
-
-.index-cont-img {
-  width: 15%;
-}
-
 .index-cont-search {
   width: 85%;
   font-size: 32rpx;
-}
-
-.index-cont-img icon {
-  padding: 6rpx 18rpx 0 18rpx;
 }
 
 .index-title {
