@@ -53,8 +53,8 @@ Page({
     wx.showModal({
       title: "提示",
       content: "您确定要移除当前收货地址吗?",
-      success: function(t) {
-        App._post_form('address/delete', {
+      success: function(o) {
+        o.confirm && App._post_form('address/delete', {
           address_id
         }, function(result) {
           _this.getAddressList();
