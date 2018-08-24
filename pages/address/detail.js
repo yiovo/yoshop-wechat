@@ -7,7 +7,7 @@ Page({
    */
   data: {
     disabled: false,
-    nav_select: false,    // 快捷导航
+    nav_select: false, // 快捷导航
     region: '',
     detail: {},
 
@@ -17,7 +17,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     // 获取当前地址信息
     this.getAddressDetail(options.address_id);
   },
@@ -25,23 +25,21 @@ Page({
   /**
    * 获取当前地址信息
    */
-  getAddressDetail: function (address_id) {
+  getAddressDetail: function(address_id) {
     let _this = this;
-    App._get('address/detail', { address_id }, function (result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
-      }
+    App._get('address/detail', {
+      address_id
+    }, function(result) {
+      _this.setData(result.data);
     });
   },
 
   /**
    * 表单提交
    */
-  saveData: function (e) {
-    let _this = this
-      , values = e.detail.value
+  saveData: function(e) {
+    let _this = this,
+      values = e.detail.value
     values.region = this.data.region;
 
     // 表单验证
@@ -51,27 +49,28 @@ Page({
     }
 
     // 按钮禁用
-    _this.setData({ disabled: true });
+    _this.setData({
+      disabled: true
+    });
 
     // 提交到后端
     values.address_id = _this.data.detail.address_id;
-    App._post_form('address/edit', values, function (result) {
-      if (result.code === 1) {
-        App.showSuccess(result.msg, function () {
-          wx.navigateBack();
-        });
-      } else {
-        App.showError(result.msg);
-      }
+    App._post_form('address/edit', values, function(result) {
+      App.showSuccess(result.msg, function() {
+        wx.navigateBack();
+      });
+    }, false, function() {
       // 解除禁用
-      _this.setData({ disabled: false });
+      _this.setData({
+        disabled: false
+      });
     });
   },
 
   /**
    * 表单验证
    */
-  validation: function (values) {
+  validation: function(values) {
     if (values.name === '') {
       this.data.error = '收件人不能为空';
       return false;
@@ -103,7 +102,7 @@ Page({
   /**
    * 修改地区
    */
-  bindRegionChange: function (e) {
+  bindRegionChange: function(e) {
     this.setData({
       region: e.detail.value
     })
@@ -113,7 +112,7 @@ Page({
   /**
    * 快捷导航 显示/隐藏
    */
-  commonNav: function () {
+  commonNav: function() {
     this.setData({
       nav_select: !this.data.nav_select
     });
@@ -122,19 +121,25 @@ Page({
   /**
    * 快捷导航跳转
    */
-  nav: function (e) {
+  nav: function(e) {
     let url = '';
     switch (e.currentTarget.dataset.index) {
       case 'home':
-        url = '../index/index'; break;
+        url = '../index/index';
+        break;
       case 'fenlei':
-        url = '../category/index'; break;
+        url = '../category/index';
+        break;
       case 'cart':
-        url = '../flow/index'; break;
+        url = '../flow/index';
+        break;
       case 'profile':
-        url = '../user/index'; break;
+        url = '../user/index';
+        break;
     }
-    wx.switchTab({ url });
+    wx.switchTab({
+      url
+    });
   },
 
 })

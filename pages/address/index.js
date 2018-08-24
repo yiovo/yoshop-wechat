@@ -22,11 +22,7 @@ Page({
   getAddressList: function() {
     let _this = this;
     App._get('address/lists', {}, function(result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
-      }
+      _this.setData(result.data);
     });
   },
 
@@ -61,11 +57,7 @@ Page({
         App._post_form('address/delete', {
           address_id
         }, function(result) {
-          if (result.code === 1) {
-            _this.getAddressList();
-          } else {
-            App.showError(result.msg);
-          }
+          _this.getAddressList();
         });
       }
     });
@@ -83,11 +75,7 @@ Page({
     App._post_form('address/setDefault', {
       address_id
     }, function(result) {
-      if (result.code === 1) {
-        _this.data.options.from === 'flow' && wx.navigateBack();
-      } else {
-        App.showError(result.msg);
-      }
+      _this.data.options.from === 'flow' && wx.navigateBack();
     });
     return false;
   },

@@ -3,12 +3,12 @@ let App = getApp();
 Page({
   data: {
     // banner轮播组件属性
-    indicatorDots: true,  // 是否显示面板指示点	
-    autoplay: true,       // 是否自动切换
-    interval: 3000,       // 自动切换时间间隔
-    duration: 800,        // 滑动动画时长
-    imgHeights: {},       // 图片的高度
-    imgCurrent: {},       // 当前banne所在滑块指针
+    indicatorDots: true, // 是否显示面板指示点	
+    autoplay: true, // 是否自动切换
+    interval: 3000, // 自动切换时间间隔
+    duration: 800, // 滑动动画时长
+    imgHeights: {}, // 图片的高度
+    imgCurrent: {}, // 当前banne所在滑块指针
 
     // 页面元素
     items: {},
@@ -18,7 +18,7 @@ Page({
     scrollTop: 0,
   },
 
-  onLoad: function () {
+  onLoad: function() {
     // 设置页面标题
     App.setTitle();
 
@@ -29,21 +29,17 @@ Page({
   /**
    * 获取首页数据
    */
-  getIndexData: function () {
+  getIndexData: function() {
     let _this = this;
-    App._get('index/page', {}, function (result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
-      }
+    App._get('index/page', {}, function(result) {
+      _this.setData(result.data);
     });
   },
 
   /**
    * 计算图片高度
    */
-  imagesHeight: function (e) {
+  imagesHeight: function(e) {
     let imgId = e.target.dataset.id,
       itemKey = e.target.dataset.itemKey,
       ratio = e.detail.width / e.detail.height, // 宽高比
@@ -60,22 +56,29 @@ Page({
     if (typeof imgCurrent[itemKey] === 'undefined') {
       imgCurrent[itemKey] = Object.keys(this.data.items[itemKey].data)[0];
     }
-    this.setData({ imgHeights, imgCurrent });
+    this.setData({
+      imgHeights,
+      imgCurrent
+    });
   },
 
-  bindChange: function (e) {
-    let itemKey = e.target.dataset.itemKey
-      , imgCurrent = this.data.imgCurrent;
+  bindChange: function(e) {
+    let itemKey = e.target.dataset.itemKey,
+      imgCurrent = this.data.imgCurrent;
     // imgCurrent[itemKey] = e.detail.current;
     imgCurrent[itemKey] = e.detail.currentItemId;
-    this.setData({ imgCurrent });
+    this.setData({
+      imgCurrent
+    });
   },
 
-  goTop: function (t) {
-    this.setData({ scrollTop: 0 });
+  goTop: function(t) {
+    this.setData({
+      scrollTop: 0
+    });
   },
 
-  scroll: function (t) {
+  scroll: function(t) {
     this.setData({
       indexSearch: t.detail.scrollTop
     }), t.detail.scrollTop > 300 ? this.setData({
@@ -85,7 +88,7 @@ Page({
     });
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     return {
       title: "小程序首页",
       desc: "",

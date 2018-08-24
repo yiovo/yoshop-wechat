@@ -45,13 +45,9 @@ App({
   getWxappBase: function(callback) {
     let App = this;
     App._get('wxapp/base', {}, function(result) {
-      if (result.code === 1) {
-        // 记录小程序基础信息
-        wx.setStorageSync('wxapp', result.data.wxapp);
-        callback && callback(result.data.wxapp);
-      } else {
-        App.showError(result.msg);
-      }
+      // 记录小程序基础信息
+      wx.setStorageSync('wxapp', result.data.wxapp);
+      callback && callback(result.data.wxapp);
     }, false, false);
   },
 
@@ -202,7 +198,7 @@ App({
       },
       fail: function(res) {
         // console.log(res);
-        App.showError(res.errMsg, function () {
+        App.showError(res.errMsg, function() {
           fail && fail(res);
         });
       },

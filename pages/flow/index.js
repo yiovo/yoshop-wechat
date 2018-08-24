@@ -31,11 +31,7 @@ Page({
   getCartList: function() {
     let _this = this;
     App._get('cart/lists', {}, function(result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
-      }
+      _this.setData(result.data);
     });
   },
 
@@ -112,11 +108,7 @@ Page({
           goods_id,
           goods_sku_id: goodsSkuId
         }, function(result) {
-          if (result.code === 1) {
-            _this.getCartList();
-          } else {
-            App.showError(result.msg);
-          }
+          _this.getCartList();
         });
       }
     });

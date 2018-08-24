@@ -31,11 +31,7 @@ Page({
   getUserDetail: function () {
     let _this = this;
     App._get('user.index/detail', {}, function (result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
-      }
+      _this.setData(result.data);
     });
   },
 

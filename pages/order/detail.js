@@ -24,11 +24,7 @@ Page({
   getOrderDetail: function (order_id) {
     let _this = this;
     App._get('user.order/detail', { order_id }, function (result) {
-      if (result.code === 1) {
-        _this.setData(result.data);
-      } else {
-        App.showError(result.msg);
-      }
+      _this.setData(result.data);
     });
   },
 
@@ -54,11 +50,7 @@ Page({
       success: function (o) {
         if (o.confirm) {
           App._post_form('user.order/cancel', { order_id }, function (result) {
-            if (result.code === 1) {
-              wx.navigateBack();
-            } else {
-              App.showError(result.msg);
-            }
+            wx.navigateBack();
           });
         }
       }
@@ -108,11 +100,7 @@ Page({
       success: function (o) {
         if (o.confirm) {
           App._post_form('user.order/receipt', { order_id }, function (result) {
-            if (result.code === 1) {
-              _this.getOrderDetail(order_id);
-            } else {
-              App.showError(result.msg);
-            }
+            _this.getOrderDetail(order_id);
           });
         }
       }

@@ -51,13 +51,9 @@ Page({
     App._get('goods/detail', {
       goods_id: _this.data.goods_id
     }, function(result) {
-      if (result.code === 1) {
-        // 初始化商品详情数据
-        let data = _this.initGoodsDetailData(result.data);
-        _this.setData(data);
-      } else {
-        App.showError(result.msg);
-      }
+      // 初始化商品详情数据
+      let data = _this.initGoodsDetailData(result.data);
+      _this.setData(data);
     });
   },
 
@@ -257,12 +253,8 @@ Page({
         goods_num: _this.data.goods_num,
         goods_sku_id: _this.data.goods_sku_id,
       }, function(result) {
-        if (result.code === 1) {
-          App.showSuccess(result.msg);
-          _this.setData(result.data);
-        } else {
-          App.showError(result.msg);
-        }
+        App.showSuccess(result.msg);
+        _this.setData(result.data);
       });
     }
   },

@@ -25,14 +25,10 @@ Page({
   getCategoryList: function () {
     let _this = this;
     App._get('category/lists', {}, function (result) {
-      if (result.code === 1) {
-        _this.setData({
-          list: result.data.list,
-          curNav: result.data.list[0].category_id
-        });
-      } else {
-        App.showError(result.msg);
-      }
+      _this.setData({
+        list: result.data.list,
+        curNav: result.data.list[0].category_id
+      });
     });
   },
 

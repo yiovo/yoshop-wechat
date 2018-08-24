@@ -51,7 +51,6 @@ Page({
       category_id: this.data.option.category_id || 0,
       search: this.data.option.search || '',
     }, function (result) {
-      if (result.code === 1) {
         let resultList = result.data.list
           , dataList = _this.data.list;
         if (is_super === true || typeof dataList.data === 'undefined') {
@@ -60,9 +59,6 @@ Page({
         } else {
           _this.setData({ 'list.data': dataList.data.concat(resultList.data) });
         }
-      } else {
-        App.showError(result.msg);
-      }
     });
   },
 
