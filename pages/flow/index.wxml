@@ -4,13 +4,13 @@
       <view wx:for="{{goods_list}}" wx:key="this">
         <view class="dish-item" data-index="{{index}}" style="{{item.txtStyle}}">
           <view class="dish-item-wrp">
-            <navigator url="../goods/index?goods_id={{item.goods_id}}">
+            <navigator hover-class="none" url="../goods/index?goods_id={{item.goods_id}}">
               <view bindtap="flowDetail" class="dish-item-pic">
                 <image class="image" src="{{item.image[0].file_path}}"></image>
               </view>
             </navigator>
             <view class="dish-item-info">
-              <navigator url="../goods/index?goods_id={{item.goods_id}}">
+              <navigator hover-class="none" url="../goods/index?goods_id={{item.goods_id}}">
                 <view>
                   <text bindtap="flowDetail" class=" {{item.spec_type===20?'onelist-hidden':'twolist-hidden'}} f-30 col-3">{{item.goods_name}}</text>
                 </view>
