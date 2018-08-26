@@ -1,8 +1,8 @@
 <view class="container">
   <view class="cont-box">
-    <view class="dis-box search-input-box">
+    <view class="dis-flex search-input-box">
       <view class="search-input">
-        <view class="dis-box search-box">
+        <view class="dis-flex search-box">
           <view class="left">
             <icon color="rgba(180,180,180,1)" size="15" type="search"></icon>
           </view>

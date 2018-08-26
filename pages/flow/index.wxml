@@ -43,7 +43,7 @@
       </view>
     </view>
     <view wx:else>
-      <view class="ectouch-notcont">
+      <view class="yoshop-notcont">
         <text class="iconfont icon-meiyougengduo"></text>
         <text class="cont">亲，购物车还没有商品哦</text>
         <view bindtap="goShopping" class="flow-btn-min">去购物</view>

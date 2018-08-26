@@ -1,3 +1,76 @@
+.store_nav_cont {
+  padding: 10px 0;
+}
+
+.store_nav_cont #list-true {
+  color: #ff495e;
+  font-size: 28rpx;
+}
+
+.store_nav_cont #list-0 {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.store_nav_cont #list-0 .icon-fenlei {
+  padding-left: 8rpx;
+  color: #777;
+  font-size: 28rpx;
+}
+
+.store_nav_cont #list-true .icon-fenlei {
+  padding-left: 8rpx;
+  color: #ff495e;
+  font-size: 28rpx;
+}
+
+.store_nav_cont .price {
+  padding-right: 30rpx;
+}
+
+.store_nav_cont #list-0 .top_jiantou {
+  position: absolute;
+  right: 52rpx;
+  top: 50%;
+  margin-top: -16rpx;
+  font-size: 18rpx;
+  color: #777;
+}
+
+.store_nav_cont #list-true .top_jiantou {
+  position: absolute;
+  right: 52rpx;
+  top: 50%;
+  margin-top: -16rpx;
+  font-size: 18rpx;
+  color: #777;
+}
+
+.store_nav_cont #list-0 .bot_jiantou {
+  position: absolute;
+  right: 52rpx;
+  top: 50%;
+  margin-top: -2rpx;
+  font-size: 18rpx;
+  color: #777;
+}
+
+.store_nav_cont #list-true .bot_jiantou {
+  position: absolute;
+  right: 52rpx;
+  top: 50%;
+  margin-top: -2rpx;
+  font-size: 18rpx;
+  color: #777;
+}
+
+.store_nav_cont #list-true .top_jiantou.active,
+.store_nav_cont #list-true .bot_jiantou.active {
+  color: #ff495e;
+}
+
+/* asd */
+
 .container {
   position: relative;
 }
@@ -62,4 +135,64 @@
   text-align: center;
   color: #737373;
   margin: 10px 0;
+}
+
+.category-list {
+  overflow: hidden;
+}
+
+.category-list .list {
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+}
+
+.category-list .list:nth-child(2n) {
+  border-left: 2px solid #f7f7f7;
+  border-bottom: 4px solid #f7f7f7;
+}
+
+.category-list .list:nth-child(2n-1) {
+  border-right: 2px solid #f7f7f7;
+  border-bottom: 4px solid #f7f7f7;
+}
+
+.category-list .list .left, .category-list .right {
+  width: 100%;
+}
+
+.category-list .list .left .img image {
+  width: 100%;
+  height: 375rpx;
+  display: block;
+}
+
+.category-list .right .cont {
+  padding: 0 12rpx;
+}
+
+.category-list .right .cont .title {
+  height: 82rpx;
+}
+
+.category-list.arrange .list {
+  overflow: hidden;
+  padding: 15rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+  width: 100%;
+}
+
+.category-list.arrange .list .left {
+  width: 35%;
+  float: left;
+}
+
+.category-list.arrange .list .right {
+  width: 65%;
+  float: left;
+}
+
+.category-list.arrange .list .left .img image {
+  width: 220rpx;
+  height: 220rpx;
 }

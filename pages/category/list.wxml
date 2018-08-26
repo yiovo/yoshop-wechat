@@ -1,7 +1,7 @@
 <view class="container">
   <view class="list-header">
-    <view class="index-search-box dis-box" style="position:static">
-      <navigator class="index-search box-flex" hover-class="none" openType="navigate" url="../search/index">
+    <view class="index-search-box dis-flex" style="position:static">
+      <navigator class="index-search flex-box" hover-class="none" openType="navigate" url="../search/index">
         <view class="index-cont-search">
           <icon class="text-center" color="rgba(0,0,0,0.4)" size="15" type="search"></icon>
           <text>搜索商品</text>
@@ -57,7 +57,7 @@
     </scroll-view>
   </view>
 
-  <view wx:if="{{!noList && !list.data.length}}" class="ectouch-notcont" style="margin-top:130px;">
+  <view wx:if="{{!noList && !list.data.length}}" class="yoshop-notcont" style="margin-top:130px;">
     <view class="img">
       <image mode="aspectFit" src="../../images/no_content.png"></image>
     </view>

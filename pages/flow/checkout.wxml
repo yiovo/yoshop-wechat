@@ -3,7 +3,7 @@
   <view catchtap="selectAddress">
     <view wx:if="{{address.address_id}}">
       <view class="b-f">
-        <view class="flow-checkout-header dis-box">
+        <view class="flow-checkout-header">
           <text class="iconfont icon-dingwei1"></text>
           <view class="flow-header-left">
             <view class="flow-checkout-admin f-30 col-3">
@@ -22,13 +22,13 @@
       </view>
     </view>
     <view wx:else>
-      <view class="flow-checkout-header dis-box">
+      <view class="flow-checkout-header">
         <text class="iconfont icon-dingwei1"></text>
         <view class="flow-header-left">
           <view class="f-28 col-6">去选择配送地址
           </view>
         </view>
-        <view class="flow-header-right no-flow p-r15">
+        <view class="flow-header-right p-r15">
           <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
         </view>
       </view>
@@ -43,7 +43,7 @@
           <view class="flow-list-left">
             <image mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
           </view>
-          <view class="flow-list-right box-flex">
+          <view class="flow-list-right">
             <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
             <text class="f-26 col-7">{{item.goods_sku.goods_attr}}</text>
             <view class="flow-list-cont">

@@ -1,38 +1,24 @@
-.header-box {
-    display: flex;
-    border-bottom: #eee solid 1px;
-}
-
-.goods-left,.goods-right {
-    flex: 1;
-    font-size: 28rpx;
-    line-height: 40rpx;
-    height: 40rpx;
-    justify-content: center;
-    display: flex;
-}
 
 .goods-center {
-    flex: 3;
+  flex: 3;
 }
 
 .goods-right image {
-    width: 60rpx;
-    height: 20rpx;
-    padding-top: 35rpx;
+  width: 60rpx;
+  height: 20rpx;
+  padding-top: 35rpx;
 }
 
 .goods-comment-box .admin {
-    font-size: 26rpx;
-    color: #777;
+  color: #777;
 }
 
 .goods-comment-cont {
-    font-size: 30rpx;
-    color: #444;
+  font-size: 30rpx;
+  color: #444;
 }
 
 .top-hoverd-btn {
-    color: #fd4a5f;
-    border-bottom: #fd4a5f solid 1px;
+  color: #fd4a5f;
+  border-bottom: #fd4a5f solid 1px;
 }

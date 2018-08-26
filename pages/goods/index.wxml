@@ -103,7 +103,7 @@
           </view>
         </view>
         <view wx:else>
-          <view class="ectouch-notcont">
+          <view class="yoshop-notcont">
             <text class="iconfont icon-meiyougengduo"></text>
             <text class="cont">亲,此处暂无详情数据</text>
           </view>

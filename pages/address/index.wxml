@@ -2,7 +2,7 @@
   <view class="common-header-xian"></view>
   <custom-ul class="addres-list" wx:if="{{list.length}}">
     <custom-li wx:for="{{list}}" wx:for-item="item" wx:key="this">
-      <view class="address-header b-f dis-box m-top18">
+      <view class="address-header b-f m-top18">
         <view class="flow-header-left pl-12">
           <view class="flow-checkout-admin">{{item.name}}
             <text>{{item.phone}}</text>
@@ -23,7 +23,7 @@
           </radio-group>
         </view>
         <view class="list address-right">
-          <text class="iconfont icon-buoumaotubiao30"></text>
+          <text class="iconfont icon-edit1"></text>
           <text bindtap="editAddress" class="title" data-id="{{item.address_id}}">编辑</text>
           <text class="iconfont icon-lajixiang"></text>
           <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text>
@@ -32,7 +32,7 @@
     </custom-li>
   </custom-ul>
   <view wx:else>
-    <view class="ectouch-notcont">
+    <view class="yoshop-notcont">
       <text class="iconfont icon-meiyougengduo"></text>
       <text class="cont">亲，您还没有收货列表</text>
     </view>

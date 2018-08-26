@@ -1,3 +1,59 @@
+.flow-distribution {
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.flow-distribution .flow-dis {
+  font-size: 30rpx;
+}
+
+.flow-distribution-left {
+  flex: 14;
+}
+
+.flow-distribution-left .m-l {
+  color: #333;
+  float: right;
+}
+
+.flow-distribution-right {
+  flex: 1;
+}
+
+.flow-distribution image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 6rpx;
+  float: right;
+}
+
+.flow-message-box {
+  padding: 20rpx 15px;
+  position: relative;
+}
+
+.flow-message-box .flow-message-title {
+  color: #777;
+}
+
+.flow-message-box textarea {
+  height: 100rpx;
+  width: 100%;
+  margin-top: 10rpx;
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.flow-message-box .flow-message-num {
+  position: absolute;
+  bottom: 34rpx;
+  right: 30rpx;
+  font-size: 26rpx;
+  color: #777;
+}
+
+/*asdasd*/
+
 .flow-distribution .flow-dis {
   padding-right: 15px;
 }
@@ -59,6 +115,7 @@
   left: 15px;
 }
 
+/* 
 .checkout_list {
   padding: 15px;
   background: #fff;
@@ -71,7 +128,7 @@
 
 .checkout_list .flow-shopList:last-child {
   border-bottom: 0;
-}
+} */
 
 .chackout-right-detail, .chackout-left-detail {
   font-size: 34rpx;

@@ -1,57 +1,123 @@
 .seconds-kill-li {
-    padding: 10rpx;
-    box-sizing: border-box;
+  padding: 10rpx;
+  box-sizing: border-box;
+  width: 33.3%;
+  float: left;
 }
 
 .title-box {
-    font-size: 10pt;
-    padding: 50rpx 0 0 0;
-    color: #777;
+  font-size: 10pt;
+  padding: 50rpx 0 0 0;
+  color: #777;
+}
+
+.title-box .icon-lajixiang {
+  float: right;
 }
 
 .sale-button-box {
-    padding: 10px 0;
+  padding: 10px 0;
+  overflow: hidden;
 }
 
-.sale-button,.recent-button {
-    background: #fff;
-    padding: 10rpx;
-    border-radius: 50px;
-    justify-content: center;
-    text-align: center;
-    font-size: 26rpx;
-    border: 1px solid #ccc;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    height: 30rpx;
-    line-height: 30rpx;
+.sale-button, .recent-button {
+  background: #fff;
+  padding: 10rpx;
+  border-radius: 50px;
+  justify-content: center;
+  text-align: center;
+  font-size: 26rpx;
+  border: 1px solid #eee;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+
+.serch-button button {
+  background: #ff495e;
+}
+
+/* asd */
+
+.search-input-box {
+  height: 64rpx;
+}
+
+.search-input {
+  width: 80%;
+  background: #fff;
+  border-radius: 5px 0 0 5px;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.search-input input {
+  font-size: 30rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+}
+
+.serch-button {
+  width: 20%;
+  box-sizing: border-box;
+}
+
+.serch-button button {
+  line-height: 64rpx;
+  height: 64rpx;
+  font-size: 28rpx;
+  border-radius: 0 5px 5px 0;
+}
+
+.seconds-kill-li {
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+
+.title-box {
+  font-size: 10pt;
+  padding: 50rpx 0 0 0;
+  color: #777;
+}
+
+.sale-button, .recent-button {
+  background: #fff;
+  padding: 10rpx;
+  border-radius: 50px;
+  justify-content: center;
+  text-align: center;
+  font-size: 26rpx;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 30rpx;
+  line-height: 30rpx;
 }
 
 .search-cont {
-    padding: 0 15px;
-    background: #fff;
+  padding: 0 15px;
+  background: #fff;
 }
 
 .search-box .left {
-    width: 28px;
+  width: 28px;
 }
 
 .search-box .right {
-    flex: 1;
-}
-
-.sale-button-box {
-    overflow: hidden;
+  flex: 1;
 }
 
 .sale-button-box .seconds-kill-li {
-    width: 33.3%;
-    float: left;
+  width: 33.3%;
+  float: left;
 }
 
 .title-box image {
-    width: 35rpx;
-    height: 35rpx;
-    float: right;
+  width: 35rpx;
+  height: 35rpx;
+  float: right;
 }

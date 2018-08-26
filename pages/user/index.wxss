@@ -1,15 +1,117 @@
+.user-header .user-bg-box {
+  width: 100%;
+  background: #fff;
+  display: block;
+  height: 230rpx;
+  overflow: hidden;
+}
+
+.user-header .header-bg {
+  width: 100%;
+  height: 750rpx;
+  animation-name: shop;
+  animation-duration: 18s;
+  animation-iteration-count: infinite;
+  filter: blur(5px);
+  overflow: hidden;
+  display: block;
+}
+
+.header-img-box {
+  width: 140rpx;
+  height: 140rpx;
+  border: 2px solid #fff;
+  margin: 0rpx auto 0;
+  border-radius: 100%;
+  overflow: hidden;
+  box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
+  margin-top: -115rpx;
+}
+
+.user-admin {
+  display: block;
+  width: 190rpx;
+  font-size: 32rpx;
+  text-align: center;
+  margin: 4rpx 0 0 0;
+  color: #444;
+}
+
+.user-tag {
+  top: -8rpx;
+  right: 40rpx;
+  font-size: 22rpx;
+  background: #ff495e;
+  text-align: center;
+  line-height: 28rpx;
+  color: #fff;
+  border-radius: 100%;
+  min-height: 30rpx;
+  min-width: 30rpx;
+  padding: 1rpx;
+}
+
+.user-order-cont {
+  padding: 25rpx 0;
+  box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
+  color: #777;
+  font-size: 30rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.user-order-cont .orderListIcon {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  padding-top: 10rpx;
+  color: #999;
+  font-size: 34rpx;
+}
+
+.user-order-cont .listCont {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  padding-top: 4rpx;
+}
+
+.user-order-cont .moneyListNum {
+  text-align: center;
+  color: #f42424;
+  font-size: 38rpx;
+  padding: 0 15rpx;
+}
+
+.user-order-title .common-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  margin-top: -20rpx;
+  font-size: 34rpx;
+  color: #777;
+}
+
+.user-order-title {
+  border-bottom: 1rpx solid #eee;
+  padding: 8rpx 0;
+  position: relative;
+}
+
+/* asd */
+
 .user-list {
-    padding: 30rpx 15rpx;
+  padding: 30rpx 15rpx;
 }
 
 .user-list .li .common-icon {
-    font-size: 46rpx;
+  font-size: 46rpx;
 }
 
 .user-list-service {
-    padding: 30rpx 0 0 0;
+  padding: 30rpx 0 0 0;
 }
 
 .user-list-service .li {
-    padding-bottom: 45rpx;
+  padding-bottom: 45rpx;
 }
