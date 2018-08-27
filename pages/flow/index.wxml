@@ -11,8 +11,8 @@
             </navigator>
             <view class="dish-item-info">
               <navigator hover-class="none" url="../goods/index?goods_id={{item.goods_id}}">
-                <view>
-                  <text bindtap="flowDetail" class=" {{item.spec_type===20?'onelist-hidden':'twolist-hidden'}} f-30 col-3">{{item.goods_name}}</text>
+                <view class="goods-name">
+                  <text bindtap="flowDetail" class="twolist-hidden f-30 col-3">{{item.goods_name}}</text>
                 </view>
                 <view class="goods-attr">
                   <text class="col-7 f-24">{{item.goods_sku.goods_attr}}</text>
