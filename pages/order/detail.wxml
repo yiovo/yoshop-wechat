@@ -5,8 +5,8 @@
     <view class="b-f">
       <view class="flow-checkout-header b-f dis-flex">
         <view class="flow-header-left padding-box">
-          <view class="flow-checkout-admin f-32 col-3">{{order.address.name}}
-            <text class="f-32 col-m">{{order.address.phone}}</text>
+          <view class="flow-checkout-admin f-26 col-3">{{order.address.name}}
+            <text class="f-26 col-m">{{order.address.phone}}</text>
           </view>
           <view class="flow-checkout-address">
             {{order.address.region.province}} {{order.address.region.city}} {{order.address.region.region}} {{order.address.detail}}
