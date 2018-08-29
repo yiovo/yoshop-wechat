@@ -87,7 +87,7 @@
 }
 
 .order-header text {
-  font-size: 30rpx;
+  font-size: 28rpx;
 }
 
 .order-header text.title {

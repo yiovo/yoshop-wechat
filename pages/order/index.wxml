@@ -34,7 +34,7 @@
               </view>
             </view>
             <view class="order-box order-img_list">
-              <view class="order-shop dis-flex">
+              <view class="order-shop">
                 <view bindtap="detail" class="order-list-box dis-flex" data-id="{{item.order_id}}">
                   <view class="left">
                     <view class="dis-flex">
