@@ -115,7 +115,7 @@ App({
     let App = this;
     // 构造请求参数
     data = data || {};
-    data.wxapp_id = App.siteInfo.uniacid;
+    data['wxapp_id'] = 10001;
 
     // if (typeof check_login === 'undefined')
     //   check_login = true;
