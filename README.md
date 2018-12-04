@@ -6,7 +6,7 @@
 
 #### 项目演示
 - 后台演示：[http://yoshop.xany6.com/](http://yoshop.xany6.com/)
-- QQ交流群：678019581
+- QQ交流群：603201798
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2018/0727/210807_271acafd_597459.jpeg "gh_a376934c7da8_344.jpg")
 
