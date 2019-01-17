@@ -193,21 +193,6 @@ page {
   height: 50rpx;
 }
 
-.goods-fixed-icon .bargain-icon {
-  height: 50rpx;
-}
-
-.goods-fixed-icon .bargain-icon image {
-  height: 50rpx;
-  width: 50rpx;
-  margin-top: -40rpx;
-}
-
-.goods-fixed-icon .bargain-home {
-  margin-top: 6rpx;
-  text-align: center;
-}
-
 .bargain-mol {
   background: #fff;
   position: fixed;

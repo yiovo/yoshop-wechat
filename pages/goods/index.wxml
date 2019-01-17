@@ -113,21 +113,20 @@
 
     <!-- 底部操作栏 -->
     <view class="footer-fixed f-30">
-      <view class="goods-fixed-icon">
-        <contact-button sessionFrom="weapp" size="27" style="opacity: 0;position:absolute;top:20rpx;left:20rpx;" type="default-light"></contact-button>
-        <image class="flow-img" src="../../images/kefu.png"></image>
+      <!-- 在线客服 -->
+      <view class="goods-fixed-icon dis-flex flex-x-center flex-y-center">
+        <button open-type="contact" sessionFrom="weapp" size="27" style="opacity: 0;position:absolute;top:0px;left:0px;display:block;width:100%;height:100%;" type="default-light"></button>
+        <text class="iconfont icon-icon_service"></text>
       </view>
-      <view bindtap="flowCart" class="goods-fixed-icon">
-        <image class="flow-img" src="../../images/flow.png"></image>
+      <!-- 购物车按钮 -->
+      <view bindtap="flowCart" class="goods-fixed-icon dis-flex flex-x-center flex-y-center">
+        <text class="iconfont icon-cart_b"></text>
         <view class="flow_num" wx:if="{{cart_total_num > 0}}">
-          <text>{{cart_total_num}}</text>
+          <text class="">{{cart_total_num}}</text>
         </view>
       </view>
-      <block wx:if="{{stock_num > 0}}">
-        <view bindtap="submit" class="order-number" data-type="addCart">加入购物车</view>
-        <view bindtap="submit" class="order-bt" data-type="buyNow"> 立即购买</view>
-      </block>
-      <view class="default-btn" style="wdata-typeth:100%" wx:else>暂无现货</view>
+      <view bindtap="submit" class="order-number" data-type="addCart">加入购物车</view>
+      <view bindtap="submit" class="order-bt" data-type="buyNow"> 立即购买</view>
     </view>
   </view>
 </scroll-view>
