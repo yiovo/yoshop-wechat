@@ -1,11 +1,32 @@
+/* 通用 */
+
+page {
+  background: #fff;
+}
+
+/* 搜索框 */
+
+.index-search-box {
+  background: #fff;
+  padding: 13rpx 13rpx 18rpx 13rpx;
+}
+
+.index-search {
+  border-bottom: 0;
+  background: #fff;
+  border-radius: 50rpx;
+  overflow: hidden;
+  position: relative;
+  font-size: 28rpx;
+  color: #999;
+  box-sizing: border-box;
+  height: 64rpx;
+  line-height: 64rpx;
+}
+
 .cate-content {
-  display: flex;
-  flex-direction: row;
-  font-size: 16px;
-  position: fixed;
-  top: 96rpx;
-  bottom: 5rpx;
   width: 100%;
+  background: #fff;
 }
 
 .cate-left {
@@ -14,6 +35,7 @@
   width: 200rpx;
   color: #444;
   height: 100%;
+  background: #f8f8f8;
 }
 
 .cate-right {
@@ -38,16 +60,15 @@
   line-height: 90rpx;
   text-align: center;
   z-index: 10;
-  background: #f8f8f8;
   display: block;
-  font-size: 27rpx;
+  font-size: 26rpx;
 }
 
 .type-nav.selected {
   background: #fff;
   color: #ff495e;
   border-right: none;
-  font-size: 30rpx;
+  font-size: 28rpx;
 }
 
 .cate-cont-box {
@@ -58,7 +79,7 @@
 }
 
 .cate-cont-box .cate-img {
-  padding: 13rpx 13rpx 4rpx 13rpx;
+  padding: 13rpx 10rpx 4rpx 10rpx;
 }
 
 .cate-cont-box .cate-img image {
@@ -78,30 +99,4 @@
 .cate-two-box {
   width: 100%;
   padding: 0 10px;
-}
-
-/* asd */
-
-.index-search-box {
-  top: 1rpx;
-  left: 0rpx;
-  right: 0rpx;
-  z-index: 999;
-  position: fixed;
-  background: #fff;
-  padding: 18rpx 13rpx;
-  border-bottom: 1px solid #eee;
-}
-
-.index-search {
-  border-bottom: 0;
-  background: #fff;
-  border-radius: 50rpx;
-  overflow: hidden;
-  position: relative;
-  font-size: 28rpx;
-  color: #999;
-  box-sizing: border-box;
-  height: 64rpx;
-  line-height: 64rpx;
 }
