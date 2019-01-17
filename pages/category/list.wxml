@@ -8,8 +8,8 @@
         </view>
       </navigator>
       <view bindtap="onChangeShowState" class="list-right f-28">
-        <text class="iconfont icon-pailie" wx:if="{{showView}}"></text>
-        <text class="iconfont icon-viewlist" wx:else></text>
+        <text class="iconfont icon-tubiao_kuaizhuangpailie" wx:if="{{showView}}"></text>
+        <text class="iconfont icon-tubiao_liebiaopailie" wx:else></text>
       </view>
     </view>
     <view class="store_nav_cont dis-flex b-f b-b">
