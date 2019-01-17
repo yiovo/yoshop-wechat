@@ -13,6 +13,7 @@ function t(e) {
 }
 
 function a(e) {
+    return false;
     var t = this, a = e.target.dataset.from, r = e.target.dataset.idx;
     void 0 !== a && a.length > 0 && i(e, r, t, a);
 }
