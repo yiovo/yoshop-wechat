@@ -77,7 +77,7 @@
         </view>
         <view wx:else>
           <view class="yoshop-notcont">
-            <text class="iconfont icon-meiyougengduo"></text>
+            <text class="iconfont icon-ziyuan"></text>
             <text class="cont">亲，您还没有订单信息哦！</text>
           </view>
         </view>

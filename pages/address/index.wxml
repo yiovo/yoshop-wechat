@@ -33,7 +33,7 @@
   </custom-ul>
   <view wx:else>
     <view class="yoshop-notcont">
-      <text class="iconfont icon-meiyougengduo"></text>
+      <text class="iconfont icon-ziyuan"></text>
       <text class="cont">亲，您还没有收货列表</text>
     </view>
   </view>

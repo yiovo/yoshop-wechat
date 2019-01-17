@@ -66,7 +66,7 @@
   color: #ccc;
   text-align: center;
   display: block;
-  margin-bottom: 10rpx;
+  margin-bottom: 24rpx;
 }
 
 .yoshop-notcont .img {
