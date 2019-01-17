@@ -1,3 +1,14 @@
+/**
+ * tabBar页面路径列表 (用于链接跳转时判断)
+ * tabBarLinks为常量, 无需修改
+ */
+const tabBarLinks = [
+  'pages/index/index',
+  'pages/category/index',
+  'pages/flow/index',
+  'pages/user/index'
+];
+
 App({
 
   /**
@@ -251,6 +262,13 @@ App({
         App.setTitle();
       });
     }
+  },
+
+  /**
+   * 获取tabBar页面路径列表
+   */
+  getTabBarLinks: function() {
+    return tabBarLinks;
   },
 
 });

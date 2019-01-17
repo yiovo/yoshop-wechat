@@ -1,6 +1,10 @@
 /* common.wxss */
 @import "/utils/common.wxss";
 
+page {
+  background: #f7f7f7;
+}
+
 .common-header-xian {
   border-top: 1rpx solid #eee;
   position: fixed;
@@ -1026,6 +1030,7 @@
 
 .wxParse-img {
   display: block;
+  width: 100%;
   margin: 0 auto;
 }
 

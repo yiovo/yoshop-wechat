@@ -1,7 +1,6 @@
 /* iconfont */
 @import "/utils/iconfont.wxss";
 
-
 .container, input {
   font-family: PingFang-Medium,
                  PingFangSC-Regular,
@@ -12,10 +11,6 @@
                  "Microsoft YaHei",
                  sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-
-page {
-  background: #f7f7f7;
 }
 
 .b-f {
@@ -36,9 +31,13 @@ page {
   transform: rotate(90deg);
 }
 
+.dis-block {
+  display: block;
+}
+
 .dis-flex {
   display: flex !important;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .flex-box {
@@ -71,8 +70,11 @@ page {
 }
 
 .flex-y-center {
-  /* display: flex; */
   align-items: center;
+}
+
+.flex-y-end {
+  align-items: flex-end;
 }
 
 .flex-five {
@@ -92,17 +94,14 @@ page {
 
 .t-l {
   text-align: left;
-  display: block;
 }
 
 .t-c {
   text-align: center;
-  display: block;
 }
 
 .t-r {
   text-align: right;
-  display: block;
 }
 
 .p-a {
@@ -119,6 +118,12 @@ page {
 
 .fr {
   float: right;
+}
+
+.clear::after {
+  clear: both;
+  content: " ";
+  display: table;
 }
 
 .oh {
@@ -153,12 +158,20 @@ page {
   font-size: 30rpx;
 }
 
+.f-29 {
+  font-size: 29rpx;
+}
+
 .f-28 {
   font-size: 28rpx;
 }
 
 .f-26 {
   font-size: 26rpx;
+}
+
+.f-25 {
+  font-size: 25rpx;
 }
 
 .f-24 {
@@ -193,6 +206,10 @@ page {
   color: #777;
 }
 
+.col-8 {
+  color: #888;
+}
+
 .col-9 {
   color: #999;
 }
@@ -205,8 +222,12 @@ page {
   color: #be0117 !important;
 }
 
+.col-green {
+  color: #0ed339 !important;
+}
+
 .cont-box {
-  padding: 10px 12px;
+  padding: 20rpx;
 }
 
 .cont-bot {
@@ -214,7 +235,7 @@ page {
 }
 
 .padding-box {
-  padding: 0 12px;
+  padding: 0 24rpx;
   box-sizing: border-box;
 }
 
@@ -243,7 +264,7 @@ page {
 }
 
 .p-bottom {
-  padding-bottom: 56px;
+  padding-bottom: 112rpx;
 }
 
 .onelist-hidden {
@@ -295,4 +316,28 @@ page {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+}
+
+/* 无样式button (用于伪submit) */
+
+.btn-normal {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  font-size: unset;
+  text-align: unset;
+  overflow: visible;
+}
+
+.btn-normal:after {
+  border: none;
+}
+
+.btn-normal.button-hover {
+  color: inherit;
 }
