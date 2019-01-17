@@ -157,24 +157,6 @@
   border-bottom: 4px solid #f7f7f7;
 }
 
-.category-list .list .left, .category-list .right {
-  width: 100%;
-}
-
-.category-list .list .left .img image {
-  width: 100%;
-  height: 375rpx;
-  display: block;
-}
-
-.category-list .right .cont {
-  padding: 0 12rpx;
-}
-
-.category-list .right .cont .title {
-  height: 82rpx;
-}
-
 .category-list.arrange .list {
   overflow: hidden;
   padding: 15rpx;

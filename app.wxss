@@ -119,7 +119,8 @@ page {
 }
 
 .category-list .right .cont .title {
-  height: 82rpx;
+  height: 76rpx;
+  line-height: 1.3;
 }
 
 .category-list.arrange .list {
