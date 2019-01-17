@@ -137,24 +137,5 @@
   <text class="iconfont icon-fanhuidingbu"></text>
 </view>
 
-<!-- 快捷导航工具 -->
-<view class="filter-menu {{nav_select?'active':''}}">
-  <view class="filter-menu-list ts-5">
-    <custom-ul>
-      <custom-li bindtap="nav" data-index="home">
-        <text class="iconfont icon-home"></text>
-      </custom-li>
-      <custom-li bindtap="nav" data-index="fenlei">
-        <text class="iconfont icon-fenlei"></text>
-      </custom-li>
-      <custom-li bindtap="nav" data-index="cart">
-        <text class="iconfont icon-cart"></text>
-      </custom-li>
-      <custom-li bindtap="nav" data-index="profile">
-        <text class="iconfont icon-profile"></text>
-      </custom-li>
-      <custom-li class="w"></custom-li>
-    </custom-ul>
-  </view>
-  <view bindtap="commonNav" class="filter-menu-title"></view>
-</view>
+<!-- 快捷导航 -->
+<shortcut></shortcut>

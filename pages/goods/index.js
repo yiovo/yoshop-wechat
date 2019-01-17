@@ -179,57 +179,6 @@ Page({
   },
 
   /**
-   * 增加商品数量
-   */
-  up: function() {
-    this.setData({
-      goods_num: ++this.data.goods_num
-    })
-  },
-
-  /**
-   * 减少商品数量
-   */
-  down: function() {
-    if (this.data.goods_num > 1) {
-      this.setData({
-        goods_num: --this.data.goods_num
-      });
-    }
-  },
-
-  /**
-   * 跳转购物车页面
-   */
-  flowCart: function() {
-    wx.switchTab({
-      url: "../flow/index"
-    });
-  },
-
-  /**
-   * 快捷导航 显示/隐藏
-   */
-  commonNav: function() {
-    this.setData({
-      nav_select: !this.data.nav_select
-    });
-  },
-
-  nav: function(e) {
-    let index = e.currentTarget.dataset.index;
-    "home" == index ? wx.switchTab({
-      url: "../index/index"
-    }) : "fenlei" == index ? wx.switchTab({
-      url: "../category/index"
-    }) : "cart" == index ? wx.switchTab({
-      url: "../flow/index"
-    }) : "profile" == index && wx.switchTab({
-      url: "../user/index"
-    });
-  },
-
-  /**
    * 加入购物车and立即购买
    */
   submit: function(e) {
