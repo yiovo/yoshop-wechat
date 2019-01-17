@@ -109,37 +109,4 @@ Page({
   },
 
 
-  /**
-   * 快捷导航 显示/隐藏
-   */
-  commonNav: function() {
-    this.setData({
-      nav_select: !this.data.nav_select
-    });
-  },
-
-  /**
-   * 快捷导航跳转
-   */
-  nav: function(e) {
-    let url = '';
-    switch (e.currentTarget.dataset.index) {
-      case 'home':
-        url = '../index/index';
-        break;
-      case 'fenlei':
-        url = '../category/index';
-        break;
-      case 'cart':
-        url = '../flow/index';
-        break;
-      case 'profile':
-        url = '../user/index';
-        break;
-    }
-    wx.switchTab({
-      url
-    });
-  },
-
 })
