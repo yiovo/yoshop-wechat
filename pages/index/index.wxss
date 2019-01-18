@@ -3,3 +3,39 @@
 
 /* banner组件 */
 @import "components/banner/banner.wxss";
+
+/* 猜您喜欢 */
+
+.title-hrbg {
+  position: relative;
+  z-index: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  overflow: hidden;
+  color: #888;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.title-hrbg .cont {
+  background: #f7f7f7;
+  padding: 1rem 0.6rem;
+  font-size: 28rpx;
+  z-index: 10;
+}
+
+.title-hrbg .cont .icon-huo {
+  padding-right: 10rpx;
+}
+
+.title-hrbg .hr {
+  background: #ddd;
+  height: 1rpx;
+  border: 0;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 50%;
+  margin-top: 1px;
+  z-index: -1;
+}
