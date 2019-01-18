@@ -4,7 +4,6 @@
     "pages/category/index",
     "pages/category/list",
     "pages/goods/index",
-    "pages/goods/comment",
     "pages/search/index",
     "pages/flow/index",
     "pages/flow/checkout",
