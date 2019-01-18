@@ -16,28 +16,35 @@
         <view class="list address-left">
           <radio-group bindchange="setDefault" class="radio-group">
             <label class="radio">
-              <radio checked="{{item.address_id === default_id}}" color="#ff495e" value="{{item.address_id}}"></radio>
-              <text class="cont" wx:if="{{item.address_id === default_id}}">默认</text>
+              <radio checked="{{item.address_id == default_id}}" color="#ff495e" value="{{item.address_id}}"></radio>
+              <text class="cont" wx:if="{{item.address_id == default_id}}">默认</text>
               <text class="cont" wx:else>选择</text>
             </label>
           </radio-group>
         </view>
-        <view class="list address-right">
-          <text class="iconfont icon-edit1"></text>
-          <text bindtap="editAddress" class="title" data-id="{{item.address_id}}">编辑</text>
-          <text class="iconfont icon-lajixiang"></text>
-          <text bindtap="removeAddress" class="title" data-id="{{item.address_id}}">删除</text>
+        <view class="list address-right dis-flex">
+          <view bindtap="editAddress" data-id="{{item.address_id}}">
+            <text class="iconfont icon-edit"></text>
+            <text class="title">编辑</text>
+          </view>
+          <view bindtap="removeAddress" data-id="{{item.address_id}}">
+            <text class="iconfont icon-lajixiang"></text>
+            <text class="title">删除</text>
+          </view>
         </view>
       </view>
     </custom-li>
   </custom-ul>
   <view wx:else>
     <view class="yoshop-notcont">
-      <text class="iconfont icon-ziyuan"></text>
+      <text class="iconfont icon-wushuju"></text>
       <text class="cont">亲，您还没有收货列表</text>
     </view>
   </view>
-  <view class="footer-fixed f-34">
+  <view class="footer-fixed f-32">
     <view bindtap="createAddress" class="order-bt" style="width:100%">添加新地址</view>
   </view>
 </view>
+
+<!-- 快捷导航 -->
+<shortcut></shortcut>

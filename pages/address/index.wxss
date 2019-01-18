@@ -57,14 +57,6 @@
   font-size: 34rpx;
 }
 
-.flow-btn {
-  background-color: #ff495e;
-  color: #fff;
-  text-align: center;
-  line-height: 44px;
-  display: block;
-}
-
 .address-header {
   padding: 28rpx 0;
   border-bottom: 1px solid #f6f6f9;
@@ -74,6 +66,7 @@
 
 .flow-header-left {
   flex: 14;
+  padding:0rpx 20rpx;
 }
 
 .flow-header-right {

@@ -8,7 +8,11 @@ Page({
   data: {
     disabled: false,
     nav_select: false, // 快捷导航
+
+    name: '',
     region: '',
+    phone: '',
+    detail: '',
 
     error: '',
   },
@@ -27,6 +31,9 @@ Page({
     let _this = this,
       values = e.detail.value
     values.region = this.data.region;
+
+    // 记录formId
+    // App.saveFormId(e.detail.formId);
 
     // 表单验证
     if (!_this.validation(values)) {

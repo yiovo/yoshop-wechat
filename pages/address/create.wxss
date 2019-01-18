@@ -105,11 +105,6 @@ picker-view-column view {
   color: #444;
 }
 
-.profile-btn button {
-  background: #ff495e;
-  color: white;
-}
-
 .bargain-commont-bg {
   background: rgba(0, 0, 0, 0.6);
   position: fixed;
@@ -118,14 +113,6 @@ picker-view-column view {
   top: 0;
   bottom: 0;
   z-index: 20;
-}
-
-.bright789_view_hide {
-  display: none;
-}
-
-.bright789_view_show {
-  display: block;
 }
 
 .f-34 {

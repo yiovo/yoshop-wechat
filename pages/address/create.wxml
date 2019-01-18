@@ -1,64 +1,51 @@
 <view class="container">
   <view class="common-header-xian"></view>
   <!-- 表单 -->
-  <form bindreset="formReset" bindsubmit="saveData">
+  <form bindsubmit="saveData" report-submit="true">
     <view class="address-cont-title b-f b-b">
-
       <view class="list address-box dis-flex b-b">
         <view class="left-name">
           <text class="f-30">收货人</text>
         </view>
-        <view class="right-cont dis-flex">
-          <input name="name" placeholder="请输入收货人姓名"></input>
+        <view class="right-cont flex-box">
+          <input name="name" placeholder="请输入收货人姓名" value="{{name}}"></input>
         </view>
       </view>
-      
       <view class="list address-box dis-flex">
         <view class="left-name">
           <text class="f-30">手机号</text>
         </view>
-        <view class="right-cont dis-flex">
-          <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number"></input>
+        <view class="right-cont flex-box">
+          <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number" value="{{phone}}"></input>
         </view>
       </view>
     </view>
-
-
-     <view class="address-cont-title b-f b-b">
+    <view class="address-cont-title b-f b-b">
       <view class="dis-flex list address-box m-top20 b-b">
         <view class="left-name">
           <text class="f-30">所在地区</text>
         </view>
-        <view class="address-cont-box dis-flex">
+        <view class="address-cont-box flex-box">
           <picker mode="region" bindchange="bindRegionChange">
             <text wx:if="{{region}}" class="f-30">{{region}}</text>
             <text wx:else class="f-30 col-7">选择省、市、区</text>
           </picker>
         </view>
       </view>
-
-       <view class="dis-flex list address-box">
+      <view class="dis-flex list address-box">
         <view class="left-name">
           <text class="f-30">详细地址</text>
         </view>
-        <view class="right-cont dis-flex">
-          <input name="detail" placeholder="请输入街道小区楼层" type="text"></input>
+        <view class="right-cont flex-box">
+          <input name="detail" placeholder="请输入街道小区楼层" type="text" value="{{detail}}"></input>
         </view>
-      </view> 
-
-    </view> 
-
-
-    <view class="padding-box m-top35 profile-btn">
+      </view>
+    </view>
+    <view class="padding-box m-top20 profile-btn">
       <button formType="submit" disabled="{{disabled}}">保存</button>
     </view>
-    <!-- <view class="padding-box m-top20 ">
-      <button formType="reset">取消</button>
-    </view> -->
-
   </form>
-
-  <!-- 快捷导航 -->
-  <shortcut></shortcut>
-
 </view>
+
+<!-- 快捷导航 -->
+<shortcut></shortcut>
