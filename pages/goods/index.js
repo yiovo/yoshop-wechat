@@ -199,6 +199,15 @@ Page({
   },
 
   /**
+   * 跳转购物车页面
+   */
+  flowCart: function () {
+    wx.switchTab({
+      url: "../flow/index"
+    });
+  },
+
+  /**
    * 加入购物车and立即购买
    */
   submit(e) {
