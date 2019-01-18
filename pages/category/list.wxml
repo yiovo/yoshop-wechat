@@ -21,8 +21,8 @@
       </view>
       <view bindtap="switchSortType" data-type="price" class="flex-box t-c p-r" data-index="2" id="list-{{sortType==='price'?true:0}}">
         <text class="price"> 价格</text>
-        <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{sortPrice?'active':''}}"></text>
-        <text class="iconfont icon-jiantou-copy bot_jiantou {{sortPrice?'':'active'}}"></text>
+        <text class="iconfont icon-jiantou-copy tf-180 top_jiantou {{sortPrice?'':'active'}}"></text>
+        <text class="iconfont icon-jiantou-copy bot_jiantou {{sortPrice?'active':''}}"></text>
       </view>
 
       <!-- <view bindtap="toSynthesize" class="flex-box t-c p-r" data-index="sort_order" id="list-0">

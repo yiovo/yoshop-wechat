@@ -47,7 +47,7 @@ Page({
     App._get('goods/lists', {
       page: page || 1,
       sortType: this.data.sortType,
-      sortPrice: this.data.sortPrice,
+      sortPrice: this.data.sortPrice ? 1: 0,
       category_id: this.data.option.category_id || 0,
       search: this.data.option.search || '',
     }, function (result) {
