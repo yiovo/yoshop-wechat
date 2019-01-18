@@ -35,7 +35,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad(options) {
     let _this = this;
     // 商品id
     _this.data.goods_id = options.goods_id;
@@ -46,7 +46,7 @@ Page({
   /**
    * 获取商品信息
    */
-  getGoodsDetail: function() {
+  getGoodsDetail() {
     let _this = this;
     App._get('goods/detail', {
       goods_id: _this.data.goods_id
@@ -60,7 +60,7 @@ Page({
   /**
    * 初始化商品详情数据
    */
-  initGoodsDetailData: function(data) {
+  initGoodsDetailData(data) {
     let _this = this;
     // 富文本转码
     if (data.detail.content.length > 0) {
@@ -81,7 +81,7 @@ Page({
   /**
    * 初始化商品多规格
    */
-  initManySpecData: function(data) {
+  initManySpecData(data) {
     for (let i in data.spec_attr) {
       for (let j in data.spec_attr[i].spec_items) {
         if (j < 1) {
@@ -96,7 +96,7 @@ Page({
   /**
    * 点击切换不同规格
    */
-  modelTap: function(e) {
+  modelTap(e) {
     let attrIdx = e.currentTarget.dataset.attrIdx,
       itemIdx = e.currentTarget.dataset.itemIdx,
       specData = this.data.specData;
@@ -121,7 +121,7 @@ Page({
   /**
    * 更新商品规格信息
    */
-  updateSpecGoods: function() {
+  updateSpecGoods() {
     let spec_sku_id = this.goods_spec_arr.join('_');
 
     // 查找skuItem
@@ -145,7 +145,7 @@ Page({
   /**
    * 设置轮播图当前指针 数字
    */
-  setCurrent: function(e) {
+  setCurrent(e) {
     this.setData({
       currentIndex: e.detail.current + 1
     });
@@ -154,7 +154,7 @@ Page({
   /**
    * 控制商品规格/数量的显示隐藏
    */
-  onChangeShowState: function() {
+  onChangeShowState() {
     this.setData({
       showView: !this.data.showView
     });
@@ -163,7 +163,7 @@ Page({
   /**
    * 返回顶部
    */
-  goTop: function(t) {
+  goTop(t) {
     this.setData({
       scrollTop: 0
     });
@@ -172,16 +172,36 @@ Page({
   /**
    * 显示/隐藏 返回顶部按钮
    */
-  scroll: function(e) {
+  scroll(e) {
     this.setData({
       floorstatus: e.detail.scrollTop > 200
     })
   },
 
   /**
+   * 增加商品数量
+   */
+  up() {
+    this.setData({
+      goods_num: ++this.data.goods_num
+    })
+  },
+
+  /**
+   * 减少商品数量
+   */
+  down() {
+    if (this.data.goods_num > 1) {
+      this.setData({
+        goods_num: --this.data.goods_num
+      });
+    }
+  },
+
+  /**
    * 加入购物车and立即购买
    */
-  submit: function(e) {
+  submit(e) {
     let _this = this,
       submitType = e.currentTarget.dataset.type;
 
