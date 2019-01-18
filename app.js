@@ -24,7 +24,7 @@ App({
   /**
    * 生命周期函数--监听小程序初始化
    */
-  onLaunch: function() {
+  onLaunch() {
     // 设置api地址
     this.setApiRoot();
   },
@@ -32,28 +32,21 @@ App({
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
-  onShow: function(options) {
-    // 获取小程序基础信息
-    this.getWxappBase(function(wxapp) {
-      // 设置navbar标题、颜色
-      wx.setNavigationBarColor({
-        frontColor: wxapp.navbar.top_text_color.text,
-        backgroundColor: wxapp.navbar.top_background_color
-      })
-    });
+  onShow(options) {
+
   },
 
   /**
    * 设置api地址
    */
-  setApiRoot: function() {
+  setApiRoot() {
     this.api_root = this.siteInfo.siteroot + 'index.php?s=/api/';
   },
 
   /**
    * 获取小程序基础信息
    */
-  getWxappBase: function(callback) {
+  getWxappBase(callback) {
     let App = this;
     App._get('wxapp/base', {}, function(result) {
       // 记录小程序基础信息
@@ -65,7 +58,7 @@ App({
   /**
    * 执行用户登录
    */
-  doLogin: function() {
+  doLogin() {
     // 保存当前页面
     let pages = getCurrentPages();
     if (pages.length) {
@@ -82,18 +75,18 @@ App({
   /**
    * 当前用户id
    */
-  getUserId: function() {
+  getUserId() {
     return wx.getStorageSync('user_id');
   },
 
   /**
    * 显示成功提示框
    */
-  showSuccess: function(msg, callback) {
+  showSuccess(msg, callback) {
     wx.showToast({
       title: msg,
       icon: 'success',
-      success: function() {
+      success() {
         callback && (setTimeout(function() {
           callback();
         }, 1500));
@@ -104,12 +97,12 @@ App({
   /**
    * 显示失败提示框
    */
-  showError: function(msg, callback) {
+  showError(msg, callback) {
     wx.showModal({
       title: '友情提示',
       content: msg,
       showCancel: false,
-      success: function(res) {
+      success(res) {
         // callback && (setTimeout(function() {
         //   callback();
         // }, 1500));
@@ -121,7 +114,7 @@ App({
   /**
    * get请求
    */
-  _get: function(url, data, success, fail, complete, check_login) {
+  _get(url, data, success, fail, complete, check_login) {
     wx.showNavigationBarLoading();
     let App = this;
     // 构造请求参数
@@ -140,7 +133,7 @@ App({
           'content-type': 'application/json'
         },
         data: data,
-        success: function(res) {
+        success(res) {
           if (res.statusCode !== 200 || typeof res.data !== 'object') {
             console.log(res);
             App.showError('网络请求出错');
@@ -157,13 +150,13 @@ App({
             success && success(res.data);
           }
         },
-        fail: function(res) {
+        fail(res) {
           // console.log(res);
           App.showError(res.errMsg, function() {
             fail && fail(res);
           });
         },
-        complete: function(res) {
+        complete(res) {
           wx.hideNavigationBarLoading();
           complete && complete(res);
         },
@@ -176,7 +169,7 @@ App({
   /**
    * post提交
    */
-  _post_form: function(url, data, success, fail, complete) {
+  _post_form(url, data, success, fail, complete) {
     wx.showNavigationBarLoading();
     let App = this;
     data.wxapp_id = App.siteInfo.uniacid;
@@ -188,7 +181,7 @@ App({
       },
       method: 'POST',
       data: data,
-      success: function(res) {
+      success(res) {
         if (res.statusCode !== 200 || typeof res.data !== 'object') {
           App.showError('网络请求出错');
           return false;
@@ -207,13 +200,13 @@ App({
         }
         success && success(res.data);
       },
-      fail: function(res) {
+      fail(res) {
         // console.log(res);
         App.showError(res.errMsg, function() {
           fail && fail(res);
         });
       },
-      complete: function(res) {
+      complete(res) {
         wx.hideLoading();
         wx.hideNavigationBarLoading();
         complete && complete(res);
@@ -224,7 +217,7 @@ App({
   /**
    * 验证是否存在user_info
    */
-  validateUserInfo: function() {
+  validateUserInfo() {
     let user_info = wx.getStorageSync('user_info');
     return !!wx.getStorageSync('user_info');
   },
@@ -232,7 +225,7 @@ App({
   /**
    * 对象转URL
    */
-  urlEncode: function urlencode(data) {
+  urlEncode(data) {
     var _result = [];
     for (var key in data) {
       var value = data[key];
@@ -250,7 +243,7 @@ App({
   /**
    * 设置当前页面标题
    */
-  setTitle: function() {
+  setTitle() {
     let App = this,
       wxapp;
     if (wxapp = wx.getStorageSync('wxapp')) {
@@ -265,9 +258,23 @@ App({
   },
 
   /**
+   * 设置navbar标题、颜色
+   */
+  setNavigationBar() {
+    // 获取小程序基础信息
+    this.getWxappBase(function(wxapp) {
+      // 设置navbar标题、颜色
+      wx.setNavigationBarColor({
+        frontColor: wxapp.navbar.top_text_color.text,
+        backgroundColor: wxapp.navbar.top_background_color
+      })
+    });
+  },
+
+  /**
    * 获取tabBar页面路径列表
    */
-  getTabBarLinks: function() {
+  getTabBarLinks() {
     return tabBarLinks;
   },
 
