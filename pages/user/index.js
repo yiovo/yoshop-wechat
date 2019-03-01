@@ -43,8 +43,7 @@ Page({
     let urls = {
       all: '/pages/order/index?type=all',
       payment: '/pages/order/index?type=payment',
-      received: '/pages/order/index?type=received',
-      refund: '/pages/order/refund/index',
+      received: '/pages/order/index?type=received'
     };
     // 转跳指定的页面
     wx.navigateTo({

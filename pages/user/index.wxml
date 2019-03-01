@@ -50,13 +50,9 @@
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetOrder" data-type="refund" report-submit="true">
-            <button formType="submit" class="btn-normal">
-              <text class="order-navbar__icon iconfont icon-daipingjia"></text>
-              <text class="order-navbar__name">待评价</text>
-              <text class="order-badge" wx:if="{{ false }}"></text>
-            </button>
-          </form>
+          <text class="order-navbar__icon iconfont icon-daipingjia"></text>
+          <text class="order-navbar__name">待评价</text>
+          <text class="order-badge" wx:if="{{ false }}"></text>
         </view>
       </view>
     </view>
