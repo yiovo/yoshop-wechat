@@ -237,4 +237,16 @@ Page({
     }
   },
 
+  /**
+   * 分享当前页面
+   */
+  onShareAppMessage: function() {
+    // 构建页面参数
+    let _this = this;
+    return {
+      title: _this.data.detail.goods_name,
+      path: "/pages/goods/index?goods_id=" + _this.data.goods_id
+    };
+  },
+
 })
