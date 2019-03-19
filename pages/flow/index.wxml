@@ -5,14 +5,14 @@
         <view class="dish-item" data-index="{{index}}" style="{{item.txtStyle}}">
           <view class="dish-item-wrp">
             <navigator hover-class="none" url="../goods/index?goods_id={{item.goods_id}}">
-              <view bindtap="flowDetail" class="dish-item-pic">
+              <view class="dish-item-pic">
                 <image class="image" src="{{item.image[0].file_path}}"></image>
               </view>
             </navigator>
             <view class="dish-item-info">
               <navigator hover-class="none" url="../goods/index?goods_id={{item.goods_id}}">
                 <view class="goods-name">
-                  <text bindtap="flowDetail" class="twolist-hidden f-30 col-3">{{item.goods_name}}</text>
+                  <text class="twolist-hidden f-30 col-3">{{item.goods_name}}</text>
                 </view>
                 <view class="goods-attr">
                   <text class="col-7 f-24">{{item.goods_sku.goods_attr}}</text>
