@@ -16,10 +16,10 @@
                   <text class="title">商品列表</text>
                 </view>
                 <view class="flex-box t-r">
-                  <text class="cont" wx:if="{{item.pay_status.value===10}}">{{item.pay_status.text}}</text>
-                  <text class="cont" wx:if="{{item.pay_status.value===20 && item.delivery_status.value===10}}">{{item.delivery_status.text}}</text>
-                  <text class="cont" wx:if="{{item.pay_status.value===20 && item.delivery_status.value===20 && item.receipt_status.value===10}}">{{item.receipt_status.text}}</text>
-                  <text class="cont" wx:if="{{item.order_status.value===30}}">{{item.order_status.text}}</text>
+                  <text class="cont" wx:if="{{item.pay_status.value==10}}">{{item.pay_status.text}}</text>
+                  <text class="cont" wx:if="{{item.pay_status.value==20 && item.delivery_status.value==10}}">{{item.delivery_status.text}}</text>
+                  <text class="cont" wx:if="{{item.pay_status.value==20 && item.delivery_status.value==20 && item.receipt_status.value==10}}">{{item.receipt_status.text}}</text>
+                  <text class="cont" wx:if="{{item.order_status.value==30}}">{{item.order_status.text}}</text>
                 </view>
               </view>
             </view>
@@ -60,13 +60,13 @@
                 </view>
                 <view class="order-right">
                   <view class="dis-flex">
-                    <view class="flex-box" wx:if="{{item.pay_status.value===10}}">
+                    <view class="flex-box" wx:if="{{item.pay_status.value==10}}">
                       <view bindtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">取消</view>
                     </view>
-                    <view class="" wx:if="{{item.pay_status.value===10}}">
+                    <view class="" wx:if="{{item.pay_status.value==10}}">
                       <view bindtap="payOrder" class="btn-main" data-id="{{item.order_id}}">付款</view>
                     </view>
-                    <view class="flex-box" wx:if="{{item.delivery_status.value===20 && item.receipt_status.value === 10}}">
+                    <view class="flex-box" wx:if="{{item.delivery_status.value==20 && item.receipt_status.value == 10}}">
                       <view bindtap="receipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
                     </view>
                   </view>

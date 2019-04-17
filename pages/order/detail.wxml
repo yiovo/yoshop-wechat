@@ -16,7 +16,7 @@
     </view>
 
     <!-- 物流信息 -->
-    <view class="flow-all-money b-f padding-box m-top20" wx:if="{{order.delivery_status.value === 20}}">
+    <view class="flow-all-money b-f padding-box m-top20" wx:if="{{order.delivery_status.value == 20}}">
       <view class="dis-flex flow-all-list-cont">
         <text class="col-7">快递公司: {{order.express_company}}</text>
       </view>
@@ -33,10 +33,10 @@
             <text class="title">商品列表</text>
           </view>
           <view class="flex-box t-r">
-            <text class="col-m" wx:if="{{order.pay_status.value===10}}">{{order.pay_status.text}}</text>
-            <text class="col-m" wx:if="{{order.pay_status.value===20 && order.delivery_status.value===10}}">{{order.delivery_status.text}}</text>
-            <text class="col-m" wx:if="{{order.pay_status.value===20 && order.delivery_status.value===20 && order.receipt_status.value===10}}">{{order.receipt_status.text}}</text>
-            <text class="col-m" wx:if="{{order.order_status.value===30}}">{{order.order_status.text}}</text>
+            <text class="col-m" wx:if="{{order.pay_status.value==10}}">{{order.pay_status.text}}</text>
+            <text class="col-m" wx:if="{{order.pay_status.value==20 && order.delivery_status.value==10}}">{{order.delivery_status.text}}</text>
+            <text class="col-m" wx:if="{{order.pay_status.value==20 && order.delivery_status.value==20 && order.receipt_status.value==10}}">{{order.receipt_status.text}}</text>
+            <text class="col-m" wx:if="{{order.order_status.value==30}}">{{order.order_status.text}}</text>
           </view>
         </view>
       </view>
@@ -97,15 +97,15 @@
   </scroll-view>
 
   <view class="flow-fixed-footer b-f">
-    <view class="dis-flex chackout-box" wx:if="{{order.pay_status.value===10}}">
+    <view class="dis-flex chackout-box" wx:if="{{order.pay_status.value==10}}">
       <view bindtap="cancelOrder" class="flex-box chackout-left-detail t-c">
         取消订单
       </view>
       <view class="flex-box chackout-right-detail">
-        <text bindtap="payOrder" class="flow-btn" wx:if="{{order.pay_status.value===10}}">去付款</text>
+        <text bindtap="payOrder" class="flow-btn" wx:if="{{order.pay_status.value==10}}">去付款</text>
       </view>
     </view>
-    <view class="flow-btn h3" wx:if="{{order.delivery_status.value===20 && order.receipt_status.value===10}}">
+    <view class="flow-btn h3" wx:if="{{order.delivery_status.value==20 && order.receipt_status.value==10}}">
       <view bindtap="receipt">确认收货</view>
     </view>
   </view>

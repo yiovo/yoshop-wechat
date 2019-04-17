@@ -72,7 +72,7 @@ Page({
     data.line_price = data.detail.spec[0].line_price;
     data.stock_num = data.detail.spec[0].stock_num;
     // 初始化商品多规格
-    if (data.detail.spec_type === 20) {
+    if (data.detail.spec_type == 20) {
       data.specData = _this.initManySpecData(data.specData);
     }
     return data;
