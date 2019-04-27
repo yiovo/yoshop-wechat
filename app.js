@@ -9,6 +9,9 @@ const tabBarLinks = [
   'pages/user/index'
 ];
 
+// 站点信息
+import siteInfo from 'siteinfo.js';
+
 App({
 
   /**
@@ -19,14 +22,14 @@ App({
   },
 
   api_root: '', // api地址
-  siteInfo: require('siteinfo.js'),
 
   /**
    * 生命周期函数--监听小程序初始化
    */
   onLaunch() {
+    let App = this;
     // 设置api地址
-    this.setApiRoot();
+    App.setApiRoot();
   },
 
   /**
@@ -40,7 +43,8 @@ App({
    * 设置api地址
    */
   setApiRoot() {
-    this.api_root = this.siteInfo.siteroot + 'index.php?s=/api/';
+    let App = this;
+    App.api_root = `${siteInfo.siteroot}index.php?s=/api/`;
   },
 
   /**
@@ -48,7 +52,7 @@ App({
    */
   getWxappBase(callback) {
     let App = this;
-    App._get('wxapp/base', {}, function(result) {
+    App._get('wxapp/base', {}, result => {
       // 记录小程序基础信息
       wx.setStorageSync('wxapp', result.data.wxapp);
       callback && callback(result.data.wxapp);
@@ -76,7 +80,7 @@ App({
    * 当前用户id
    */
   getUserId() {
-    return wx.getStorageSync('user_id');
+    return wx.getStorageSync('user_id') || 0;
   },
 
   /**
@@ -87,7 +91,7 @@ App({
       title: msg,
       icon: 'success',
       success() {
-        callback && (setTimeout(function() {
+        callback && (setTimeout(() => {
           callback();
         }, 1500));
       }
@@ -103,7 +107,7 @@ App({
       content: msg,
       showCancel: false,
       success(res) {
-        // callback && (setTimeout(function() {
+        // callback && (setTimeout(() => {
         //   callback();
         // }, 1500));
         callback && callback();
@@ -115,24 +119,27 @@ App({
    * get请求
    */
   _get(url, data, success, fail, complete, check_login) {
-    wx.showNavigationBarLoading();
     let App = this;
+    wx.showNavigationBarLoading();
+
     // 构造请求参数
-    data = data || {};
-    data['wxapp_id'] = 10001;
+    data = Object.assign({
+      wxapp_id: 10001,
+      token: wx.getStorageSync('token')
+    }, data);
 
     // if (typeof check_login === 'undefined')
     //   check_login = true;
 
     // 构造get请求
-    let request = function() {
+    let request = () => {
       data.token = wx.getStorageSync('token');
       wx.request({
         url: App.api_root + url,
         header: {
           'content-type': 'application/json'
         },
-        data: data,
+        data,
         success(res) {
           if (res.statusCode !== 200 || typeof res.data !== 'object') {
             console.log(res);
@@ -152,7 +159,7 @@ App({
         },
         fail(res) {
           // console.log(res);
-          App.showError(res.errMsg, function() {
+          App.showError(res.errMsg, () => {
             fail && fail(res);
           });
         },
@@ -172,15 +179,18 @@ App({
   _post_form(url, data, success, fail, complete) {
     wx.showNavigationBarLoading();
     let App = this;
-    data.wxapp_id = App.siteInfo.uniacid;
-    data.token = wx.getStorageSync('token');
+    // 构造请求参数
+    data = Object.assign({
+      wxapp_id: 10001,
+      token: wx.getStorageSync('token')
+    }, data);
     wx.request({
       url: App.api_root + url,
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
       method: 'POST',
-      data: data,
+      data,
       success(res) {
         if (res.statusCode !== 200 || typeof res.data !== 'object') {
           App.showError('网络请求出错');
@@ -188,12 +198,12 @@ App({
         }
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
-          App.doLogin(function() {
+          App.doLogin(() => {
             App._post_form(url, data, success, fail);
           });
           return false;
         } else if (res.data.code === 0) {
-          App.showError(res.data.msg, function() {
+          App.showError(res.data.msg, () => {
             fail && fail(res);
           });
           return false;
@@ -202,7 +212,7 @@ App({
       },
       fail(res) {
         // console.log(res);
-        App.showError(res.errMsg, function() {
+        App.showError(res.errMsg, () => {
           fail && fail(res);
         });
       },
@@ -230,7 +240,7 @@ App({
     for (var key in data) {
       var value = data[key];
       if (value.constructor == Array) {
-        value.forEach(function(_value) {
+        value.forEach(_value => {
           _result.push(key + "=" + _value);
         });
       } else {
@@ -251,7 +261,7 @@ App({
         title: wxapp.navbar.wxapp_title
       });
     } else {
-      App.getWxappBase(function() {
+      App.getWxappBase(() => {
         App.setTitle();
       });
     }
@@ -261,8 +271,9 @@ App({
    * 设置navbar标题、颜色
    */
   setNavigationBar() {
+    let App = this;
     // 获取小程序基础信息
-    this.getWxappBase(function(wxapp) {
+    App.getWxappBase(wxapp => {
       // 设置navbar标题、颜色
       wx.setNavigationBarColor({
         frontColor: wxapp.navbar.top_text_color.text,
