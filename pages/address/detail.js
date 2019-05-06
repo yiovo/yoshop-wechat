@@ -40,7 +40,7 @@ Page({
   saveData: function(e) {
     let _this = this,
       values = e.detail.value
-    values.region = this.data.region;
+    values.region = _this.data.region;
 
     // 记录formId
     // App.saveFormId(e.detail.formId);

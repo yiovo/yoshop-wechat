@@ -26,7 +26,7 @@ Page({
     // 设置分类列表高度
     _this.setListHeight();
     // 获取分类列表
-    this.getCategoryList();
+    _this.getCategoryList();
   },
 
   /**

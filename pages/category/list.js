@@ -46,10 +46,10 @@ Page({
     let _this = this;
     App._get('goods/lists', {
       page: page || 1,
-      sortType: this.data.sortType,
-      sortPrice: this.data.sortPrice ? 1: 0,
-      category_id: this.data.option.category_id || 0,
-      search: this.data.option.search || '',
+      sortType: _this.data.sortType,
+      sortPrice: _this.data.sortPrice ? 1: 0,
+      category_id: _this.data.option.category_id || 0,
+      search: _this.data.option.search || '',
     }, function (result) {
         let resultList = result.data.list
           , dataList = _this.data.list;
@@ -82,9 +82,9 @@ Page({
   switchSortType: function (e) {
     let _this = this
       , newSortType = e.currentTarget.dataset.type
-      , newSortPrice = newSortType === 'price' ? !this.data.sortPrice : true;
+      , newSortPrice = newSortType === 'price' ? !_this.data.sortPrice : true;
 
-    this.setData({
+    _this.setData({
       list: {},
       page: 1,
       sortType: newSortType,
