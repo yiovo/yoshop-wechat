@@ -1,4 +1,7 @@
 {
+  "usingComponents": {
+    "login": "/components/login/index"
+  },
   "pages": [
     "pages/index/index",
     "pages/category/index",
@@ -55,5 +58,6 @@
     ],
     "position": "bottom"
   },
-  "debug": false
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
 }

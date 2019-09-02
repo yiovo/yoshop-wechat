@@ -1,12 +1,20 @@
-<view class="container" wx:if="{{ userInfo.user_id > 0 }}">
+<view class="container">
   <!-- 用户信息 -->
   <view class="user">
     <view class="user-header" style="background-image: url('/images/user-bg.png');">
-      <view class="user-header-cont">
+      <!-- 已登录 -->
+      <view wx:if="{{ isLogin }}" class="user-header-cont">
         <view class="user-header-avatar">
           <open-data class="" lang="zh_CN" type="userAvatarUrl"></open-data>
         </view>
         <open-data class="user-header-cont-name" lang="zh_CN" type="userNickName"></open-data>
+      </view>
+      <!-- 未登录 -->
+      <view wx:else class="user-header-cont" catchtap="onLogin">
+        <view class="user-header-avatar">
+          <image src="/images/default-avatar.jpg"></image>
+        </view>
+        <view class="user-header-cont-name">点击登录</view>
       </view>
     </view>
     <!-- 订单导航栏 -->

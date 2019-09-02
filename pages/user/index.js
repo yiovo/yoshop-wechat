@@ -1,10 +1,12 @@
-let App = getApp();
+const App = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isLogin: false,
     userInfo: {},
     orderCount: {},
   },
@@ -12,24 +14,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    // 获取当前用户信息
-    this.getUserDetail();
+  onShow() {
+    let _this = this;
+    _this.setData({
+      isLogin: App.checkIsLogin()
+    });
+    if (_this.data.isLogin) {
+      // 获取当前用户信息
+      _this.getUserDetail();
+    }
   },
 
   /**
    * 获取当前用户信息
    */
-  getUserDetail: function() {
+  getUserDetail() {
     let _this = this;
-    App._get('user.index/detail', {}, function(result) {
+    App._get('user.index/detail', {}, result => {
       _this.setData(result.data);
     });
   },
@@ -38,8 +46,10 @@ Page({
    * 订单导航跳转
    */
   onTargetOrder(e) {
-    // 记录formid
-    // App.saveFormId(e.detail.formId);
+    let _this = this;
+    if (!_this.onCheckLogin()) {
+      return false;
+    }
     let urls = {
       all: '/pages/order/index?type=all',
       payment: '/pages/order/index?type=payment',
@@ -55,11 +65,35 @@ Page({
    * 菜单列表导航跳转
    */
   onTargetMenus(e) {
-    // 记录formId
-    // App.saveFormId(e.detail.formId);
+    let _this = this;
+    if (!_this.onCheckLogin()) {
+      return false;
+    }
     wx.navigateTo({
       url: '/' + e.currentTarget.dataset.url
     })
   },
+
+  /**
+   * 跳转到登录页
+   */
+  onLogin() {
+    wx.navigateTo({
+      url: '../login/login',
+    });
+  },
+
+  /**
+   * 验证是否已登录
+   */
+  onCheckLogin() {
+    let _this = this;
+    if (!_this.data.isLogin) {
+      App.showError('很抱歉，您还没有登录');
+      return false;
+    }
+    return true;
+  },
+
 
 })

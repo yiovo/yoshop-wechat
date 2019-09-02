@@ -36,6 +36,17 @@
   overflow: hidden;
 }
 
+.user-header .user-header-cont .user-header-avatar image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.user-header .user-header-cont .user-header-cont-name {
+  font-size: 32rpx;
+  padding: 20rpx 0;
+}
+
 /* 订单导航栏 */
 
 .order-navbar {

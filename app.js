@@ -289,4 +289,46 @@ App({
     return tabBarLinks;
   },
 
+  /**
+   * 验证登录
+   */
+  checkIsLogin() {
+    return wx.getStorageSync('token') != '' && wx.getStorageSync('user_id') != '';
+  },
+
+  /**
+   * 授权登录
+   */
+  getUserInfo(e, callback) {
+    let App = this;
+    if (e.detail.errMsg !== 'getUserInfo:ok') {
+      return false;
+    }
+    wx.showLoading({
+      title: "正在登录",
+      mask: true
+    });
+    // 执行微信登录
+    wx.login({
+      success(res) {
+        // 发送用户信息
+        App._post_form('user/login', {
+          code: res.code,
+          user_info: e.detail.rawData,
+          encrypted_data: e.detail.encryptedData,
+          iv: e.detail.iv,
+          signature: e.detail.signature
+        }, result => {
+          // 记录token user_id
+          wx.setStorageSync('token', result.data.token);
+          wx.setStorageSync('user_id', result.data.user_id);
+          // 执行回调函数
+          callback && callback();
+        }, false, () => {
+          wx.hideLoading();
+        });
+      }
+    });
+  },
+
 });

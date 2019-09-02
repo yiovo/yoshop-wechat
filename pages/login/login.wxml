@@ -8,6 +8,11 @@
   </view>
   <view class="auth-title">申请获取以下权限</view>
   <view class="auth-subtitle">获得你的公开信息（昵称、头像等）</view>
-  <button class="login-btn" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="authorLogin">授权登录</button>
+  <view class="login-btn">
+    <button class="btn-normal" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">授权登录</button>
+  </view>
+  <view class="no-login-btn">
+    <button class="btn-normal" catchtap="onNotLogin">暂不登录</button>
+  </view>
 </view>
 <!-- </view> -->
