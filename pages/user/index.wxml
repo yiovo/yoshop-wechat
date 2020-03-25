@@ -19,7 +19,7 @@
     </view>
     <!-- 订单导航栏 -->
     <view class="order-navbar">
-      <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
+      <form bindsubmit="onTargetOrder" data-type="all">
         <button formType="submit" class="btn-normal">
           <view class="order-navbar-header dis-flex">
             <text class="f-30">我的订单</text>
@@ -32,7 +32,7 @@
       </form>
       <view class="order-navbar-footer dis-flex m-top10">
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetOrder" data-type="all" report-submit="true">
+          <form bindsubmit="onTargetOrder" data-type="all">
             <button formType="submit" class="btn-normal">
               <text class="order-navbar__icon iconfont icon-form"></text>
               <text class="order-navbar__name">全部订单</text>
@@ -40,7 +40,7 @@
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetOrder" data-type="payment" report-submit="true">
+          <form bindsubmit="onTargetOrder" data-type="payment">
             <button formType="submit" class="btn-normal">
               <text class="order-navbar__icon iconfont icon-daifukuan"></text>
               <text class="order-navbar__name">待付款</text>
@@ -49,25 +49,29 @@
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <form bindsubmit="onTargetOrder" data-type="received" report-submit="true">
+          <form bindsubmit="onTargetOrder" data-type="delivery">
             <button formType="submit" class="btn-normal">
               <text class="order-navbar__icon iconfont icon-daishouhuo"></text>
-              <text class="order-navbar__name">待收货</text>
-              <text class="order-badge" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
+              <text class="order-navbar__name">待发货</text>
+              <text class="order-badge" wx:if="{{orderCount.delivery > 0}}">{{orderCount.delivery}}</text>
             </button>
           </form>
         </view>
         <view class="order-navbar-item flex-box">
-          <text class="order-navbar__icon iconfont icon-daipingjia"></text>
-          <text class="order-navbar__name">待评价</text>
-          <text class="order-badge" wx:if="{{ false }}"></text>
+          <form bindsubmit="onTargetOrder" data-type="received">
+            <button formType="submit" class="btn-normal">
+              <text class="order-navbar__icon iconfont icon-edit"></text>
+              <text class="order-navbar__name">待收货</text>
+              <text class="order-badge" wx:if="{{orderCount.received > 0}}">{{orderCount.received}}</text>
+            </button>
+          </form>
         </view>
       </view>
     </view>
   </view>
   <!-- 菜单列表 -->
   <view class="menus-list m-top20">
-    <form bindsubmit="onTargetMenus" data-url="pages/address/index" report-submit="true">
+    <form bindsubmit="onTargetMenus" data-url="pages/address/index">
       <button formType="submit" class="btn-normal">
         <view class="menus-item dis-flex b-f">
           <view class="menus-item__left flex-box dis-flex flex-y-center">
@@ -80,12 +84,25 @@
         </view>
       </button>
     </form>
-    <form bindsubmit="onTargetMenus" data-url="pages/user/help" report-submit="true">
+    <form bindsubmit="onTargetMenus" data-url="pages/user/help">
       <button formType="submit" class="btn-normal">
         <view class="menus-item dis-flex b-f">
           <view class="menus-item__left flex-box dis-flex flex-y-center">
             <text class="iconfont icon-help f-34"></text>
             <text class="menus-item__name f-30">我的帮助</text>
+          </view>
+          <view class="menus-item__right flex-box dis-flex flex-x-end flex-y-center">
+            <text class="iconfont icon-xiangyoujiantou f-26 col-7"></text>
+          </view>
+        </view>
+      </button>
+    </form>
+    <form>
+      <button open-type="contact" class="btn-normal">
+        <view class="menus-item dis-flex b-f">
+          <view class="menus-item__left flex-box dis-flex flex-y-center">
+            <text class="iconfont icon-icon_service f-34"></text>
+            <text class="menus-item__name f-30">联系客服</text>
           </view>
           <view class="menus-item__right flex-box dis-flex flex-x-end flex-y-center">
             <text class="iconfont icon-xiangyoujiantou f-26 col-7"></text>

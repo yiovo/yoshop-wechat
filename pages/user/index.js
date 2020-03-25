@@ -53,6 +53,7 @@ Page({
     let urls = {
       all: '/pages/order/index?type=all',
       payment: '/pages/order/index?type=payment',
+      delivery: '/pages/order/index?type=delivery',
       received: '/pages/order/index?type=received'
     };
     // 转跳指定的页面
