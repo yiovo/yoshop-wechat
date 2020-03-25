@@ -10,12 +10,12 @@
   </view>
   <view class="cate-content dis-flex" wx:if="{{ list.length > 0 }}">
     <!-- 左侧 一级分类 -->
-    <scroll-view class="cate-left f-28" scroll-y="{{ true }}" style="height: {{ scrollHeight }}px; ">
+    <scroll-view class="cate-left f-28" scroll-y="{{ true }}" style="height: {{ scrollHeight }}px; " enable-flex="true">
       <text bindtap="selectNav" class="type-nav onelist-hidden {{curNav==item.category_id?'selected':''}}" data-id="{{ item.category_id }}" data-index="{{index}}" wx:for="{{list}}" wx:key="cateLeft">{{ item.name }}</text>
     </scroll-view>
 
     <!-- 右侧 二级分类 -->
-    <scroll-view class="cate-right b-f" scroll-top="{{ scrollTop }}" scroll-y="true" style="height: {{ scrollHeight }}px; ">
+    <scroll-view class="cate-right b-f" scroll-top="{{ scrollTop }}" scroll-y="true" style="height: {{ scrollHeight }}px; " enable-flex="true">
       <view wx:if="{{list[curIndex]}}">
         <view class="cate-right-cont">
           <view class="cate-two-box">

@@ -54,6 +54,9 @@ Page({
         _this.data.hasError = true;
         _this.data.error = result.data.error_msg;
         App.showError(_this.data.error);
+      } else {
+        _this.data.hasError = false;
+        _this.data.error = '';
       }
       _this.setData(result.data);
     };
