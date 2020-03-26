@@ -55,12 +55,6 @@
     ],
     "position": "bottom"
   },
-  "plugins": {
-    "live-player-plugin": {
-      "version": "1.0.3",
-      "provider": "wx2b03c6e691cd7370"
-    }
-  },
   "debug": false,
   "sitemapLocation": "sitemap.json"
 }
