@@ -1,7 +1,7 @@
 <view class="container">
   <view class="common-header-xian"></view>
   <!-- 表单 -->
-  <form bindsubmit="saveData" report-submit="true">
+  <form bindsubmit="saveData">
     <view class="address-cont-title b-f b-b">
       <view class="list address-box dis-flex b-b">
         <view class="left-name">
