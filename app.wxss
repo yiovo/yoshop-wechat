@@ -19,6 +19,14 @@ page {
   color: #999;
 }
 
+/* 没有更多 */
+
+.no-more {
+  text-align: center;
+  color: #737373;
+  padding: 20rpx 0;
+}
+
 .yoshop-notcont {
   margin: 130rpx 100rpx;
 }
@@ -28,7 +36,7 @@ page {
   text-align: center;
   font-size: 30rpx;
   color: #999;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
 }
 
 .yoshop-notcont .iconfont {

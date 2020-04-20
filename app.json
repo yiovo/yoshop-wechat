@@ -36,7 +36,7 @@
       },
       {
         "pagePath": "pages/category/index",
-        "text": "分类",
+        "text": "全部",
         "iconPath": "images/tabBar/cate.png",
         "selectedIconPath": "images/tabBar/cate_on.png"
       },

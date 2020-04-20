@@ -1,45 +1,69 @@
 <view class="container">
   <!-- 搜索框 -->
   <view class="index-search-box">
-    <navigator class="index-search " hover-class="none" openType="navigate" url="../search/index">
+    <navigator class="index-search" hover-class="none" openType="navigate" url="../search/index">
       <view class="index-cont-search t-c">
         <icon class="text-center" color="{{searchColor}}" size="{{searchSize}}" type="search"></icon>
         <text>{{searchName}}</text>
       </view>
     </navigator>
   </view>
-  <view class="cate-content dis-flex" wx:if="{{ list.length > 0 }}">
+
+  <!-- 分类样式：二级分类 20 -->
+  <view class="cate-content dis-flex">
+
     <!-- 左侧 一级分类 -->
-    <scroll-view class="cate-left f-28" scroll-y="{{ true }}" style="height: {{ scrollHeight }}px; " enable-flex="true">
-      <text bindtap="selectNav" class="type-nav onelist-hidden {{curNav==item.category_id?'selected':''}}" data-id="{{ item.category_id }}" data-index="{{index}}" wx:for="{{list}}" wx:key="cateLeft">{{ item.name }}</text>
+    <scroll-view class="cate-left f-28" scroll-y="{{ true }}" style="height: {{ scrollHeight }}px; ">
+      <text catchtap="onSelectNav" class="type-nav {{ curIndex == -1 ? 'selected' : '' }}" data-index="-1">全部</text>
+      <!-- 分类列表 -->
+      <text wx:for="{{ categoryList }}" wx:key="cateLeft" catchtap="onSelectNav" class="type-nav {{ curIndex == index ? 'selected' : '' }} onelist-hidden" data-index="{{ index }}">{{ item.name }}</text>
     </scroll-view>
 
-    <!-- 右侧 二级分类 -->
-    <scroll-view class="cate-right b-f" scroll-top="{{ scrollTop }}" scroll-y="true" style="height: {{ scrollHeight }}px; " enable-flex="true">
-      <view wx:if="{{list[curIndex]}}">
-        <view class="cate-right-cont">
-          <view class="cate-two-box">
-            <view class="cate-cont-box">
-              <view class="flex-three" data-list="{{index}}" wx:for="{{list[curIndex].child}}" wx:key="cit">
-                <navigator hover-class="none" url="../category/list?category_id={{item.category_id}}">
-                  <view class="cate-img" id="{{item.file_id}}">
-                    <image src="{{item.image.file_path}}"></image>
+    <!-- 右侧 商品列表 -->
+    <scroll-view class="cate-right b-f" scroll-top="{{ scrollTop }}" scroll-y="true" bindscrolltolower="onDownLoad" style="height: {{ scrollHeight }}px; ">
+
+      <view class="goods-item" wx:for="{{ goodsList.data }}" wx:key="this">
+        <form bindsubmit="onTargetGoods" report-submit="true">
+          <button formType="submit" class="btn-normal" data-id="{{ item.goods_id }}">
+            <view class="goods-item_detail dis-flex">
+              <!-- 商品图片 -->
+              <view class="goods-item_left">
+                <image src="{{ item.goods_image }}"></image>
+              </view>
+              <view class="goods-item_right">
+                <!-- 商品名称 -->
+                <view class="goods-item_title twolist-hidden">
+                  <text>{{ item.goods_name }}</text>
+                </view>
+                <view class="goods-item_desc">
+                  <!-- 商品卖点 -->
+                  <view class="desc-selling_point dis-flex">
+                    <text class="onelist-hidden">{{ item.selling_point }}</text>
                   </view>
-                  <text class="onelist-hidden">{{item.name}}</text>
-                </navigator>
+                  <!-- 商品销量 -->
+                  <view class="desc-goods_sales onelist-hidden dis-flex">
+                    <text>已售{{ item.goods_sales }}件</text>
+                  </view>
+                  <!-- 商品价格 -->
+                  <view class="desc_footer">
+                    <text class="price_x">¥{{ item.goods_sku.goods_price }}</text>
+                    <text class="price_y col-9">¥{{ item.goods_sku.line_price }}</text>
+                  </view>
+                </view>
               </view>
             </view>
-          </view>
+          </button>
+        </form>
+      </view>
+      <view wx:if="{{ noMore }}" class="no-more f-30">亲, 没有更多了</view>
+      <!-- 无数据提供的页面 -->
+      <view wx:if="{{ !isLoading && !goodsList.data.length }}">
+        <view class="yoshop-notcont">
+          <text class="iconfont icon-ziyuan"></text>
+          <text class="cont">亲，此处暂无商品哦</text>
         </view>
       </view>
     </scroll-view>
-  </view>
-
-  <view wx:if="{{ !list.length && notcont }}">
-    <view class="yoshop-notcont">
-      <text class="iconfont icon-wushuju"></text>
-      <text class="cont">亲，暂无商品分类哦</text>
-    </view>
   </view>
 
 </view>
