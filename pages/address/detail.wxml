@@ -16,7 +16,7 @@
           <text class="f-30">手机号</text>
         </view>
         <view class="right-cont flex-box">
-          <input maxlength="11" name="phone" placeholder="请输入收货人联系电话" type="number" value="{{detail.phone}}"></input>
+          <input name="phone" placeholder="请输入收货人联系电话" type="number" value="{{detail.phone}}"></input>
         </view>
       </view>
     </view>
